@@ -1,0 +1,29 @@
+For Android:
+
+Manually change it in android/app/src/main/java/com/PROJECT_NAME/MainActivity.java:
+package com.quizmonstr;
+
+In android/app/src/main/java/com/PROJECT_NAME/MainApplication.java:
+package com.quizmonstr;
+
+In android/app/src/main/AndroidManifest.xml:
+package="com.quizmonstr"
+
+In android/app/build.gradle:
+applicationId "com.quizmonstr"
+
+Gradle' cleaning in the end (in /android folder):
+./gradlew clean
+
+
+For iOS:
+
+Change the Bundle Id in Xcode.
+
+<com.quizmonstr> > General > Bundle Identifier
+DisplayName quizmonstr
+BundleIdentifier com.quizmonstr
+
+<com.quizmonstr-tvOS> > General > Bundle Identifier
+DisplayName quizmonstr-tvOS
+BundleIdentifier com.quizmonstr

@@ -1,0 +1,49 @@
+name [Krunal Dodiya]
+organization unit [KD]
+organization [QuizMonstr]
+city [Ahmedabad]
+state [Gujarat]
+country [IN]
+
+alias quizmonstr
+password quizmonstr@1987
+appId com.quizmonstr
+
+1) generate keystore
+------------
+keytool -genkey -v -keystore quizmonstr.keystore -alias quizmonstr -keyalg RSA -keysize 2048 -validity 10000
+
+2) Place the quizmonstr.keystore file under the android/app directory in your project folder.
+
+3) Edit the file ~/.gradle/gradle.properties or android/gradle.properties, and add the following (replace ***** with the correct keystore password, alias and key password),
+-------
+MYAPP_RELEASE_STORE_FILE=quizmonstr.keystore
+MYAPP_RELEASE_KEY_ALIAS=quizmonstr
+MYAPP_RELEASE_STORE_PASSWORD=quizmonstr@1987
+MYAPP_RELEASE_KEY_PASSWORD=quizmonstr@1987
+
+Edit the file android/app/build.gradle in your project folder, and add the signing config,
+------------
+android {
+    ...
+    defaultConfig { ... }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+$ cd android
+$ ./gradlew assembleRelease
