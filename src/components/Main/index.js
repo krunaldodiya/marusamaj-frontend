@@ -15,7 +15,7 @@ const getAppNavigator = auth => {
       TabsScreen: { screen: TabsScreen },
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
-      ManageProfileScreen: { screen: ManageProfileScreen },
+      ManageProfileScreen: { screen: ManageProfileScreen }
     },
     {
       initialRouteName,
@@ -30,7 +30,19 @@ const getInitialScreen = auth => {
   const { authUser } = auth;
 
   if (authUser) {
-    return authUser.profile_updated ? "TabsScreen" : "ManageProfileScreen";
+    const { caste_updated, profile_updated, family_updated } = authUser;
+
+    if (!caste_updated) {
+      return "ManageCasteScreen";
+    }
+
+    if (!profile_updated) {
+      return "ManageProfileScreen";
+    }
+
+    if (!family_updated) {
+      return "ManageFamilyScreen";
+    }
   }
 
   return "RequestOtpScreen";
