@@ -8,6 +8,7 @@ const api = {
   terms: `${httpUrl}/terms`,
   // api
   me: `${httpUrl}/api/users/me`,
+  castes: `${httpUrl}/api/castes`,
   createUserProfile: `${httpUrl}/api/users/profile/create`,
   requestOtp: `${httpUrl}/api/auth/request-otp`,
   verifyOtp: `${httpUrl}/api/auth/verify-otp`,
