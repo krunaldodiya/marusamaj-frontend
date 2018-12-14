@@ -2,14 +2,9 @@ import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import NoNetwork from "../../components/NoNetwork";
-import AddMoneyScreen from "../../containers/AddMoneyScreen";
-import GetStartedScreen from "../../containers/GetStartedScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
-import QuestionsScreen from "../../containers/QuestionsScreen";
-import QuizDetailScreen from "../../containers/QuizDetailScreen";
 import RequestOtpScreen from "../../containers/RequestOtpScreen";
 import TabsScreen from "../../containers/TabsScreen";
-import TutorialsScreen from "../../containers/TutorialsScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 
 const getAppNavigator = auth => {
@@ -17,15 +12,10 @@ const getAppNavigator = auth => {
 
   return createStackNavigator(
     {
-      GetStartedScreen: { screen: GetStartedScreen },
       TabsScreen: { screen: TabsScreen },
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
-      QuizDetailScreen: { screen: QuizDetailScreen },
-      AddMoneyScreen: { screen: AddMoneyScreen },
-      TutorialsScreen: { screen: TutorialsScreen },
-      QuestionsScreen: { screen: QuestionsScreen },
     },
     {
       initialRouteName,
@@ -43,7 +33,7 @@ const getInitialScreen = auth => {
     return authUser.profile_updated ? "TabsScreen" : "ManageProfileScreen";
   }
 
-  return "GetStartedScreen";
+  return "RequestOtpScreen";
 };
 
 export default class Main extends React.Component {
