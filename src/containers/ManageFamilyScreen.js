@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import ManageFamily from "../components/ManageFamily";
 
 const mapStateToProps = state => ({
   auth: state.auth

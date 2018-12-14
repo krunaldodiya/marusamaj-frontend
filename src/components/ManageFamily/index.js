@@ -4,7 +4,7 @@ import Loader from "../../components/shared/Loader";
 import FamilyForm from "./form_family";
 import styles from "./styles";
 
-const UserType = props => {
+const ManageFamily = props => {
   return (
     <KeyboardAvoidingView behavior="position" enabled style={styles.container}>
       <Loader loading={props.auth.loading} />
@@ -13,4 +13,4 @@ const UserType = props => {
   );
 };
 
-export default UserType;
+export default ManageFamily;

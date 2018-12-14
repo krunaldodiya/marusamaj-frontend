@@ -15,7 +15,7 @@ const getAppNavigator = auth => {
       TabsScreen: { screen: TabsScreen },
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
-      ManageProfileScreen: { screen: ManageProfileScreen }
+      ManageProfileScreen: { screen: ManageProfileScreen },
     },
     {
       initialRouteName,

@@ -1,6 +1,8 @@
 import { Icon } from "native-base";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
+import EventsScreen from "../../containers/EventsScreen";
+import UsersScreen from "../../containers/UsersScreen";
 
 const AppTabNavigator = createBottomTabNavigator(
   {

@@ -5,7 +5,7 @@ import styles from "./styles";
 
 const citiesList = require("../../../assets/js/cities.json");
 
-class UserTypeForm extends React.Component {
+class FamilyForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -149,4 +149,4 @@ class UserTypeForm extends React.Component {
   }
 }
 
-export default UserTypeForm;
+export default FamilyForm;
