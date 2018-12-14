@@ -9,7 +9,7 @@ import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 
 const getAppNavigator = auth => {
   const initialRouteName = getInitialScreen(auth);
-
+  
   return createStackNavigator(
     {
       TabsScreen: { screen: TabsScreen },
@@ -27,7 +27,7 @@ const getAppNavigator = auth => {
 };
 
 const getInitialScreen = auth => {
-  const { authUser } = auth;
+  const { authUser } = auth;  
 
   if (authUser) {
     const { caste_updated, profile_updated, family_updated } = authUser;

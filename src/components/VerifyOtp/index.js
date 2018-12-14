@@ -3,7 +3,6 @@ import { KeyboardAvoidingView, SafeAreaView } from "react-native";
 // component
 import Loader from "../../components/shared/Loader";
 import VerifyOtpForm from "./form";
-import TopImage from "./image";
 import Info from "./info";
 // styles
 import styles from "./styles";
@@ -23,7 +22,6 @@ class VerifyOtp extends React.Component {
           contentContainerStyle={{ flex: 1 }}
         >
           <Loader loading={loading} />
-          <TopImage />
           <Info mobile={mobile} />
           <Timer navigation={navigation} />
           <VerifyOtpForm {...this.props} />
