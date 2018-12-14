@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "QuizMonstr-tvOS.app"
-               BlueprintName = "QuizMonstr-tvOS"
-               ReferencedContainer = "container:QuizMonstr.xcodeproj">
+               BuildableName = "MaruSamaj-tvOS.app"
+               BlueprintName = "MaruSamaj-tvOS"
+               ReferencedContainer = "container:MaruSamaj.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "QuizMonstr-tvOSTests.xctest"
-               BlueprintName = "QuizMonstr-tvOSTests"
-               ReferencedContainer = "container:QuizMonstr.xcodeproj">
+               BuildableName = "MaruSamaj-tvOSTests.xctest"
+               BlueprintName = "MaruSamaj-tvOSTests"
+               ReferencedContainer = "container:MaruSamaj.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "QuizMonstr-tvOSTests.xctest"
-               BlueprintName = "QuizMonstr-tvOSTests"
-               ReferencedContainer = "container:QuizMonstr.xcodeproj">
+               BuildableName = "MaruSamaj-tvOSTests.xctest"
+               BlueprintName = "MaruSamaj-tvOSTests"
+               ReferencedContainer = "container:MaruSamaj.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "QuizMonstr-tvOS.app"
-            BlueprintName = "QuizMonstr-tvOS"
-            ReferencedContainer = "container:QuizMonstr.xcodeproj">
+            BuildableName = "MaruSamaj-tvOS.app"
+            BlueprintName = "MaruSamaj-tvOS"
+            ReferencedContainer = "container:MaruSamaj.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "QuizMonstr-tvOS.app"
-            BlueprintName = "QuizMonstr-tvOS"
-            ReferencedContainer = "container:QuizMonstr.xcodeproj">
+            BuildableName = "MaruSamaj-tvOS.app"
+            BlueprintName = "MaruSamaj-tvOS"
+            ReferencedContainer = "container:MaruSamaj.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "QuizMonstr-tvOS.app"
-            BlueprintName = "QuizMonstr-tvOS"
-            ReferencedContainer = "container:QuizMonstr.xcodeproj">
+            BuildableName = "MaruSamaj-tvOS.app"
+            BlueprintName = "MaruSamaj-tvOS"
+            ReferencedContainer = "container:MaruSamaj.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

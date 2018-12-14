@@ -1,4 +1,4 @@
-package com.quizmonstr;
+package com.marusamaj;
 
 import android.app.Application;
 
