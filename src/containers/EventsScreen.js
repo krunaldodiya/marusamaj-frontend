@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import ManageProfile from "../components/ManageProfile";
+import Events from "../components/Tabs/Events";
+import { toggleDrawer } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth
@@ -9,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
+      toggleDrawer: toggleDrawer
     },
     dispatch
   );
@@ -17,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ManageProfile);
+)(Events);

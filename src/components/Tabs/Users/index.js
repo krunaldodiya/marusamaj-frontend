@@ -2,7 +2,7 @@ import React from "react";
 import SideDrawer from "../../shared/SideDrawer";
 import QuizList from "./quiz_list";
 
-Quiz = props => {
+Users = props => {
   return (
     <SideDrawer {...props}>
       <QuizList {...props} />
@@ -10,4 +10,4 @@ Quiz = props => {
   );
 };
 
-export default Quiz;
+export default Users;

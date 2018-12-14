@@ -1,15 +1,11 @@
 import { Icon } from "native-base";
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation";
-import HomeScreen from "../../containers/HomeScreen";
-import NotificationsScreen from "../../containers/NotificationsScreen";
-import QuizScreen from "../../containers/QuizScreen";
-import WalletScreen from "../../containers/WalletScreen";
 
 const AppTabNavigator = createBottomTabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Users: {
+      screen: UsersScreen,
       navigationOptions: {
         title: "Screen 3",
         tabBarLabel: "Home",
@@ -23,8 +19,8 @@ const AppTabNavigator = createBottomTabNavigator(
         )
       }
     },
-    Quiz: {
-      screen: QuizScreen,
+    Events: {
+      screen: EventsScreen,
       navigationOptions: {
         tabBarLabel: "Home",
         tabBarIcon: ({ tintColor }) => (
@@ -32,34 +28,6 @@ const AppTabNavigator = createBottomTabNavigator(
             type="Entypo"
             size={24}
             name="book"
-            style={{ color: tintColor }}
-          />
-        )
-      }
-    },
-    Notifications: {
-      screen: NotificationsScreen,
-      navigationOptions: {
-        tabBarLabel: "Home",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon
-            type="Entypo"
-            size={24}
-            name="notification"
-            style={{ color: tintColor }}
-          />
-        )
-      }
-    },
-    Wallet: {
-      screen: WalletScreen,
-      navigationOptions: {
-        tabBarLabel: "Home",
-        tabBarIcon: ({ tintColor }) => (
-          <Icon
-            type="Entypo"
-            name="wallet"
-            size={24}
             style={{ color: tintColor }}
           />
         )

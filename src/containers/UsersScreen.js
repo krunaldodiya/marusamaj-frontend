@@ -1,19 +1,16 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Home from "../components/Tabs/Home";
-import { toggleDrawer, loadQuiz } from "../store/actions";
+import Users from "../components/Tabs/Users";
+import { toggleDrawer } from "../store/actions";
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  drawer: state.drawer,
-  quiz: state.quiz
+  auth: state.auth
 });
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      toggleDrawer: toggleDrawer,
-      loadQuiz: loadQuiz
+      toggleDrawer: toggleDrawer
     },
     dispatch
   );
@@ -22,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Users);

@@ -2,7 +2,7 @@ import React from "react";
 import SideDrawer from "../../shared/SideDrawer";
 import { Text, View } from "native-base";
 
-class Home extends React.Component {
+class Events extends React.Component {
   componentDidMount() {
     const { quiz, loadQuiz } = this.props;
 
@@ -22,4 +22,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Events;
