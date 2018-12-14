@@ -1,25 +1,32 @@
-import { Text } from "native-base";
 import React from "react";
+import { FlatList, Text, View } from "react-native";
+import { Container } from "native-base";
 
-class CasteForm extends React.Component {
-  constructor(props) {
-    super(props);
+renderItem = (data, navigation) => {
+  const { item } = data;
 
-    const { authUser } = props.auth;
-    const { city, state } = authUser;
+  console.log(item);
+  
+  return (
+    <View style={{ margin: 5 }}>
+      <Text>{item.name}</Text>
+    </View>
+  );
+};
 
-    this.state = {
-      loaded: false
-    };
-  }
+const CasteForm = props => {
+  const { navigation, castes } = props;
+  const { data } = castes;
 
-  render() {
-    const { auth, navigation } = this.props;
-    const { errors, loading } = auth;
-    const { authUser } = this.state;
-
-    return <Text>hello</Text>;
-  }
-}
+  return (
+    <Container style={{ padding: 5 }}>
+      <FlatList
+        data={data}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={data => renderItem(data, navigation)}
+      />
+    </Container>
+  );
+};
 
 export default CasteForm;

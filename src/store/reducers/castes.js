@@ -1,7 +1,7 @@
 import { GET_CASTES, GET_CASTES_FAIL, GET_CASTES_SUCCESS } from "../actions";
 
 const initialState = {
-  castes: [],
+  data: [],
   errors: null,
   loading: false,
   loaded: false
@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
     case GET_CASTES_SUCCESS: {
       return {
         ...state,
-        castes: action.payload.castes,
+        data: action.payload.castes,
         loading: false,
         loaded: true
       };
@@ -30,7 +30,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         errors: action.payload.errors,
-        castes: [],
+        data: [],
         loading: false,
         loaded: true
       };
