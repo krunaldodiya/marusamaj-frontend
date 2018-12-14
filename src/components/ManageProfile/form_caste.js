@@ -1,7 +1,6 @@
 import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
 import Switch from "../shared/Switch";
-import Location from "./location";
 import styles from "./styles";
 
 const citiesList = require("../../../assets/js/cities.json");
@@ -65,7 +64,7 @@ class UserTypeForm extends React.Component {
   render() {
     const { auth, navigation, createUserProfile } = this.props;
     const { errors, loading } = auth;
-    const { cities, selectedLocation, authUser } = this.state;
+    const { authUser } = this.state;
 
     return (
       <Form style={styles.formWrapper}>
@@ -75,7 +74,7 @@ class UserTypeForm extends React.Component {
               placeholder={
                 errors && errors.errors.name
                   ? errors.errors.name[0]
-                  : "Full Name"
+                  : "Your Name"
               }
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
@@ -86,13 +85,69 @@ class UserTypeForm extends React.Component {
           </Item>
 
           <Item style={styles.inputWrapper}>
-            <Location
-              {...this.props}
-              cities={cities}
-              selectedLocation={selectedLocation}
-              handleLocationChange={this.handleLocationChange}
-              handleLocationClear={this.handleLocationClear}
-              handleLocationSelect={this.handleLocationSelect}
+            <Input
+              placeholder={
+                errors && errors.errors.name
+                  ? errors.errors.name[0]
+                  : "DD/MM/YYYY"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={styles.input(false)}
+            />
+          </Item>
+        </View>
+
+        <View style={{ marginTop: 5 }} />
+
+        <View style={styles.inputGroup(errors)}>
+          <Item style={styles.inputWrapper}>
+            <Input
+              placeholder={
+                errors && errors.errors.name ? errors.errors.name[0] : "અભ્યાસ"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={styles.input(true)}
+            />
+          </Item>
+
+          <Item style={styles.inputWrapper}>
+            <Input
+              placeholder={
+                errors && errors.errors.name
+                  ? errors.errors.name[0]
+                  : "વ્ય​વસાય​"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={styles.input(false)}
+            />
+          </Item>
+        </View>
+
+        <View style={{ marginTop: 5 }} />
+
+        <View style={styles.inputGroup(errors)}>
+          <Item style={styles.inputWrapper}>
+            <Input
+              multiline
+              placeholder={
+                errors && errors.errors.name
+                  ? errors.errors.name[0]
+                  : "Address (Optional)"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={styles.input(false)}
             />
           </Item>
         </View>
@@ -104,6 +159,17 @@ class UserTypeForm extends React.Component {
               options={["Male", "Female"]}
               selected={authUser.gender}
               onChange={gender => this.updateUserData("gender", gender)}
+            />
+          </Item>
+
+          <Item style={styles.inputWrapper}>
+            <Switch
+              {...this.props}
+              options={["Married", "Single"]}
+              selected={authUser.marital_status}
+              onChange={maritalStatus =>
+                this.updateUserData("maritalStatus", maritalStatus)
+              }
             />
           </Item>
 

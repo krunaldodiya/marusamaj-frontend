@@ -1,16 +1,18 @@
 import React from "react";
 import { KeyboardAvoidingView } from "react-native";
 import Loader from "../../components/shared/Loader";
-import UserTypeForm from "./form";
-import TopImage from "./image";
+import CasteForm from "./form_caste";
+import FamilyForm from "./form_family";
+import ProfileForm from "./form_profile";
 import styles from "./styles";
 
 const UserType = props => {
   return (
     <KeyboardAvoidingView behavior="position" enabled style={styles.container}>
       <Loader loading={props.auth.loading} />
-      <TopImage />
-      <UserTypeForm {...props} />
+      <CasteForm {...props} />
+      <ProfileForm {...props} />
+      <FamilyForm {...props} />
     </KeyboardAvoidingView>
   );
 };
