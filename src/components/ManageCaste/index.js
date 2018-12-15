@@ -5,14 +5,41 @@ import CasteForm from "./form_caste";
 import TermsHeader from "./header";
 import styles from "./styles";
 
-const ManageCaste = props => {
-  return (
-    <View style={styles.container}>
-      <Loader loading={props.auth.loading} />
-      <TermsHeader />
-      <CasteForm {...props} />
-    </View>
-  );
-};
+class ManageCaste extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authUser: props.auth.authUser
+    };
+  }
+
+  updateCaste = item => {
+    const authUser = {
+      ...this.state.authUser,
+      caste_id: item.caste_id,
+      sub_caste_id: item.id
+    };
+
+    this.setState({ authUser });
+  };
+
+  render() {
+    const { authUser } = this.state;
+    const { auth } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <Loader loading={auth.loading} />
+        <TermsHeader {...this.props} authUser={authUser} />
+        <CasteForm
+          {...this.props}
+          authUser={authUser}
+          updateCaste={this.updateCaste}
+        />
+      </View>
+    );
+  }
+}
 
 export default ManageCaste;

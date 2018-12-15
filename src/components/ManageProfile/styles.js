@@ -6,6 +6,20 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: "#68b2e3"
   },
+  termsWrapper: {
+    justifyContent: "space-between",
+    flexDirection: 'row',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
+  },
+  termsHeader: {
+    fontWeight: "400",
+    fontFamily: theme.fonts.TitilliumWebSemiBold,
+    color: "black",
+    fontSize: 16,
+    textAlign: "center"
+  },
   topImageWrapper: {
     alignItems: "center",
     padding: 50,

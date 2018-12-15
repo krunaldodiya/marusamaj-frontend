@@ -9,15 +9,15 @@ export default StyleSheet.create({
   termsWrapper: {
     justifyContent: "space-between",
     flexDirection: 'row',
-    padding: 20,
+    padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: 'gray'
+    borderBottomColor: 'green'
   },
   termsHeader: {
     fontWeight: "400",
-    fontFamily: theme.fonts.TitilliumWebBold,
-    color: "black",
-    fontSize: 18,
+    fontFamily: theme.fonts.TitilliumWebSemiBold,
+    color: "green",
+    fontSize: 16,
     textAlign: "center"
   },
   topImageWrapper: {

@@ -10,6 +10,7 @@ const api = {
   me: `${httpUrl}/api/users/me`,
   castes: `${httpUrl}/api/castes`,
   createUserProfile: `${httpUrl}/api/users/profile/create`,
+  updateUserProfile: `${httpUrl}/api/users/profile/update`,
   requestOtp: `${httpUrl}/api/auth/request-otp`,
   verifyOtp: `${httpUrl}/api/auth/verify-otp`,
   loadQuiz: `${httpUrl}/api/quiz/all`,

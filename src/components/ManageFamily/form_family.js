@@ -62,8 +62,8 @@ class FamilyForm extends React.Component {
   };
 
   render() {
-    const { auth, navigation, createUserProfile } = this.props;
-    const { errors, loading } = auth;
+    const { auth } = this.props;
+    const { errors } = auth;
     const { authUser } = this.state;
 
     return (
@@ -74,20 +74,7 @@ class FamilyForm extends React.Component {
               placeholder={
                 errors && errors.errors.name
                   ? errors.errors.name[0]
-                  : "પિતા નુ નામ"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(true)}
-            />
-          </Item>
-
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={
-                errors && errors.errors.name ? errors.errors.name[0] : "ગામ"
+                  : "Your Name"
               }
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
@@ -102,7 +89,24 @@ class FamilyForm extends React.Component {
               placeholder={
                 errors && errors.errors.name
                   ? errors.errors.name[0]
-                  : "માતા નુ નામ"
+                  : "DD/MM/YYYY"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={styles.input(false)}
+            />
+          </Item>
+        </View>
+
+        <View style={{ marginTop: 5 }} />
+
+        <View style={styles.inputGroup(errors)}>
+          <Item style={styles.inputWrapper}>
+            <Input
+              placeholder={
+                errors && errors.errors.name ? errors.errors.name[0] : "અભ્યાસ"
               }
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
@@ -115,7 +119,9 @@ class FamilyForm extends React.Component {
           <Item style={styles.inputWrapper}>
             <Input
               placeholder={
-                errors && errors.errors.name ? errors.errors.name[0] : "મોસાડ"
+                errors && errors.errors.name
+                  ? errors.errors.name[0]
+                  : "વ્ય​વસાય​"
               }
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
@@ -126,22 +132,45 @@ class FamilyForm extends React.Component {
           </Item>
         </View>
 
-        <View style={styles.buttonGroup}>
-          <Item style={styles.submitButtonWrapper}>
-            <Button
-              rounded
-              small
-              disabled={loading}
-              style={styles.submitButton}
-              onPress={() =>
-                createUserProfile({
-                  authUser: { ...authUser, profile_updated: true },
-                  navigation
-                })
+        <View style={{ marginTop: 5 }} />
+
+        <View style={styles.inputGroup(errors)}>
+          <Item style={styles.inputWrapper}>
+            <Input
+              multiline
+              placeholder={
+                errors && errors.errors.name
+                  ? errors.errors.name[0]
+                  : "Address (Optional)"
               }
-            >
-              <Text style={styles.submitButtonText}>SUBMIT</Text>
-            </Button>
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
+              autoCorrect={false}
+              value={authUser.name}
+              onChangeText={name => this.updateUserData("name", name)}
+              style={[styles.input(false), { height: 100, textAlignVertical: "top" }]}
+            />
+          </Item>
+        </View>
+
+        <View style={styles.buttonGroup}>
+          <Item style={styles.inputWrapper}>
+            <Switch
+              {...this.props}
+              options={["Male", "Female"]}
+              selected={authUser.gender}
+              onChange={gender => this.updateUserData("gender", gender)}
+            />
+          </Item>
+
+          <Item style={styles.inputWrapper}>
+            <Switch
+              {...this.props}
+              options={["Married", "Single"]}
+              selected={authUser.marital_status}
+              onChange={maritalStatus =>
+                this.updateUserData("maritalStatus", maritalStatus)
+              }
+            />
           </Item>
         </View>
       </Form>

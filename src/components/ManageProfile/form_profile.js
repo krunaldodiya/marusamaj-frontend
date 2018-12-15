@@ -62,8 +62,8 @@ class ProfileForm extends React.Component {
   };
 
   render() {
-    const { auth, navigation, createUserProfile } = this.props;
-    const { errors, loading } = auth;
+    const { auth } = this.props;
+    const { errors } = auth;
     const { authUser } = this.state;
 
     return (
@@ -147,7 +147,7 @@ class ProfileForm extends React.Component {
               autoCorrect={false}
               value={authUser.name}
               onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(false)}
+              style={[styles.input(false), { height: 100, textAlignVertical: "top" }]}
             />
           </Item>
         </View>
@@ -171,23 +171,6 @@ class ProfileForm extends React.Component {
                 this.updateUserData("maritalStatus", maritalStatus)
               }
             />
-          </Item>
-
-          <Item style={styles.submitButtonWrapper}>
-            <Button
-              rounded
-              small
-              disabled={loading}
-              style={styles.submitButton}
-              onPress={() =>
-                createUserProfile({
-                  authUser: { ...authUser, profile_updated: true },
-                  navigation
-                })
-              }
-            >
-              <Text style={styles.submitButtonText}>SUBMIT</Text>
-            </Button>
           </Item>
         </View>
       </Form>

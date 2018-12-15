@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ManageCaste from "../components/ManageCaste";
+import { updateUserProfile } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -8,7 +9,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({
+    updateUserProfile: updateUserProfile
+  }, dispatch);
 };
 
 export default connect(

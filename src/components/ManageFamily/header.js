@@ -14,7 +14,7 @@ const TermsHeader = props => {
   return (
     <View style={styles.termsWrapper}>
       <View style={{ justifyContent: "center" }}>
-        <Text style={styles.termsHeader}>Manage Caste</Text>
+        <Text style={styles.termsHeader}>Manage Profile</Text>
       </View>
 
       <TouchableOpacity
@@ -26,7 +26,7 @@ const TermsHeader = props => {
         }
         style={{
           borderWidth: 1,
-          borderColor: "green",
+          borderColor: "black",
           paddingHorizontal: 8,
           paddingVertical: 3,
           borderRadius: 5
