@@ -1,7 +1,4 @@
 import {
-  CREATE_USER_PROFILE,
-  CREATE_USER_PROFILE_FAIL,
-  CREATE_USER_PROFILE_SUCCESS,
   GET_AUTH_USER,
   GET_AUTH_USER_FAIL,
   GET_AUTH_USER_SUCCESS,
@@ -43,37 +40,8 @@ export default (state = initialState, action) => {
     case GET_AUTH_USER_FAIL: {
       return {
         ...state,
-        authUser: null,
         errors: action.payload.errors,
         authInitialized: true,
-        loading: false,
-        loaded: true
-      };
-    }
-
-    case CREATE_USER_PROFILE: {
-      return {
-        ...state,
-        loading: true,
-        loaded: false
-      };
-    }
-
-    case CREATE_USER_PROFILE_SUCCESS: {
-      return {
-        ...state,
-        authUser: action.payload.authUser,
-        errors: null,
-        loading: false,
-        loaded: true
-      };
-    }
-
-    case CREATE_USER_PROFILE_FAIL: {
-      return {
-        ...state,
-        authUser: null,
-        errors: action.payload.errors,
         loading: false,
         loaded: true
       };
@@ -100,7 +68,6 @@ export default (state = initialState, action) => {
     case UPDATE_USER_PROFILE_FAIL: {
       return {
         ...state,
-        authUser: null,
         errors: action.payload.errors,
         loading: false,
         loaded: true
