@@ -1,5 +1,4 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { api } from "../../libs/api";
 import { makeRequest } from "../../services";
 import {
   UPDATE_USER_PROFILE,
@@ -8,10 +7,10 @@ import {
 } from "../actions/update_user_profile";
 
 function* updateUserProfile(action) {
-  const { authUser, navigation, screen } = action.payload;
-
+  const { authUser, navigation, screen, url } = action.payload;
+  
   try {
-    const { data } = yield call(makeRequest, api.updateUserProfile, authUser);
+    const { data } = yield call(makeRequest, url, authUser);
     const { user } = data;
 
     yield put({
@@ -20,7 +19,7 @@ function* updateUserProfile(action) {
     });
 
     navigation.replace(screen, { user: data.user });
-  } catch (error) {    
+  } catch (error) {
     yield put({
       type: UPDATE_USER_PROFILE_FAIL,
       payload: { errors: error.response.data }

@@ -1,4 +1,4 @@
-import { Button, Form, Input, Item, Text, View } from "native-base";
+import { Form, Input, Item, View } from "native-base";
 import React from "react";
 import Switch from "../shared/Switch";
 import styles from "./styles";

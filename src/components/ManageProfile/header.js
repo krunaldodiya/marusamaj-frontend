@@ -1,6 +1,7 @@
 import { Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { api } from "../../libs/api";
 import styles from "./styles";
 
 const TermsHeader = props => {
@@ -21,7 +22,8 @@ const TermsHeader = props => {
         onPress={() =>
           updateUserProfile({
             authUser: userData,
-            screen: "ManageProfileScreen"
+            screen: "TabsScreen",
+            url: api.updateUserProfile
           })
         }
         style={{
