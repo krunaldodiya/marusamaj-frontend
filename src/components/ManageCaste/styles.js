@@ -4,7 +4,21 @@ import theme from "../../libs/theme";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#68b2e3"
+    backgroundColor: "#fff"
+  },
+  termsWrapper: {
+    justifyContent: "space-between",
+    flexDirection: 'row',
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray'
+  },
+  termsHeader: {
+    fontWeight: "400",
+    fontFamily: theme.fonts.TitilliumWebBold,
+    color: "black",
+    fontSize: 18,
+    textAlign: "center"
   },
   topImageWrapper: {
     alignItems: "center",
