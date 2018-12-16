@@ -18,6 +18,8 @@ export default (state = initialState, action) => {
     }
 
     case GET_USERS_SUCCESS: {
+      console.log(action);
+      
       return {
         ...state,
         data: action.payload.users,

@@ -1,6 +1,7 @@
 import { all } from "redux-saga/effects";
 import { getAuthUserWatcher } from "./get_auth_user";
 import { getCastesWatcher } from "./get_castes";
+import { getUsersWatcher } from "./get_users";
 import { handleNetworkWatcher } from "./handle_network";
 import { requestOtpWatcher } from "./request_otp";
 import { updateUserProfileWatcher } from "./update_user_profile";
@@ -13,9 +14,9 @@ function* rootSaga() {
     requestOtpWatcher(),
     verifyOtpWatcher(),
     getCastesWatcher(),
-    updateUserProfileWatcher()
+    updateUserProfileWatcher(),
+    getUsersWatcher()
   ]);
 }
 
 export { rootSaga };
-
