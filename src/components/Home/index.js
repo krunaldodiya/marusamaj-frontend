@@ -1,8 +1,14 @@
 import React from "react";
 import UserList from "./user_list";
 
-Home = props => {
-  return <UserList {...props} />;
-};
+class Home extends React.Component {
+  componentDidMount() {
+    //
+  }
+
+  render() {
+    return <UserList {...this.props} />;
+  }
+}
 
 export default Home;

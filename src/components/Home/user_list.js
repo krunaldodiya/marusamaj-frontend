@@ -47,8 +47,8 @@ renderItem = (data, navigation) => {
 };
 
 UserList = props => {
-  const { quiz, navigation } = props;
-  const { data } = quiz;
+  const { users, navigation } = props;
+  const { data } = users;
 
   return (
     <FlatList

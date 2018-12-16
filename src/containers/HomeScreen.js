@@ -3,7 +3,8 @@ import { bindActionCreators } from "redux";
 import Home from "../components/Home";
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  users: state.users,
 });
 
 const mapDispatchToProps = dispatch => {

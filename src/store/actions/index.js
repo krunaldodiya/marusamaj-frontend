@@ -1,5 +1,6 @@
 export * from "./get_auth_user";
 export * from "./get_castes";
+export * from "./get_users";
 export * from "./handle_network";
 export * from "./handle_otp_input";
 export * from "./request_otp";
