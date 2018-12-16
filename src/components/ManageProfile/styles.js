@@ -41,7 +41,6 @@ export default StyleSheet.create({
     };
   },
   inputWrapper: {
-    justifyContent: "center",
     borderBottomWidth: 0
   },
   input: border => {
@@ -53,6 +52,10 @@ export default StyleSheet.create({
   },
   buttonGroup: {
     marginTop: 20
+  },
+  buttonWrapper: {
+    justifyContent: "center",
+    borderBottomWidth: 0
   },
   submitButtonWrapper: {
     marginTop: 30,

@@ -7,9 +7,13 @@ import styles from "./styles";
 const TermsHeader = props => {
   const { updateUserProfile, authUser } = props;
   const userData = {
-    caste_id: authUser.caste_id,
-    sub_caste_id: authUser.sub_caste_id,
-    caste_updated: true
+    name: authUser.name,
+    dob: authUser.dob,
+    education: authUser.education,
+    occupation: authUser.occupation,
+    gender: authUser.gender,
+    marital_status: authUser.marital_status,
+    profile_updated: true
   };
 
   return (

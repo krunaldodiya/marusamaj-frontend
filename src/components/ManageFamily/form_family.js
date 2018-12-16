@@ -1,181 +1,79 @@
-import { Button, Form, Input, Item, Text, View } from "native-base";
+import { Form, Input, Item, View } from "native-base";
 import React from "react";
-import Switch from "../shared/Switch";
 import styles from "./styles";
 
-const citiesList = require("../../../assets/js/cities.json");
+const ProfileForm = props => {
+  const { authUser, errors, updateUserData } = props;
 
-class FamilyForm extends React.Component {
-  constructor(props) {
-    super(props);
+  return (
+    <Form style={styles.formWrapper}>
+      <View style={styles.inputGroup(errors)}>
+        <Item style={styles.inputWrapper}>
+          <Input
+            placeholder={
+              errors && errors.errors.father_name
+                ? errors.errors.father_name[0]
+                : "Father Name"
+            }
+            placeholderTextColor={errors ? "#e74c3c" : "#000"}
+            autoCorrect={false}
+            value={authUser.father_name}
+            onChangeText={father_name => updateUserData("father_name", father_name)}
+            style={styles.input(true)}
+          />
+        </Item>
 
-    const { authUser } = props.auth;
-    const { city, state } = authUser;
+        <Item style={styles.inputWrapper}>
+          <Input
+            placeholder={
+              errors && errors.errors.father_city
+                ? errors.errors.father_city[0]
+                : "Father City"
+            }
+            placeholderTextColor={errors ? "#e74c3c" : "#000"}
+            autoCorrect={false}
+            value={authUser.father_city}
+            onChangeText={father_city => updateUserData("father_city", father_city)}
+            style={styles.input(false)}
+          />
+        </Item>
+      </View>
 
-    this.state = {
-      cities: [],
-      selectedLocation: city && state ? `${city}, ${state}` : null,
-      authUser
-    };
-  }
+      <View style={{ marginTop: 5 }} />
 
-  handleLocationChange = selectedLocation => {
-    this.setState({ selectedLocation });
+      <View style={styles.inputGroup(errors)}>
+        <Item style={styles.inputWrapper}>
+          <Input
+            placeholder={
+              errors && errors.errors.mother_name
+                ? errors.errors.mother_name[0]
+                : "Mother Name"
+            }
+            placeholderTextColor={errors ? "#e74c3c" : "#000"}
+            autoCorrect={false}
+            value={authUser.mother_name}
+            onChangeText={mother_name => updateUserData("mother_name", mother_name)}
+            style={styles.input(true)}
+          />
+        </Item>
 
-    if (selectedLocation.length > 2) {
-      const filteredCities = citiesList.filter(city => {
-        return city.name.match(new RegExp(`^${selectedLocation}`, "gi"));
-      });
+        <Item style={styles.inputWrapper}>
+          <Input
+            placeholder={
+              errors && errors.errors.mother_city
+                ? errors.errors.mother_city[0]
+                : "Mother City"
+            }
+            placeholderTextColor={errors ? "#e74c3c" : "#000"}
+            autoCorrect={false}
+            value={authUser.mother_city}
+            onChangeText={mother_city => updateUserData("mother_city", mother_city)}
+            style={styles.input(false)}
+          />
+        </Item>
+      </View>
+    </Form>
+  );
+};
 
-      this.setState({ cities: filteredCities });
-    }
-  };
-
-  handleLocationClear = () => {
-    const authUser = { ...this.state.authUser, city: null, state: null };
-
-    this.setState({
-      selectedLocation: null,
-      authUser
-    });
-  };
-
-  handleLocationSelect = city => {
-    const authUser = {
-      ...this.state.authUser,
-      city: city.name,
-      state: city.state
-    };
-
-    this.setState({
-      cities: [],
-      selectedLocation: `${city.name}, ${city.state}`,
-      authUser
-    });
-  };
-
-  updateUserData = (key, value) => {
-    const authUser = { ...this.state.authUser };
-    authUser[key] = value;
-
-    this.setState({ authUser });
-  };
-
-  render() {
-    const { auth } = this.props;
-    const { errors } = auth;
-    const { authUser } = this.state;
-
-    return (
-      <Form style={styles.formWrapper}>
-        <View style={styles.inputGroup(errors)}>
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={
-                errors && errors.errors.name
-                  ? errors.errors.name[0]
-                  : "Your Name"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(true)}
-            />
-          </Item>
-
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={
-                errors && errors.errors.name
-                  ? errors.errors.name[0]
-                  : "DD/MM/YYYY"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(false)}
-            />
-          </Item>
-        </View>
-
-        <View style={{ marginTop: 5 }} />
-
-        <View style={styles.inputGroup(errors)}>
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={
-                errors && errors.errors.name ? errors.errors.name[0] : "અભ્યાસ"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(true)}
-            />
-          </Item>
-
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={
-                errors && errors.errors.name
-                  ? errors.errors.name[0]
-                  : "વ્ય​વસાય​"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={styles.input(false)}
-            />
-          </Item>
-        </View>
-
-        <View style={{ marginTop: 5 }} />
-
-        <View style={styles.inputGroup(errors)}>
-          <Item style={styles.inputWrapper}>
-            <Input
-              multiline
-              placeholder={
-                errors && errors.errors.name
-                  ? errors.errors.name[0]
-                  : "Address (Optional)"
-              }
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              autoCorrect={false}
-              value={authUser.name}
-              onChangeText={name => this.updateUserData("name", name)}
-              style={[styles.input(false), { height: 100, textAlignVertical: "top" }]}
-            />
-          </Item>
-        </View>
-
-        <View style={styles.buttonGroup}>
-          <Item style={styles.inputWrapper}>
-            <Switch
-              {...this.props}
-              options={["Male", "Female"]}
-              selected={authUser.gender}
-              onChange={gender => this.updateUserData("gender", gender)}
-            />
-          </Item>
-
-          <Item style={styles.inputWrapper}>
-            <Switch
-              {...this.props}
-              options={["Married", "Single"]}
-              selected={authUser.marital_status}
-              onChange={maritalStatus =>
-                this.updateUserData("maritalStatus", maritalStatus)
-              }
-            />
-          </Item>
-        </View>
-      </Form>
-    );
-  }
-}
-
-export default FamilyForm;
+export default ProfileForm;

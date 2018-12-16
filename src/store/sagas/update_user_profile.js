@@ -8,7 +8,7 @@ import {
 
 function* updateUserProfile(action) {
   const { authUser, navigation, screen, url } = action.payload;
-  
+
   try {
     const { data } = yield call(makeRequest, url, authUser);
     const { user } = data;
@@ -18,7 +18,7 @@ function* updateUserProfile(action) {
       payload: { authUser: user }
     });
 
-    navigation.replace(screen, { user: data.user });
+    navigation.replace(screen, { user });
   } catch (error) {
     yield put({
       type: UPDATE_USER_PROFILE_FAIL,

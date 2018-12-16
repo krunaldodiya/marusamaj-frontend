@@ -14,11 +14,10 @@ class ManageProfile extends React.Component {
     };
   }
 
-  updateProfile = item => {
+  updateUserData = (key, value) => {
     const authUser = {
       ...this.state.authUser,
-      caste_id: item.caste_id,
-      sub_caste_id: item.id
+      [key]: value
     };
 
     this.setState({ authUser });
@@ -27,6 +26,7 @@ class ManageProfile extends React.Component {
   render() {
     const { authUser } = this.state;
     const { auth } = this.props;
+    const { errors } = auth;    
 
     return (
       <View style={styles.container}>
@@ -35,7 +35,8 @@ class ManageProfile extends React.Component {
         <ProfileForm
           {...this.props}
           authUser={authUser}
-          updateProfile={this.updateProfile}
+          errors={errors}
+          updateUserData={this.updateUserData}
         />
       </View>
     );

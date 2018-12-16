@@ -7,15 +7,17 @@ import styles from "./styles";
 const TermsHeader = props => {
   const { updateUserProfile, authUser } = props;
   const userData = {
-    caste_id: authUser.caste_id,
-    sub_caste_id: authUser.sub_caste_id,
-    caste_updated: true
+    father_name: authUser.father_name,
+    father_city: authUser.father_city,
+    mother_name: authUser.mother_name,
+    mother_city: authUser.mother_city,
+    family_updated: true
   };
 
   return (
     <View style={styles.termsWrapper}>
       <View style={{ justifyContent: "center" }}>
-        <Text style={styles.termsHeader}>Manage Profile</Text>
+        <Text style={styles.termsHeader}>Manage Family</Text>
       </View>
 
       <TouchableOpacity
@@ -34,7 +36,7 @@ const TermsHeader = props => {
           borderRadius: 5
         }}
       >
-        <Text style={styles.termsHeader}>NEXT</Text>
+        <Text style={styles.termsHeader}>FINISH</Text>
       </TouchableOpacity>
     </View>
   );
