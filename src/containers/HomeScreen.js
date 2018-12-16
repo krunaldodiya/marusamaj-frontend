@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Tabs from "../components/Tabs";
+import Home from "../components/Home";
 
 const mapStateToProps = state => ({
   auth: state.auth
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Tabs);
+)(Home);
