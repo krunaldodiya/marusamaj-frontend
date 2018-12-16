@@ -6,20 +6,20 @@ import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RequestOtpScreen from "../../containers/RequestOtpScreen";
-import TabsScreen from "../../containers/TabsScreen";
+import HomeScreen from "../../containers/HomeScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 
 const getAppNavigator = auth => {
   const initialRouteName = getInitialScreen(auth);
-  
+
   return createStackNavigator(
     {
-      TabsScreen: { screen: TabsScreen },
+      HomeScreen: { screen: HomeScreen },
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
       ManageCasteScreen: { screen: ManageCasteScreen },
-      ManageFamilyScreen: { screen: ManageFamilyScreen },
+      ManageFamilyScreen: { screen: ManageFamilyScreen }
     },
     {
       initialRouteName,
@@ -31,7 +31,7 @@ const getAppNavigator = auth => {
 };
 
 const getInitialScreen = auth => {
-  const { authUser } = auth;  
+  const { authUser } = auth;
 
   if (authUser) {
     const { caste_updated, profile_updated, family_updated } = authUser;
@@ -47,6 +47,8 @@ const getInitialScreen = auth => {
     if (!family_updated) {
       return "ManageFamilyScreen";
     }
+
+    return "HomeScreen";
   }
 
   return "RequestOtpScreen";

@@ -46,7 +46,7 @@ renderItem = (data, navigation) => {
   );
 };
 
-QuizList = props => {
+UserList = props => {
   const { quiz, navigation } = props;
   const { data } = quiz;
 
@@ -59,4 +59,4 @@ QuizList = props => {
   );
 };
 
-export default QuizList;
+export default UserList;
