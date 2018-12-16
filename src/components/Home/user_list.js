@@ -11,7 +11,7 @@ renderItem = (data, navigation) => {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("QuizDetailScreen", { user: item })}
+      onPress={() => navigation.navigate("UserDetailScreen", { user: item })}
     >
       <View style={styles.newsWrapper}>
         <View style={{ padding: 5, width: 60, justifyContent: "center" }}>

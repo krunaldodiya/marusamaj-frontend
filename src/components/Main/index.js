@@ -2,11 +2,12 @@ import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import NoNetwork from "../../components/NoNetwork";
+import HomeScreen from "../../containers/HomeScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RequestOtpScreen from "../../containers/RequestOtpScreen";
-import HomeScreen from "../../containers/HomeScreen";
+import UserDetailScreen from "../../containers/UserDetailScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 
 const getAppNavigator = auth => {
@@ -19,7 +20,8 @@ const getAppNavigator = auth => {
       VerifyOtpScreen: { screen: VerifyOtpScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
       ManageCasteScreen: { screen: ManageCasteScreen },
-      ManageFamilyScreen: { screen: ManageFamilyScreen }
+      ManageFamilyScreen: { screen: ManageFamilyScreen },
+      UserDetailScreen: { screen: UserDetailScreen },
     },
     {
       initialRouteName,
