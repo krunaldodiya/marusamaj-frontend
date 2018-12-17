@@ -5,7 +5,9 @@ import { api } from "../../libs/api";
 import styles from "./styles";
 
 const TermsHeader = props => {
-  const { updateUserProfile, authUser } = props;
+  const { updateUserProfile, auth, navigation } = props;
+  const { authUser } = auth;
+
   const userData = {
     name: authUser.name,
     dob: authUser.dob,
@@ -26,6 +28,7 @@ const TermsHeader = props => {
         onPress={() =>
           updateUserProfile({
             authUser: userData,
+            navigation: navigation,
             screen: "TabsScreen",
             url: api.updateUserProfile
           })

@@ -20,24 +20,17 @@ class ManageFamily extends React.Component {
       [key]: value
     };
 
-    this.setState({ authUser });
+    this.props.setAuthUser({ authUser });
   };
 
   render() {
-    const { authUser } = this.state;
     const { auth } = this.props;
-    const { errors } = auth;    
 
     return (
       <View style={styles.container}>
         <Loader loading={auth.loading} />
-        <TermsHeader {...this.props} authUser={authUser} />
-        <FamilyForm
-          {...this.props}
-          authUser={authUser}
-          errors={errors}
-          updateUserData={this.updateUserData}
-        />
+        <TermsHeader {...this.props} />
+        <FamilyForm {...this.props} updateUserData={this.updateUserData} />
       </View>
     );
   }

@@ -4,7 +4,8 @@ import {
   GET_AUTH_USER_SUCCESS,
   UPDATE_USER_PROFILE,
   UPDATE_USER_PROFILE_FAIL,
-  UPDATE_USER_PROFILE_SUCCESS
+  UPDATE_USER_PROFILE_SUCCESS,
+  SET_AUTH_USER
 } from "../actions";
 
 const initialState = {
@@ -69,6 +70,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         errors: action.payload.errors,
+        loading: false,
+        loaded: true
+      };
+    }
+
+    case SET_AUTH_USER: {
+      return {
+        ...state,
+        authUser: action.payload.authUser,
+        errors: null,
         loading: false,
         loaded: true
       };

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ManageProfile from "../components/ManageProfile";
-import { updateUserProfile } from "../store/actions";
+import { setAuthUser, updateUserProfile } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      updateUserProfile: updateUserProfile
+      updateUserProfile: updateUserProfile,
+      setAuthUser: setAuthUser
     },
     dispatch
   );

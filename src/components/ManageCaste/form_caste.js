@@ -4,16 +4,15 @@ import { FlatList, TouchableOpacity } from "react-native";
 import theme from "../../libs/theme";
 
 const CasteForm = props => {
-  const { castes, authUser, updateCaste } = props;
-  const { sub_caste_id } = authUser;
-  const { data } = castes;
+  const { castes, auth, updateCaste } = props;
+  const { authUser } = auth;
 
   return (
     <View style={{ padding: 5 }}>
       <FlatList
-        data={data}
+        data={castes.data}
         extraData={authUser}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         renderItem={data => {
           const { item } = data;
 
@@ -30,10 +29,10 @@ const CasteForm = props => {
               <Text
                 style={{
                   fontFamily:
-                    item.id == sub_caste_id
+                    item.id == authUser.sub_caste_id
                       ? theme.fonts.TitilliumWebSemiBold
                       : theme.fonts.TitilliumWebRegular,
-                  color: item.id == sub_caste_id ? "green" : "black"
+                  color: item.id == authUser.sub_caste_id ? "green" : "black"
                 }}
               >
                 {item.caste.name} ({item.name})

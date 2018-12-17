@@ -5,7 +5,8 @@ import styles from "./styles";
 import { TextInputMask } from "react-native-masked-text";
 
 const ProfileForm = props => {
-  const { authUser, errors, updateUserData } = props;
+  const { auth, updateUserData } = props;
+  const { authUser, errors } = auth;
 
   return (
     <Form style={styles.formWrapper}>

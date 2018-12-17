@@ -5,7 +5,9 @@ import { api } from "../../libs/api";
 import styles from "./styles";
 
 const TermsHeader = props => {
-  const { updateUserProfile, authUser } = props;
+  const { updateUserProfile, auth, navigation } = props;
+  const { authUser } = auth;
+
   const userData = {
     caste_id: authUser.caste_id,
     sub_caste_id: authUser.sub_caste_id,
@@ -22,6 +24,7 @@ const TermsHeader = props => {
         onPress={() =>
           updateUserProfile({
             authUser: userData,
+            navigation: navigation,
             screen: "ManageProfileScreen",
             url: api.updateUserCaste
           })
