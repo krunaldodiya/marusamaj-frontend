@@ -1,13 +1,12 @@
 import { Form, Input, Item, View } from "native-base";
 import React from "react";
+import { TextInputMask } from "react-native-masked-text";
 import Switch from "../shared/Switch";
 import styles from "./styles";
-import { TextInputMask } from "react-native-masked-text";
 
 class ProfileForm extends React.Component {
   render() {
-    const { auth, setAuthUser } = this.props;
-    const { authUser, errors } = auth;
+    const { authUser, errors, updateUserData } = this.props;
 
     return (
       <Form style={styles.formWrapper}>
@@ -22,9 +21,7 @@ class ProfileForm extends React.Component {
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
               value={authUser.name}
-              onChangeText={name =>
-                setAuthUser({ authUser: { ...authUser, name } })
-              }
+              onChangeText={name => updateUserData({ name })}
               style={styles.input(true)}
             />
           </Item>
@@ -42,9 +39,7 @@ class ProfileForm extends React.Component {
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
               value={authUser.dob}
-              onChangeText={dob =>
-                setAuthUser({ authUser: { ...authUser, dob } })
-              }
+              onChangeText={dob => updateUserData({ dob })}
               style={[styles.input(false), { width: "100%" }]}
             />
           </Item>
@@ -63,9 +58,7 @@ class ProfileForm extends React.Component {
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
               value={authUser.education}
-              onChangeText={education =>
-                setAuthUser({ authUser: { ...authUser, education } })
-              }
+              onChangeText={education => updateUserData({ education })}
               style={styles.input(true)}
             />
           </Item>
@@ -80,9 +73,7 @@ class ProfileForm extends React.Component {
               placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
               value={authUser.occupation}
-              onChangeText={occupation =>
-                setAuthUser({ authUser: { ...authUser, occupation } })
-              }
+              onChangeText={occupation => updateUserData({ occupation })}
               style={styles.input(false)}
             />
           </Item>
@@ -94,17 +85,12 @@ class ProfileForm extends React.Component {
           <Item style={styles.inputWrapper}>
             <Input
               multiline
-              placeholder="Address (Optional)"
+              placeholder="ગામ નુ નામ"
               placeholderTextColor="#000"
               autoCorrect={false}
-              value={authUser.address}
-              onChangeText={address =>
-                setAuthUser({ authUser: { ...authUser, address } })
-              }
-              style={[
-                styles.input(false),
-                { height: 100, textAlignVertical: "top" }
-              ]}
+              value={authUser.city}
+              onChangeText={city => updateUserData({ city })}
+              style={styles.input(false)}
             />
           </Item>
         </View>
@@ -115,9 +101,7 @@ class ProfileForm extends React.Component {
               {...this.props}
               options={["Male", "Female"]}
               selected={authUser.gender}
-              onChange={gender =>
-                setAuthUser({ authUser: { ...authUser, gender } })
-              }
+              onChange={gender => updateUserData({ gender })}
             />
           </Item>
 
@@ -126,9 +110,7 @@ class ProfileForm extends React.Component {
               {...this.props}
               options={["Married", "Single"]}
               selected={authUser.marital_status}
-              onChange={marital_status =>
-                setAuthUser({ authUser: { ...authUser, marital_status } })
-              }
+              onChange={marital_status => updateUserData({ marital_status })}
             />
           </Item>
         </View>

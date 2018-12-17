@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { makeRequest } from "../../services";
 import {
+  SET_AUTH_USER,
   UPDATE_USER_PROFILE,
   UPDATE_USER_PROFILE_FAIL,
   UPDATE_USER_PROFILE_SUCCESS
@@ -8,6 +9,11 @@ import {
 
 function* updateUserProfile(action) {
   const { authUser, navigation, screen, url } = action.payload;
+
+  yield put({
+    type: SET_AUTH_USER,
+    payload: { authUser }
+  });
 
   try {
     const { data } = yield call(makeRequest, url, authUser);

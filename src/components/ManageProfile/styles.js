@@ -4,7 +4,7 @@ import theme from "../../libs/theme";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#d0d0d0"
+    backgroundColor: "#fff"
   },
   termsWrapper: {
     justifyContent: "space-between",
