@@ -7,13 +7,12 @@ import styles from "./styles";
 const TermsHeader = props => {
   const { updateUserProfile, auth, navigation } = props;
   const { authUser } = auth;
-  
+
   const userData = {
     father_name: authUser.father_name,
     father_city: authUser.father_city,
     mother_name: authUser.mother_name,
-    mother_city: authUser.mother_city,
-    family_updated: true
+    mother_city: authUser.mother_city
   };
 
   return (

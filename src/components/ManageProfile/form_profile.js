@@ -10,7 +10,11 @@ class ProfileForm extends React.Component {
 
     return (
       <Form style={styles.formWrapper}>
-        <View style={styles.inputGroup(errors)}>
+        <View
+          style={styles.inputGroup(
+            errors && errors.errors.name ? errors : null
+          )}
+        >
           <Item style={styles.inputWrapper}>
             <Input
               placeholder={
@@ -22,10 +26,16 @@ class ProfileForm extends React.Component {
               autoCorrect={false}
               value={authUser.name}
               onChangeText={name => updateUserData({ name })}
-              style={styles.input(true)}
+              style={styles.input(false)}
             />
           </Item>
+        </View>
 
+        <View style={{ marginTop: 5 }} />
+
+        <View
+          style={styles.inputGroup(errors && errors.errors.dob ? errors : null)}
+        >
           <Item style={styles.inputWrapper}>
             <TextInputMask
               refInput={ref => (this.myDateText = ref)}
@@ -47,7 +57,11 @@ class ProfileForm extends React.Component {
 
         <View style={{ marginTop: 5 }} />
 
-        <View style={styles.inputGroup(errors)}>
+        <View
+          style={styles.inputGroup(
+            errors && errors.errors.education ? errors : null
+          )}
+        >
           <Item style={styles.inputWrapper}>
             <Input
               placeholder={
@@ -59,10 +73,18 @@ class ProfileForm extends React.Component {
               autoCorrect={false}
               value={authUser.education}
               onChangeText={education => updateUserData({ education })}
-              style={styles.input(true)}
+              style={styles.input(false)}
             />
           </Item>
+        </View>
 
+        <View style={{ marginTop: 5 }} />
+
+        <View
+          style={styles.inputGroup(
+            errors && errors.errors.occupation ? errors : null
+          )}
+        >
           <Item style={styles.inputWrapper}>
             <Input
               placeholder={
@@ -81,12 +103,19 @@ class ProfileForm extends React.Component {
 
         <View style={{ marginTop: 5 }} />
 
-        <View style={styles.inputGroup(null)}>
+        <View
+          style={styles.inputGroup(
+            errors && errors.errors.city ? errors : null
+          )}
+        >
           <Item style={styles.inputWrapper}>
             <Input
-              multiline
-              placeholder="ગામ નુ નામ"
-              placeholderTextColor="#000"
+              placeholder={
+                errors && errors.errors.city
+                  ? errors.errors.city[0]
+                  : "ગામ નુ નામ"
+              }
+              placeholderTextColor={errors ? "#e74c3c" : "#000"}
               autoCorrect={false}
               value={authUser.city}
               onChangeText={city => updateUserData({ city })}

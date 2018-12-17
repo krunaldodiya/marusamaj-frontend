@@ -19,9 +19,7 @@ class ManageCaste extends React.Component {
     const { authUser } = this.state;
 
     this.setState({
-      ...authUser,
-      caste_id: item.caste_id,
-      sub_caste_id: item.id
+      authUser: { ...authUser, caste_id: item.caste_id, sub_caste_id: item.id }
     });
   };
 

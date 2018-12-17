@@ -30,7 +30,7 @@ const TermsHeader = props => {
           borderRadius: 5
         }}
       >
-        <Text style={styles.termsHeader}>NEXT</Text>
+        <Text style={styles.termsHeader}>FINISH</Text>
       </TouchableOpacity>
     </View>
   );

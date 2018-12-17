@@ -36,7 +36,7 @@ const getInitialScreen = auth => {
   const { authUser } = auth;
 
   if (authUser) {
-    const { caste_updated, profile_updated, family_updated } = authUser;
+    const { caste_updated, profile_updated } = authUser;
 
     if (!caste_updated) {
       return "ManageCasteScreen";
@@ -44,10 +44,6 @@ const getInitialScreen = auth => {
 
     if (!profile_updated) {
       return "ManageProfileScreen";
-    }
-
-    if (!family_updated) {
-      return "ManageFamilyScreen";
     }
 
     return "HomeScreen";

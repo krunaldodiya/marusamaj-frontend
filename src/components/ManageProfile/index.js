@@ -19,8 +19,7 @@ class ManageProfile extends React.Component {
     const { authUser } = this.state;
 
     this.setState({
-      ...authUser,
-      ...item
+      authUser: { ...authUser, ...item }
     });
   };
 
