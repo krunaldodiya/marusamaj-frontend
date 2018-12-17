@@ -3,8 +3,18 @@ import React from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import theme from "../../libs/theme";
 
+updateUserData = item => {
+  const authUser = {
+    ...this.props.auth.authUser,
+    caste_id: item.caste_id,
+    sub_caste_id: item.id
+  };
+
+  this.props.setAuthUser({ authUser });
+};
+
 const CasteForm = props => {
-  const { castes, auth, updateCaste } = props;
+  const { castes, auth } = props;
   const { authUser } = auth;
 
   return (
@@ -18,7 +28,7 @@ const CasteForm = props => {
 
           return (
             <TouchableOpacity
-              onPress={() => updateCaste(item)}
+              onPress={() => updateUserData(item)}
               style={{
                 margin: 5,
                 paddingLeft: 15,

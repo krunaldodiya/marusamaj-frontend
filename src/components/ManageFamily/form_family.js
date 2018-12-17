@@ -2,8 +2,17 @@ import { Form, Input, Item, View } from "native-base";
 import React from "react";
 import styles from "./styles";
 
+updateUserData = (key, value) => {
+  const authUser = {
+    ...this.props.auth.authUser,
+    [key]: value
+  };
+
+  this.props.setAuthUser({ authUser });
+};
+
 const ProfileForm = props => {
-  const { auth, updateUserData } = props;
+  const { auth } = props;
   const { authUser, errors } = auth;
 
   return (

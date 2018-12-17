@@ -6,23 +6,6 @@ import TermsHeader from "./header";
 import styles from "./styles";
 
 class ManageProfile extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authUser: props.auth.authUser
-    };
-  }
-
-  updateUserData = (key, value) => {
-    const authUser = {
-      ...this.state.authUser,
-      [key]: value
-    };
-
-    this.props.setAuthUser({ authUser });
-  };
-
   render() {
     const { auth } = this.props;
 
@@ -30,7 +13,7 @@ class ManageProfile extends React.Component {
       <View style={styles.container}>
         <Loader loading={auth.loading} />
         <TermsHeader {...this.props} />
-        <ProfileForm {...this.props} updateUserData={this.updateUserData} />
+        <ProfileForm {...this.props} />
       </View>
     );
   }

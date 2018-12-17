@@ -17,9 +17,7 @@ export default (state = initialState, action) => {
       };
     }
 
-    case GET_USERS_SUCCESS: {
-      console.log(action);
-      
+    case GET_USERS_SUCCESS: {      
       return {
         ...state,
         data: action.payload.users,

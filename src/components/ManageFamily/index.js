@@ -6,23 +6,6 @@ import TermsHeader from "./header";
 import styles from "./styles";
 
 class ManageFamily extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      authUser: props.auth.authUser
-    };
-  }
-
-  updateUserData = (key, value) => {
-    const authUser = {
-      ...this.state.authUser,
-      [key]: value
-    };
-
-    this.props.setAuthUser({ authUser });
-  };
-
   render() {
     const { auth } = this.props;
 
@@ -30,7 +13,7 @@ class ManageFamily extends React.Component {
       <View style={styles.container}>
         <Loader loading={auth.loading} />
         <TermsHeader {...this.props} />
-        <FamilyForm {...this.props} updateUserData={this.updateUserData} />
+        <FamilyForm {...this.props} />
       </View>
     );
   }
