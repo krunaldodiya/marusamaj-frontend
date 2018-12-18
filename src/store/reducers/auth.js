@@ -78,10 +78,7 @@ export default (state = initialState, action) => {
     case SET_AUTH_USER: {
       return {
         ...state,
-        authUser: action.payload.authUser,
-        errors: null,
-        loading: false,
-        loaded: true
+        authUser: action.payload.authUser
       };
     }
 
