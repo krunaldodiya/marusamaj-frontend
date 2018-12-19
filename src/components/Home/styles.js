@@ -7,10 +7,10 @@ export default StyleSheet.create({
   },
 
   newsWrapper: {
-    backgroundColor: "white",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    padding: 10,
     flexDirection: "row",
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee"
   },
 
   newsImageWrapper: {
@@ -18,7 +18,7 @@ export default StyleSheet.create({
     padding: 10,
     justifyContent: "center",
     borderWidth: 1,
-    borderColor: 'gray'
+    borderColor: "gray"
   },
 
   newsImage: {

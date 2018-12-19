@@ -1,9 +1,9 @@
-import { Body, Header, Left, Text, Icon } from "native-base";
+import { Body, Header, Left, Text, Icon, Right } from "native-base";
 import React from "react";
 import styles from "./styles";
 
 const ContentHeader = props => {
-  const { quiz } = props.navigation.state.params;
+  const { user } = props.navigation.state.params;
 
   return (
     <Header style={styles.termsWrapper} androidStatusBarColor="#d80402">
@@ -17,8 +17,19 @@ const ContentHeader = props => {
       </Left>
 
       <Body>
-        <Text style={styles.termsHeader}>{quiz.category.name}</Text>
+        <Text numberOfLines={1} style={styles.termsHeader}>
+          User Detail
+        </Text>
       </Body>
+
+      <Right>
+        <Icon
+          type="MaterialIcons"
+          name="edit"
+          style={styles.termsIcon}
+          onPress={() => console.log(user)}
+        />
+      </Right>
     </Header>
   );
 };

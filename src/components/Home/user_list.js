@@ -1,6 +1,7 @@
+import { Body, Left, List, ListItem, Thumbnail } from "native-base";
 import React from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import styles from "./styles";
+import { FlatList, Text } from "react-native";
+import theme from "../../libs/theme";
 
 getPrize = item => {
   return item.entry_fee * item.total_participants * 0.8;
@@ -10,15 +11,52 @@ renderItem = (data, navigation) => {
   const { item } = data;
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("UserDetailScreen", { user: item })}
-    >
-      <View style={styles.newsWrapper}>
-        <View style={{ padding: 5, width: 60, justifyContent: "center" }}>
-          <Text style={styles.newsDate}>{item.name}</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <List>
+      <ListItem
+        avatar
+        onPress={() => navigation.navigate("UserDetailScreen", { user: item })}
+      >
+        <Left>
+          <Thumbnail
+            source={{ uri: item.avatar }}
+            style={{ width: 65, height: 65 }}
+          />
+        </Left>
+        <Body>
+          <Text
+            style={{
+              fontSize: 16,
+              color: "#000",
+              fontFamily: theme.fonts.TitilliumWebSemiBold
+            }}
+          >
+            {item.name}
+          </Text>
+          <Text
+            note
+            style={{
+              marginTop: 1,
+              fontSize: 12,
+              color: "#333",
+              fontFamily: theme.fonts.TitilliumWebRegular
+            }}
+          >
+            {item.age} {item.gender}, {item.city}
+          </Text>
+          <Text
+            note
+            style={{
+              marginTop: 10,
+              fontSize: 12,
+              color: "indigo",
+              fontFamily: theme.fonts.TitilliumWebRegular
+            }}
+          >
+            {item.sub_caste.name}, {item.caste.name}
+          </Text>
+        </Body>
+      </ListItem>
+    </List>
   );
 };
 

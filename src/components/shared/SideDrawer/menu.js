@@ -91,38 +91,9 @@ Menu = props => {
                   fontSize: 14
                 }}
               >
-                User List
+                Users
               </Text>
             </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => this.logout(navigation)}
-              style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
-            >
-              <Text
-                style={{
-                  color: "#333",
-                  fontFamily: theme.fonts.TitilliumWebRegular,
-                  fontSize: 14
-                }}
-              >
-                Settings
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <View style={{ backgroundColor: "#ddd", padding: 15 }}>
-              <Text
-                style={{
-                  fontFamily: theme.fonts.TitilliumWebRegular,
-                  fontSize: 16,
-                  color: "black"
-                }}
-              >
-                Family
-              </Text>
-            </View>
 
             <TouchableOpacity
               onPress={() => this.logout(navigation)}
@@ -135,7 +106,7 @@ Menu = props => {
                   fontSize: 14
                 }}
               >
-                All Members
+                Settings
               </Text>
             </TouchableOpacity>
 
@@ -150,7 +121,7 @@ Menu = props => {
                   fontSize: 14
                 }}
               >
-                Add Member
+                Share App
               </Text>
             </TouchableOpacity>
           </View>
@@ -179,13 +150,13 @@ Menu = props => {
                   fontSize: 14
                 }}
               >
-                All Events
+                Event List
               </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => this.logout(navigation)}
-              style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
+              style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
             >
               <Text
                 style={{

@@ -10,17 +10,12 @@ import {
   View
 } from "native-base";
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import theme from "../../libs/theme";
 import styles from "./styles";
 
-getPrize = item => {
-  return item.entry_fee * item.total_participants * 0.8;
-};
-
 const ContentBody = props => {
   const { navigation } = props;
-  const { quiz } = navigation.state.params;
+  const { user } = navigation.state.params;
 
   return (
     <Content style={styles.termsBody}>
@@ -28,13 +23,11 @@ const ContentBody = props => {
         <ListItem avatar>
           <Left>
             <Thumbnail
-              source={{
-                uri:
-                  "https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png"
-              }}
+              source={{ uri: user.avatar }}
+              style={{ width: 65, height: 65 }}
             />
           </Left>
-          <Body>
+          <Body style={{ borderBottomWidth: 0 }}>
             <Text
               style={{
                 fontSize: 16,
@@ -42,73 +35,51 @@ const ContentBody = props => {
                 fontFamily: theme.fonts.TitilliumWebSemiBold
               }}
             >
-              {quiz.host.name}
+              {user.name}
             </Text>
             <Text
               note
               style={{
-                marginTop: 2,
+                marginTop: 1,
                 fontSize: 12,
-                color: "gray",
+                color: "#333",
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {quiz.created_at}
+              {user.age} {user.gender}, {user.city}
             </Text>
             <Text
               note
               style={{
-                marginTop: 5,
-                fontSize: 14,
-                color: "green",
+                marginTop: 10,
+                fontSize: 12,
+                color: "indigo",
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              Host Quiz & Earn Points
+              {user.sub_caste.name}, {user.caste.name}
             </Text>
           </Body>
         </ListItem>
       </List>
 
-      <Separator bordered>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View>
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "gray"
-              }}
-            >
-              Time Remained
-            </Text>
-          </View>
-        </View>
-      </Separator>
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                Mobile
+              </Text>
+            </View>
 
-      <ListItem>
-        <Text
-          style={{ fontFamily: theme.fonts.TitilliumWebRegular, fontSize: 14 }}
-        >
-          {quiz.time_remained}
-        </Text>
-      </ListItem>
-
-      <Separator bordered>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View>
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "gray"
-              }}
-            >
-              Prize
-            </Text>
-          </View>
-
-          {getPrize(quiz) > 0 && (
             <View style={{ marginRight: 20 }}>
               <Text
                 style={{
@@ -117,181 +88,149 @@ const ContentBody = props => {
                   color: "green"
                 }}
               >
-                See Distribution
+                Change
               </Text>
             </View>
-          )}
-        </View>
-      </Separator>
-
-      <ListItem>
-        <Text
-          style={{
-            fontFamily: theme.fonts.TitilliumWebRegular,
-            fontSize: 14,
-            letterSpacing: 1
-          }}
-        >
-          {"\u20B9"}
-          {getPrize(quiz)}
-        </Text>
-      </ListItem>
-
-      <Separator bordered>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View>
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "gray"
-              }}
-            >
-              Questions
-            </Text>
           </View>
+        </Separator>
 
-          <TouchableOpacity
-            style={{ marginRight: 20 }}
-            onPress={() => navigation.push("QuestionsScreen", { quiz })}
-          >
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "green"
-              }}
-            >
-              List of Questions
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </Separator>
-
-      <ListItem>
-        <Text
-          style={{ fontFamily: theme.fonts.TitilliumWebRegular, fontSize: 14 }}
-        >
+        <ListItem style={{ borderBottomWidth: 0 }}>
           <Text
             style={{
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 14
-            }}
-          >
-            {quiz.answerable_questions}
-          </Text>{" "}
-          questions out of{" "}
-          <Text
-            style={{
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 14
-            }}
-          >
-            {quiz.total_questions}
-          </Text>{" "}
-          questions will be asked.
-        </Text>
-      </ListItem>
-
-      <Separator bordered>
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <View>
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "gray"
-              }}
-            >
-              Winners
-            </Text>
-          </View>
-          <View style={{ marginRight: 20 }}>
-            <Text
-              style={{
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14,
-                color: "green"
-              }}
-            >
-              List of Participants
-            </Text>
-          </View>
-        </View>
-      </Separator>
-
-      <ListItem>
-        <Text
-          style={{ fontFamily: theme.fonts.TitilliumWebRegular, fontSize: 14 }}
-        >
-          <Text
-            style={{
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 14
-            }}
-          >
-            {quiz.total_winners}
-          </Text>{" "}
-          winners will be selected out of{" "}
-          <Text
-            style={{
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 14
-            }}
-          >
-            {quiz.total_participants}
-          </Text>{" "}
-          participants based on accuracy and timing.
-        </Text>
-      </ListItem>
-
-      <View style={{ alignSelf: "center", marginTop: 20 }}>
-        <TouchableOpacity
-          onPress={() => null}
-          style={{
-            flexDirection: "row",
-            paddingVertical: 8,
-            paddingHorizontal: 20,
-            borderRadius: 20,
-            backgroundColor: "indigo"
-          }}
-        >
-          <Text
-            style={{
-              padding: 0,
-              margin: 0,
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
+              fontFamily: theme.fonts.TitilliumWebRegular,
               fontSize: 14,
-              color: "white"
-            }}
-          >
-            JOIN QUIZ
-          </Text>
-          <Text
-            style={{
-              marginHorizontal: 5,
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 12,
-              color: "white"
-            }}
-          >
-            @
-          </Text>
-          <Text
-            style={{
-              padding: 0,
-              margin: 0,
-              fontFamily: theme.fonts.TitilliumWebSemiBold,
-              fontSize: 14,
-              color: "white",
               letterSpacing: 1
             }}
           >
-            {"\u20B9"}
-            {quiz.entry_fee}
+            {user.gender === "Female" ? "Private" : user.mobile}
           </Text>
-        </TouchableOpacity>
-      </View>
+        </ListItem>
+      </List>
+
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                Birthdate
+              </Text>
+            </View>
+          </View>
+        </Separator>
+
+        <ListItem style={{ borderBottomWidth: 0 }}>
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14,
+              letterSpacing: 1
+            }}
+          >
+            {user.gender === "Female" ? "Private" : user.dob}
+          </Text>
+        </ListItem>
+      </List>
+
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                Education
+              </Text>
+            </View>
+          </View>
+        </Separator>
+
+        <ListItem style={{ borderBottomWidth: 0 }}>
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14
+            }}
+          >
+            {user.education}
+          </Text>
+        </ListItem>
+      </List>
+
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                Occupation
+              </Text>
+            </View>
+          </View>
+        </Separator>
+
+        <ListItem style={{ borderBottomWidth: 0 }}>
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14
+            }}
+          >
+            {user.occupation}
+          </Text>
+        </ListItem>
+      </List>
+
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                Marital Status
+              </Text>
+            </View>
+          </View>
+        </Separator>
+
+        <ListItem style={{ borderBottomWidth: 0 }}>
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14
+            }}
+          >
+            {user.marital_status}
+          </Text>
+        </ListItem>
+      </List>
     </Content>
   );
 };
