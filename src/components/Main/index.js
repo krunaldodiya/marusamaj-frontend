@@ -2,13 +2,12 @@ import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import NoNetwork from "../../components/NoNetwork";
+import AuthScreen from "../../containers/AuthScreen";
 import HomeScreen from "../../containers/HomeScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
-import RequestOtpScreen from "../../containers/RequestOtpScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
-import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 
 const getAppNavigator = auth => {
   const initialRouteName = getInitialScreen(auth);
@@ -16,8 +15,7 @@ const getAppNavigator = auth => {
   return createStackNavigator(
     {
       HomeScreen: { screen: HomeScreen },
-      RequestOtpScreen: { screen: RequestOtpScreen },
-      VerifyOtpScreen: { screen: VerifyOtpScreen },
+      AuthScreen: { screen: AuthScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
       ManageCasteScreen: { screen: ManageCasteScreen },
       ManageFamilyScreen: { screen: ManageFamilyScreen },
@@ -49,7 +47,7 @@ const getInitialScreen = auth => {
     return "HomeScreen";
   }
 
-  return "RequestOtpScreen";
+  return "AuthScreen";
 };
 
 export default class Main extends React.Component {
