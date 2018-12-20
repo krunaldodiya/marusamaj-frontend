@@ -2,11 +2,12 @@ import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import NoNetwork from "../../components/NoNetwork";
-import AuthScreen from "../../containers/AuthScreen";
 import HomeScreen from "../../containers/HomeScreen";
+import LoginScreen from "../../containers/LoginScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
+import RegisterScreen from "../../containers/RegisterScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
 
 const getAppNavigator = auth => {
@@ -15,7 +16,8 @@ const getAppNavigator = auth => {
   return createStackNavigator(
     {
       HomeScreen: { screen: HomeScreen },
-      AuthScreen: { screen: AuthScreen },
+      LoginScreen: { screen: LoginScreen },
+      RegisterScreen: { screen: RegisterScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
       ManageCasteScreen: { screen: ManageCasteScreen },
       ManageFamilyScreen: { screen: ManageFamilyScreen },
@@ -47,7 +49,7 @@ const getInitialScreen = auth => {
     return "HomeScreen";
   }
 
-  return "AuthScreen";
+  return "LoginScreen";
 };
 
 export default class Main extends React.Component {

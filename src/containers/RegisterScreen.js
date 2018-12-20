@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Auth from "../components/Auth";
+import Register from "../components/Auth/Register";
 import { handleOtpInput, requestOtp } from "../store/actions";
 
 const mapStateToProps = state => ({
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Auth);
+)(Register);

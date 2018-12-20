@@ -2,61 +2,54 @@ import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
-import LoginInfo from "./login_info";
 import styles from "./styles";
 
-const LoginFormOld = props => {
-  const { guest, navigation, requestOtp, handleOtpInput, toggleForm } = props;
+const LoginForm = props => {
+  const { guest, navigation, requestOtp, handleOtpInput } = props;
   const { mobile, errors, loading } = guest;
 
   return (
-    <View style={{ flex: 1 }}>
-      <LoginInfo />
+    <React.Fragment>
+      <Form style={styles.formWrapper}>
+        <Item style={styles.inputWrapper}>
+          <Input
+            placeholder={errors ? errors.errors.mobile[0] : "username"}
+            placeholderTextColor={errors ? "#e74c3c" : "gray"}
+            keyboardType="default"
+            maxLength={10}
+            value={mobile}
+            onChangeText={number => handleOtpInput({ mobile: number })}
+            style={styles.input(errors)}
+          />
+        </Item>
 
-      <View style={{ flex: 1, backgroundColor: "whitesmoke" }}>
-        <Form style={styles.formWrapper}>
-          <Item style={styles.inputWrapper}>
-            <Input
-              placeholder={errors ? errors.errors.mobile[0] : "username"}
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              keyboardType="default"
-              maxLength={10}
-              value={mobile}
-              onChangeText={number => handleOtpInput({ mobile: number })}
-              style={styles.input(errors)}
-            />
-          </Item>
+        <Item style={styles.inputWrapper}>
+          <Input
+            secureTextEntry
+            placeholder={errors ? errors.errors.mobile[0] : "password"}
+            placeholderTextColor={errors ? "#e74c3c" : "gray"}
+            keyboardType="default"
+            maxLength={10}
+            value={mobile}
+            onChangeText={number => handleOtpInput({ mobile: number })}
+            style={styles.input(errors)}
+          />
+        </Item>
 
-          <Item style={styles.inputWrapper}>
-            <Input
-              secureTextEntry
-              placeholder={errors ? errors.errors.mobile[0] : "password"}
-              placeholderTextColor={errors ? "#e74c3c" : "#000"}
-              keyboardType="default"
-              maxLength={10}
-              value={mobile}
-              onChangeText={number => handleOtpInput({ mobile: number })}
-              style={styles.input(errors)}
-            />
-          </Item>
+        <Item style={styles.submitButtonWrapper}>
+          <Button
+            rounded
+            small
+            disabled={loading}
+            style={styles.submitButton}
+            onPress={() => requestOtp({ mobile, navigation, mode: "request" })}
+          >
+            <Text style={styles.submitButtonText}>LOGIN</Text>
+          </Button>
+        </Item>
+      </Form>
 
-          <Item style={styles.submitButtonWrapper}>
-            <Button
-              rounded
-              small
-              disabled={loading}
-              style={styles.submitButton}
-              onPress={() =>
-                requestOtp({ mobile, navigation, mode: "request" })
-              }
-            >
-              <Text style={styles.submitButtonText}>LOGIN</Text>
-            </Button>
-          </Item>
-        </Form>
-      </View>
-
-      <View style={{ padding: 20, backgroundColor: "whitesmoke" }}>
+      <View style={{ padding: 15 }}>
         <TouchableOpacity onPress={() => console.log("hello")}>
           <Text
             style={{
@@ -71,8 +64,8 @@ const LoginFormOld = props => {
         </TouchableOpacity>
       </View>
 
-      <View style={{ padding: 15, backgroundColor: "#ddd" }}>
-        <TouchableOpacity onPress={() => toggleForm("register")}>
+      <View style={{ padding: 15, backgroundColor: "#eee" }}>
+        <TouchableOpacity onPress={() => navigation.replace("RegisterScreen")}>
           <Text
             style={{
               textAlign: "center",
@@ -85,8 +78,8 @@ const LoginFormOld = props => {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </React.Fragment>
   );
 };
 
-export default LoginFormOld;
+export default LoginForm;

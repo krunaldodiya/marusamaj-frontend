@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: "#eee"
   },
   infoWrapper: {
-    flex: 1,
+    flex: 3,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
@@ -29,18 +29,18 @@ export default StyleSheet.create({
     fontFamily: theme.fonts.TitilliumWebRegular
   },
   formWrapper: {
-    flex: 1,
+    flex: 4,
     flexDirection: "column",
-    margin: 30
+    justifyContent: "center"
   },
   inputWrapper: {
-    marginBottom: 10,
     borderBottomWidth: 0
   },
   input: errors => {
     return {
-      borderColor: errors ? "#e74c3c" : "black",
+      borderColor: errors ? "#e74c3c" : "gray",
       marginHorizontal: 20,
+      marginBottom: 5,
       borderWidth: 1,
       borderRadius: 10,
       paddingLeft: 20,
@@ -48,7 +48,6 @@ export default StyleSheet.create({
     };
   },
   submitButtonWrapper: {
-    marginTop: 20,
     alignSelf: "center",
     borderBottomWidth: 0
   },
