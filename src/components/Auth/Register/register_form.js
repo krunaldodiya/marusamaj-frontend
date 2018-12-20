@@ -1,7 +1,7 @@
 import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import theme from "../../libs/theme";
+import theme from "../../../libs/theme";
 import RegisterInfo from "./register_info";
 import styles from "./styles";
 
@@ -11,11 +11,11 @@ const RegisterForm = props => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ flex: 4 }}>
+      <View style={{ flex: 1 }}>
         <RegisterInfo />
       </View>
 
-      <View style={{ flex: 5 }}>
+      <View style={{ flex: 1, backgroundColor: "whitesmoke" }}>
         <Form style={styles.formWrapper}>
           <Item style={styles.inputWrapper}>
             <Input
@@ -70,21 +70,20 @@ const RegisterForm = props => {
         </Form>
       </View>
 
-      <TouchableOpacity
-        style={{ padding: 15, backgroundColor: "#fefefe" }}
-        onPress={() => toggleForm("login")}
-      >
-        <Text
-          style={{
-            textAlign: "center",
-            color: "green",
-            fontSize: 18,
-            fontFamily: theme.fonts.TitilliumWebRegular
-          }}
-        >
-          click here to login
-        </Text>
-      </TouchableOpacity>
+      <View style={{ padding: 15, backgroundColor: "#ddd" }}>
+        <TouchableOpacity onPress={() => toggleForm("login")}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "green",
+              fontSize: 18,
+              fontFamily: theme.fonts.TitilliumWebRegular
+            }}
+          >
+            click here to register
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

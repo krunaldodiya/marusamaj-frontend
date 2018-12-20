@@ -1,11 +1,9 @@
 import React from "react";
 import { KeyboardAvoidingView, SafeAreaView } from "react-native";
 // component
-import Loader from "../../components/shared/Loader";
-import LoginForm from "./login_form";
-// styles
-import styles from "./styles";
-import RegisterForm from "./register_form";
+import Loader from "../shared/Loader";
+import LoginForm from "./Login/login_form";
+import RegisterForm from "./Register/register_form";
 
 class Auth extends React.Component {
   constructor(props) {
@@ -16,7 +14,7 @@ class Auth extends React.Component {
     };
   }
 
-  toggleForm = type => {    
+  toggleForm = type => {
     this.setState({ type });
   };
 
@@ -25,7 +23,7 @@ class Auth extends React.Component {
     const { type } = this.state;
 
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={{ flex: 1 }}>
         <KeyboardAvoidingView
           behavior="position"
           enabled

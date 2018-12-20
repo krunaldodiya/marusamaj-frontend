@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import theme from "../../libs/theme";
+import theme from "../../../libs/theme";
 
 export default StyleSheet.create({
   container: {
@@ -48,7 +48,7 @@ export default StyleSheet.create({
     };
   },
   submitButtonWrapper: {
-    marginTop: 30,
+    marginTop: 10,
     alignSelf: "center",
     borderBottomWidth: 0
   },

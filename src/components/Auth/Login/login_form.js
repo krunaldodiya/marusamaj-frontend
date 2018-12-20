@@ -1,21 +1,19 @@
 import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import theme from "../../libs/theme";
+import theme from "../../../libs/theme";
 import LoginInfo from "./login_info";
 import styles from "./styles";
 
-const LoginForm = props => {
+const LoginFormOld = props => {
   const { guest, navigation, requestOtp, handleOtpInput, toggleForm } = props;
   const { mobile, errors, loading } = guest;
 
   return (
-    <View style={{ flex: 9 }}>
-      <View style={{ flex: 4 }}>
-        <LoginInfo />
-      </View>
+    <View style={{ flex: 1 }}>
+      <LoginInfo />
 
-      <View style={{ flex: 5 }}>
+      <View style={{ flex: 1, backgroundColor: "whitesmoke" }}>
         <Form style={styles.formWrapper}>
           <Item style={styles.inputWrapper}>
             <Input
@@ -56,11 +54,10 @@ const LoginForm = props => {
             </Button>
           </Item>
         </Form>
+      </View>
 
-        <TouchableOpacity
-          style={{ marginBottom: 30 }}
-          onPress={() => console.log("hello")}
-        >
+      <View style={{ padding: 20, backgroundColor: "whitesmoke" }}>
+        <TouchableOpacity onPress={() => console.log("hello")}>
           <Text
             style={{
               textAlign: "center",
@@ -74,23 +71,22 @@ const LoginForm = props => {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={{ padding: 15, backgroundColor: "#fefefe" }}
-        onPress={() => toggleForm("register")}
-      >
-        <Text
-          style={{
-            textAlign: "center",
-            color: "green",
-            fontSize: 18,
-            fontFamily: theme.fonts.TitilliumWebRegular
-          }}
-        >
-          click here to register
-        </Text>
-      </TouchableOpacity>
+      <View style={{ padding: 15, backgroundColor: "#ddd" }}>
+        <TouchableOpacity onPress={() => toggleForm("register")}>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "green",
+              fontSize: 18,
+              fontFamily: theme.fonts.TitilliumWebRegular
+            }}
+          >
+            click here to register
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-export default LoginForm;
+export default LoginFormOld;
