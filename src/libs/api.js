@@ -14,6 +14,8 @@ const api = {
   updateUserFamily: `${httpUrl}/api/users/family/update`,
   requestOtp: `${httpUrl}/api/auth/request-otp`,
   verifyOtp: `${httpUrl}/api/auth/verify-otp`,
+  login: `${httpUrl}/api/guest/login`,
+  register: `${httpUrl}/api/guest/register`,
   getUsers: `${httpUrl}/api/users/all`,
   wallet: `${httpUrl}/api/wallet/info`
 };
