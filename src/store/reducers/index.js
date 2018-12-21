@@ -4,6 +4,7 @@ import castes from "./castes";
 import drawer from "./drawer";
 import guest from "./guest";
 import network from "./network";
+import otp from "./otp";
 import users from "./users";
 
 const rootReducer = combineReducers({
@@ -11,8 +12,10 @@ const rootReducer = combineReducers({
   castes,
   drawer,
   guest,
+  otp,
   network,
   users
 });
 
 export { rootReducer };
+

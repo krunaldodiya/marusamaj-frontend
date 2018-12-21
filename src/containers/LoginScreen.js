@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Login from "../components/Auth/Login";
-import { handleOtpInput, requestOtp } from "../store/actions";
+import { login } from "../store/actions";
 
 const mapStateToProps = state => ({
   guest: state.guest
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { handleOtpInput: handleOtpInput, requestOtp: requestOtp },
+    { login: login },
     dispatch
   );
 };

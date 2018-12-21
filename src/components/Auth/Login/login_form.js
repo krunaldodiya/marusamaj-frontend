@@ -15,7 +15,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { guest, navigation } = this.props;
+    const { guest, navigation, login } = this.props;
     const { loading, errors } = guest;
     const { username, password } = this.state;
 
@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
               small
               disabled={loading}
               style={styles.submitButton}
-              onPress={() => console.log({ username, password })}
+              onPress={() => login({ username, password, navigation })}
             >
               <Text style={styles.submitButtonText}>LOGIN</Text>
             </Button>

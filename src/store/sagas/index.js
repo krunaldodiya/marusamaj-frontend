@@ -3,6 +3,8 @@ import { getAuthUserWatcher } from "./get_auth_user";
 import { getCastesWatcher } from "./get_castes";
 import { getUsersWatcher } from "./get_users";
 import { handleNetworkWatcher } from "./handle_network";
+import { loginWatcher } from "./login";
+import { registerWatcher } from "./register";
 import { requestOtpWatcher } from "./request_otp";
 import { updateUserProfileWatcher } from "./update_user_profile";
 import { verifyOtpWatcher } from "./verify_otp";
@@ -15,7 +17,9 @@ function* rootSaga() {
     verifyOtpWatcher(),
     getCastesWatcher(),
     updateUserProfileWatcher(),
-    getUsersWatcher()
+    getUsersWatcher(),
+    loginWatcher(),
+    registerWatcher()
   ]);
 }
 

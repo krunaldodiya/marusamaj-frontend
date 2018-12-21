@@ -16,7 +16,7 @@ class RegisterForm extends React.Component {
   }
 
   render() {
-    const { guest, navigation } = this.props;
+    const { guest, navigation, register } = this.props;
     const { loading, errors } = guest;
     const { mobile, username, password } = this.state;
 
@@ -66,7 +66,7 @@ class RegisterForm extends React.Component {
               disabled={loading}
               style={styles.submitButton}
               onPress={() =>
-                requestOtp({ mobile, navigation, mode: "request" })
+                register({ mobile, username, password, navigation })
               }
             >
               <Text style={styles.submitButtonText}>REGISTER</Text>
