@@ -3,8 +3,7 @@ import theme from "../../../libs/theme";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#eee"
+    flex: 1
   },
   infoWrapper: {
     flex: 3,
@@ -12,7 +11,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 30,
-    backgroundColor: "skyblue"
+    backgroundColor: "#7EF9FF"
   },
   infoHeading: {
     fontSize: 26,

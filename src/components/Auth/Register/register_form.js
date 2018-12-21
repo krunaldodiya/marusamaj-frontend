@@ -4,79 +4,93 @@ import { TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
 import styles from "./styles";
 
-const RegisterForm = props => {
-  const { guest, navigation, requestOtp, handleOtpInput } = props;
-  const { mobile, errors, loading } = guest;
+class RegisterForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <React.Fragment>
-      <Form style={styles.formWrapper}>
-        <Item style={styles.inputWrapper}>
-          <Input
-            placeholder={errors ? errors.errors.mobile[0] : "9426726815"}
-            placeholderTextColor={errors ? "#e74c3c" : "gray"}
-            keyboardType="default"
-            maxLength={10}
-            value={mobile}
-            onChangeText={number => handleOtpInput({ mobile: number })}
-            style={styles.input(errors)}
-          />
-        </Item>
+    this.state = {
+      mobile: null,
+      username: null,
+      password: null
+    };
+  }
 
-        <Item style={styles.inputWrapper}>
-          <Input
-            placeholder={errors ? errors.errors.mobile[0] : "username"}
-            placeholderTextColor={errors ? "#e74c3c" : "gray"}
-            keyboardType="default"
-            maxLength={10}
-            value={mobile}
-            onChangeText={number => handleOtpInput({ mobile: number })}
-            style={styles.input(errors)}
-          />
-        </Item>
+  render() {
+    const { guest, navigation } = this.props;
+    const { loading, errors } = guest;
+    const { mobile, username, password } = this.state;
 
-        <Item style={styles.inputWrapper}>
-          <Input
-            secureTextEntry
-            placeholder={errors ? errors.errors.mobile[0] : "password"}
-            placeholderTextColor={errors ? "#e74c3c" : "gray"}
-            keyboardType="default"
-            maxLength={10}
-            value={mobile}
-            onChangeText={number => handleOtpInput({ mobile: number })}
-            style={styles.input(errors)}
-          />
-        </Item>
+    return (
+      <React.Fragment>
+        <Form style={styles.formWrapper}>
+          <Item style={styles.inputWrapper}>
+            <Input
+              placeholder={errors ? errors.errors.mobile[0] : "Mobile Number"}
+              placeholderTextColor={errors ? "#e74c3c" : "gray"}
+              keyboardType="default"
+              maxLength={10}
+              value={mobile}
+              onChangeText={number => handleOtpInput({ mobile: number })}
+              style={styles.input(errors)}
+            />
+          </Item>
 
-        <Item style={styles.submitButtonWrapper}>
-          <Button
-            rounded
-            small
-            disabled={loading}
-            style={styles.submitButton}
-            onPress={() => requestOtp({ mobile, navigation, mode: "request" })}
-          >
-            <Text style={styles.submitButtonText}>REGISTER</Text>
-          </Button>
-        </Item>
-      </Form>
+          <Item style={styles.inputWrapper}>
+            <Input
+              placeholder={errors ? errors.errors.username[0] : "Username"}
+              placeholderTextColor={errors ? "#e74c3c" : "gray"}
+              keyboardType="default"
+              value={username}
+              onChangeText={number => handleOtpInput({ username: number })}
+              style={styles.input(errors)}
+            />
+          </Item>
 
-      <View style={{ padding: 15, backgroundColor: "#eee" }}>
-        <TouchableOpacity onPress={() => navigation.replace("LoginScreen")}>
-          <Text
-            style={{
-              textAlign: "center",
-              color: "green",
-              fontSize: 18,
-              fontFamily: theme.fonts.TitilliumWebRegular
-            }}
-          >
-            click here to login
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </React.Fragment>
-  );
-};
+          <Item style={styles.inputWrapper}>
+            <Input
+              secureTextEntry
+              placeholder={errors ? errors.errors.password[0] : "Password"}
+              placeholderTextColor={errors ? "#e74c3c" : "gray"}
+              keyboardType="default"
+              maxLength={10}
+              value={password}
+              onChangeText={number => handleOtpInput({ password: number })}
+              style={styles.input(errors)}
+            />
+          </Item>
+
+          <Item style={[styles.submitButtonWrapper, { marginTop: 20 }]}>
+            <Button
+              rounded
+              small
+              disabled={loading}
+              style={styles.submitButton}
+              onPress={() =>
+                requestOtp({ mobile, navigation, mode: "request" })
+              }
+            >
+              <Text style={styles.submitButtonText}>REGISTER</Text>
+            </Button>
+          </Item>
+        </Form>
+
+        <View style={{ padding: 15, backgroundColor: "#7EF9FF" }}>
+          <TouchableOpacity onPress={() => navigation.replace("LoginScreen")}>
+            <Text
+              style={{
+                textAlign: "center",
+                color: "black",
+                fontSize: 18,
+                fontFamily: theme.fonts.TitilliumWebRegular
+              }}
+            >
+              LOGIN
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </React.Fragment>
+    );
+  }
+}
 
 export default RegisterForm;
