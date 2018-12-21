@@ -3,15 +3,14 @@ import theme from "../../libs/theme";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff"
+    flex: 1
   },
   termsWrapper: {
     justifyContent: "space-between",
-    flexDirection: 'row',
+    flexDirection: "row",
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: 'black'
+    borderBottomColor: "black"
   },
   termsHeader: {
     fontWeight: "400",
@@ -30,24 +29,22 @@ export default StyleSheet.create({
     height: 120
   },
   formWrapper: {
+    flex: 4,
     flexDirection: "column",
-    margin: 30
-  },
-  inputGroup: errors => {
-    return {
-      borderColor: errors ? "#e74c3c" : "black",
-      borderWidth: 1,
-      borderRadius: 10
-    };
+    justifyContent: "center"
   },
   inputWrapper: {
     borderBottomWidth: 0
   },
-  input: border => {
+  input: errors => {
     return {
-      fontSize: 16,
-      fontFamily: theme.fonts.TitilliumWebRegular,
-      borderBottomWidth: border ? 1 : 0
+      borderColor: errors ? "#e74c3c" : "gray",
+      marginHorizontal: 20,
+      marginBottom: 5,
+      borderWidth: 1,
+      borderRadius: 10,
+      paddingLeft: 20,
+      fontFamily: theme.fonts.TitilliumWebRegular
     };
   },
   buttonGroup: {
