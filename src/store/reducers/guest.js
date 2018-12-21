@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        otp: action.payload.otp,
         loading: false,
         loaded: true
       };
@@ -64,6 +63,7 @@ export default (state = initialState, action) => {
     case REGISTER_FAIL: {
       return {
         ...state,
+        errors: action.payload.errors,
         loading: false,
         loaded: true
       };
