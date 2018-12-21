@@ -14,7 +14,7 @@ renderItem = (data, navigation) => {
     <List>
       <ListItem
         avatar
-        onPress={() => navigation.navigate("UserDetailScreen", { user: item })}
+        onPress={() => navigation.push("UserDetailScreen", { user: item })}
       >
         <Left>
           <Thumbnail
@@ -41,7 +41,7 @@ renderItem = (data, navigation) => {
               fontFamily: theme.fonts.TitilliumWebRegular
             }}
           >
-            {item.age} {item.gender}, {item.city}
+            {item.age} {item.gender}, {item.father_city}
           </Text>
           <Text
             note

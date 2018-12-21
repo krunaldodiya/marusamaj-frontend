@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./styles";
 
 const ContentHeader = props => {
-  const { auth } = props;
+  const { auth, navigation } = props;
   const { authUser } = auth;
   const { user } = props.navigation.state.params;
 
@@ -30,7 +30,7 @@ const ContentHeader = props => {
             type="MaterialIcons"
             name="edit"
             style={styles.termsIcon}
-            onPress={() => console.log(user)}
+            onPress={() => navigation.replace("ManageProfileScreen")}
           />
         )}
       </Right>

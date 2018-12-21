@@ -3,28 +3,26 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
 
-logout = navigation => {
-  navigation.replace("GetStartedScreen");
-};
-
 Menu = props => {
-  const { navigation, auth } = props;
+  const { navigation, auth, logout } = props;
   const { authUser } = auth;
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
-      <View style={{ backgroundColor: "lightblue" }}>
+    <View style={{ flex: 1 }}>
+      <View style={{ backgroundColor: "whitesmoke" }}>
         <List style={{ paddingBottom: 5 }}>
           <ListItem avatar>
             <Left>
-              <Thumbnail large source={{ uri: authUser.avatar }} />
+              <Thumbnail
+                source={{ uri: authUser.avatar }}
+                style={{ width: 70, height: 70 }}
+              />
             </Left>
 
-            <Body>
+            <Body style={{ borderBottomWidth: 0 }}>
               <Text
                 numberOfLines={1}
                 style={{
-                  marginTop: 5,
                   fontSize: 16,
                   color: "#000",
                   fontFamily: theme.fonts.TitilliumWebSemiBold
@@ -32,10 +30,10 @@ Menu = props => {
               >
                 {authUser.name}
               </Text>
+
               <Text
                 note
                 style={{
-                  marginTop: 3,
                   fontSize: 12,
                   color: "#333",
                   fontFamily: theme.fonts.TitilliumWebRegular
@@ -43,17 +41,24 @@ Menu = props => {
               >
                 {authUser.username}
               </Text>
-              <Text
-                note
-                style={{
-                  marginTop: 12,
-                  fontSize: 14,
-                  color: "red",
-                  fontFamily: theme.fonts.TitilliumWebRegular
-                }}
+
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.push("UserDetailScreen", { user: authUser })
+                }
               >
-                VIEW PROFILE
-              </Text>
+                <Text
+                  note
+                  style={{
+                    marginTop: 10,
+                    fontSize: 14,
+                    color: "red",
+                    fontFamily: theme.fonts.TitilliumWebRegular
+                  }}
+                >
+                  VIEW PROFILE
+                </Text>
+              </TouchableOpacity>
             </Body>
           </ListItem>
         </List>
@@ -75,7 +80,7 @@ Menu = props => {
             </View>
 
             <TouchableOpacity
-              onPress={() => this.logout(navigation)}
+              onPress={() => console.log("test")}
               style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
             >
               <Text
@@ -90,7 +95,7 @@ Menu = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => this.logout(navigation)}
+              onPress={() => console.log("test")}
               style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
             >
               <Text
@@ -105,7 +110,7 @@ Menu = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => this.logout(navigation)}
+              onPress={() => console.log("test")}
               style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
             >
               <Text
@@ -134,7 +139,7 @@ Menu = props => {
             </View>
 
             <TouchableOpacity
-              onPress={() => this.logout(navigation)}
+              onPress={() => console.log("test")}
               style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
             >
               <Text
@@ -149,7 +154,7 @@ Menu = props => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => this.logout(navigation)}
+              onPress={() => console.log("test")}
               style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
             >
               <Text
@@ -166,7 +171,7 @@ Menu = props => {
         </View>
 
         <View style={{ backgroundColor: "#ddd", padding: 15 }}>
-          <TouchableOpacity onPress={() => this.logout(navigation)}>
+          <TouchableOpacity onPress={() => logout({ navigation })}>
             <Text
               style={{
                 fontFamily: theme.fonts.TitilliumWebRegular,

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Home from "../components/Home";
-import { getUsers, toggleDrawer } from "../store/actions";
+import { getUsers, logout, toggleDrawer } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -13,7 +13,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       getUsers: getUsers,
-      toggleDrawer: toggleDrawer
+      toggleDrawer: toggleDrawer,
+      logout: logout
     },
     dispatch
   );
