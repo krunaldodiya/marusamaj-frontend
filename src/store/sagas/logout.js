@@ -1,9 +1,11 @@
-import { call, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery } from "redux-saga/effects";
 import { resetAuthToken } from "../../services";
-import { LOGOUT } from "../actions";
+import { LOGOUT, TOGGLE_DRAWER } from "../actions";
 
 function* logout(action) {
   const { navigation } = action.payload;
+
+  yield put({ type: TOGGLE_DRAWER, payload: { isOpen: false } });
 
   yield call(resetAuthToken);
 

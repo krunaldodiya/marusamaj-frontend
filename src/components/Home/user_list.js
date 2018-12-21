@@ -48,8 +48,8 @@ renderItem = (data, navigation) => {
             style={{
               marginTop: 10,
               fontSize: 12,
-              color: "indigo",
-              fontFamily: theme.fonts.TitilliumWebRegular
+              color: "green",
+              fontFamily: theme.fonts.TitilliumWebSemiBold
             }}
           >
             {item.sub_caste.name}, {item.caste.name}

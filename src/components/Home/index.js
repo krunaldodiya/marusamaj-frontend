@@ -17,14 +17,14 @@ class Home extends React.Component {
             paddingTop: 10,
             paddingBottom: 15,
             paddingHorizontal: 15,
-            borderBottomWidth: 1,
-            borderBottomColor: '#ddd'
+            backgroundColor: "red"
           }}
         >
           <Text
             style={{
               fontSize: 18,
-              fontFamily: theme.fonts.TitilliumWebSemiBold
+              fontFamily: theme.fonts.TitilliumWebSemiBold,
+              color: 'white'
             }}
           >
             User List

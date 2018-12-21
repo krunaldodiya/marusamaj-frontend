@@ -9,7 +9,7 @@ Menu = props => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ backgroundColor: "whitesmoke" }}>
+      <View style={{ backgroundColor: "white" }}>
         <List style={{ paddingBottom: 5 }}>
           <ListItem avatar>
             <Left>
@@ -67,7 +67,7 @@ Menu = props => {
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <View>
-            <View style={{ backgroundColor: "#ddd", padding: 15 }}>
+            <View style={{ backgroundColor: "skyblue", padding: 15 }}>
               <Text
                 style={{
                   fontFamily: theme.fonts.TitilliumWebRegular,
@@ -126,7 +126,7 @@ Menu = props => {
           </View>
 
           <View>
-            <View style={{ backgroundColor: "#ddd", padding: 15 }}>
+            <View style={{ backgroundColor: "skyblue", padding: 15 }}>
               <Text
                 style={{
                   fontFamily: theme.fonts.TitilliumWebRegular,
@@ -170,7 +170,7 @@ Menu = props => {
           </View>
         </View>
 
-        <View style={{ backgroundColor: "#ddd", padding: 15 }}>
+        <View style={{ backgroundColor: "skyblue", padding: 15 }}>
           <TouchableOpacity onPress={() => logout({ navigation })}>
             <Text
               style={{

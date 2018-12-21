@@ -11,10 +11,9 @@ const TobBar = props => {
       <View style={{ flex: 1 }}>
         <TouchableOpacity onPress={() => toggleDrawer({ isOpen: true })}>
           <Icon
-            type="Feather"
-            color="black"
+            type="MaterialIcons"
             name="menu"
-            style={{ fontSize: 28, textAlign: "center" }}
+            style={{ fontSize: 28, textAlign: "center", color: "white" }}
           />
         </TouchableOpacity>
       </View>
@@ -27,9 +26,8 @@ const TobBar = props => {
         <TouchableOpacity onPress={() => console.log("test")}>
           <Icon
             type="MaterialIcons"
-            color="black"
             name="search"
-            style={{ fontSize: 28, textAlign: "center" }}
+            style={{ fontSize: 28, textAlign: "center", color: "white" }}
           />
         </TouchableOpacity>
       </View>

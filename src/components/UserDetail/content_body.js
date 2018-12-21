@@ -21,7 +21,10 @@ const ContentBody = props => {
   return (
     <Content style={styles.termsBody}>
       <List>
-        <ListItem avatar>
+        <ListItem
+          avatar
+          onPress={() => navigation.push("AvatarScreen", { user })}
+        >
           <Left>
             <Thumbnail
               source={{ uri: user.avatar }}

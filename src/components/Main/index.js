@@ -1,7 +1,8 @@
 import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import NoNetwork from "../../components/NoNetwork";
+import NoNetwork from "../NoNetwork";
+import AvatarScreen from "../../containers/AvatarScreen";
 import HomeScreen from "../../containers/HomeScreen";
 import LoginScreen from "../../containers/LoginScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
@@ -22,6 +23,7 @@ const getAppNavigator = auth => {
       ManageCasteScreen: { screen: ManageCasteScreen },
       ManageFamilyScreen: { screen: ManageFamilyScreen },
       UserDetailScreen: { screen: UserDetailScreen },
+      AvatarScreen: { screen: AvatarScreen },
     },
     {
       initialRouteName,
