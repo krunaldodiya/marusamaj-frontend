@@ -17,13 +17,7 @@ Menu = props => {
         <List style={{ paddingBottom: 5 }}>
           <ListItem avatar>
             <Left>
-              <Thumbnail
-                large
-                source={{
-                  uri:
-                    "https://cdn.iconscout.com/icon/free/png-256/avatar-369-456321.png"
-                }}
-              />
+              <Thumbnail large source={{ uri: authUser.avatar }} />
             </Left>
 
             <Body>
@@ -47,7 +41,7 @@ Menu = props => {
                   fontFamily: theme.fonts.TitilliumWebRegular
                 }}
               >
-                {authUser.mobile}
+                {authUser.username}
               </Text>
               <Text
                 note

@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./styles";
 
 const ContentHeader = props => {
+  const { auth } = props;
+  const { authUser } = auth;
   const { user } = props.navigation.state.params;
 
   return (
@@ -23,12 +25,14 @@ const ContentHeader = props => {
       </Body>
 
       <Right>
-        <Icon
-          type="MaterialIcons"
-          name="edit"
-          style={styles.termsIcon}
-          onPress={() => console.log(user)}
-        />
+        {authUser.id === user.id && (
+          <Icon
+            type="MaterialIcons"
+            name="edit"
+            style={styles.termsIcon}
+            onPress={() => console.log(user)}
+          />
+        )}
       </Right>
     </Header>
   );

@@ -14,7 +14,8 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 const ContentBody = props => {
-  const { navigation } = props;
+  const { navigation, auth } = props;
+  const { authUser } = auth;
   const { user } = navigation.state.params;
 
   return (
@@ -46,7 +47,7 @@ const ContentBody = props => {
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {user.age} {user.gender}, {user.city}
+              {user.age} {user.gender}, {user.marital_status}
             </Text>
             <Text
               note
@@ -80,17 +81,19 @@ const ContentBody = props => {
               </Text>
             </View>
 
-            <View style={{ marginRight: 20 }}>
-              <Text
-                style={{
-                  fontFamily: theme.fonts.TitilliumWebRegular,
-                  fontSize: 14,
-                  color: "green"
-                }}
-              >
-                Change
-              </Text>
-            </View>
+            {authUser.id === user.id && (
+              <View style={{ marginRight: 20 }}>
+                <Text
+                  style={{
+                    fontFamily: theme.fonts.TitilliumWebRegular,
+                    fontSize: 14,
+                    color: "green"
+                  }}
+                >
+                  Change
+                </Text>
+              </View>
+            )}
           </View>
         </Separator>
 
@@ -214,7 +217,7 @@ const ContentBody = props => {
                   color: "gray"
                 }}
               >
-                Marital Status
+                ગામ
               </Text>
             </View>
           </View>
@@ -227,7 +230,38 @@ const ContentBody = props => {
               fontSize: 14
             }}
           >
-            {user.marital_status}
+            {user.father_city}
+          </Text>
+        </ListItem>
+      </List>
+
+      <List>
+        <Separator>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <View>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "gray"
+                }}
+              >
+                મોસાડ
+              </Text>
+            </View>
+          </View>
+        </Separator>
+
+        <ListItem style={{ borderBottomWidth: 0 }}>
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14
+            }}
+          >
+            {user.mother_city}
           </Text>
         </ListItem>
       </List>
