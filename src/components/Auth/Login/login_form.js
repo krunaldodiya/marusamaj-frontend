@@ -24,25 +24,36 @@ class LoginForm extends React.Component {
         <Form style={styles.formWrapper}>
           <Item style={styles.inputWrapper}>
             <Input
-              placeholder={errors ? errors.errors.username[0] : "Username"}
-              placeholderTextColor={errors ? "#e74c3c" : "gray"}
-              keyboardType="default"
-              value={username}
+              placeholder={
+                errors && errors.errors.username
+                  ? errors.errors.username[0]
+                  : "Username"
+              }
+              placeholderTextColor={
+                errors && errors.errors.username ? "#e74c3c" : "gray"
+              }
+              autoCorrect={false}
+              value={errors && errors.errors.username ? null : username}
               onChangeText={number => this.setState({ username: number })}
-              style={styles.input(errors)}
+              style={styles.input(errors && errors.errors.username)}
             />
           </Item>
 
           <Item style={styles.inputWrapper}>
             <Input
               secureTextEntry
-              placeholder={errors ? errors.errors.password[0] : "Password"}
-              placeholderTextColor={errors ? "#e74c3c" : "gray"}
-              keyboardType="default"
-              maxLength={10}
-              value={password}
+              placeholder={
+                errors && errors.errors.password
+                  ? errors.errors.password[0]
+                  : "Password"
+              }
+              placeholderTextColor={
+                errors && errors.errors.password ? "#e74c3c" : "gray"
+              }
+              autoCorrect={false}
+              value={errors && errors.errors.password ? null : password}
               onChangeText={number => this.setState({ password: number })}
-              style={styles.input(errors)}
+              style={styles.input(errors && errors.errors.password)}
             />
           </Item>
 

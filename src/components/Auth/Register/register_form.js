@@ -25,37 +25,54 @@ class RegisterForm extends React.Component {
         <Form style={styles.formWrapper}>
           <Item style={styles.inputWrapper}>
             <Input
-              placeholder={errors ? errors.errors.mobile[0] : "Mobile Number"}
-              placeholderTextColor={errors ? "#e74c3c" : "gray"}
-              keyboardType="default"
-              maxLength={10}
-              value={mobile}
-              onChangeText={number => handleOtpInput({ mobile: number })}
-              style={styles.input(errors)}
+              placeholder={
+                errors && errors.errors.mobile
+                  ? errors.errors.mobile[0]
+                  : "Mobile Number"
+              }
+              placeholderTextColor={
+                errors && errors.errors.mobile ? "#e74c3c" : "gray"
+              }
+              autoCorrect={false}
+              keyboardType="number-pad"
+              value={errors && errors.errors.mobile ? null : mobile}
+              onChangeText={number => this.setState({ mobile: number })}
+              style={styles.input(errors && errors.errors.mobile)}
             />
           </Item>
 
           <Item style={styles.inputWrapper}>
             <Input
-              placeholder={errors ? errors.errors.username[0] : "Username"}
-              placeholderTextColor={errors ? "#e74c3c" : "gray"}
-              keyboardType="default"
-              value={username}
-              onChangeText={number => handleOtpInput({ username: number })}
-              style={styles.input(errors)}
+              placeholder={
+                errors && errors.errors.username
+                  ? errors.errors.username[0]
+                  : "Username"
+              }
+              placeholderTextColor={
+                errors && errors.errors.username ? "#e74c3c" : "gray"
+              }
+              autoCorrect={false}
+              value={errors && errors.errors.username ? null : username}
+              onChangeText={number => this.setState({ username: number })}
+              style={styles.input(errors && errors.errors.username)}
             />
           </Item>
 
           <Item style={styles.inputWrapper}>
             <Input
               secureTextEntry
-              placeholder={errors ? errors.errors.password[0] : "Password"}
-              placeholderTextColor={errors ? "#e74c3c" : "gray"}
-              keyboardType="default"
-              maxLength={10}
-              value={password}
-              onChangeText={number => handleOtpInput({ password: number })}
-              style={styles.input(errors)}
+              placeholder={
+                errors && errors.errors.password
+                  ? errors.errors.password[0]
+                  : "Password"
+              }
+              placeholderTextColor={
+                errors && errors.errors.password ? "#e74c3c" : "gray"
+              }
+              autoCorrect={false}
+              value={errors && errors.errors.password ? null : password}
+              onChangeText={number => this.setState({ password: number })}
+              style={styles.input(errors && errors.errors.password)}
             />
           </Item>
 
