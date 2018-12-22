@@ -1,14 +1,28 @@
-import { Body, Header, Left, Text, Icon, Right } from "native-base";
+import {
+  Body,
+  Header,
+  Left,
+  Text,
+  Icon,
+  Right,
+  Segment,
+  Button
+} from "native-base";
 import React from "react";
 import styles from "./styles";
+import theme from "../../libs/theme";
 
 const ContentHeader = props => {
-  const { auth, navigation } = props;
+  const { auth, navigation, segment, toggleSegment } = props;
   const { authUser } = auth;
   const { user } = props.navigation.state.params;
 
   return (
-    <Header style={styles.termsWrapper} androidStatusBarColor="#d80402">
+    <Header
+      style={styles.termsWrapper}
+      androidStatusBarColor="#d80402"
+      hasSegment
+    >
       <Left>
         <Icon
           type="MaterialIcons"
@@ -19,9 +33,40 @@ const ContentHeader = props => {
       </Left>
 
       <Body>
-        <Text numberOfLines={1} style={styles.termsHeader}>
-          User Detail
-        </Text>
+        <Segment style={styles.termsHeader}>
+          <Button
+            first
+            active={segment === "profile"}
+            onPress={() => toggleSegment("profile")}
+          >
+            <Text
+              style={{
+                fontFamily:
+                  segment === "profile"
+                    ? theme.fonts.TitilliumWebSemiBold
+                    : theme.fonts.TitilliumWebRegular
+              }}
+            >
+              Profile
+            </Text>
+          </Button>
+          <Button
+            last
+            active={segment === "family"}
+            onPress={() => toggleSegment("family")}
+          >
+            <Text
+              style={{
+                fontFamily:
+                  segment === "family"
+                    ? theme.fonts.TitilliumWebSemiBold
+                    : theme.fonts.TitilliumWebRegular
+              }}
+            >
+              Family
+            </Text>
+          </Button>
+        </Segment>
       </Body>
 
       <Right>

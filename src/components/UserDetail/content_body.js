@@ -19,7 +19,7 @@ const ContentBody = props => {
 
   return (
     <Content style={styles.termsBody}>
-      <List>
+      <List style={{ backgroundColor: "#fff" }}>
         <ListItem
           avatar
           onPress={() => navigation.push("AvatarScreen", { user })}

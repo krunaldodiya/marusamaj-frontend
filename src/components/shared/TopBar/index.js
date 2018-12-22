@@ -4,7 +4,8 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 const TobBar = props => {
-  const { toggleDrawer, navigation } = props;
+  const { toggleDrawer, navigation, auth } = props;
+  const { authUser } = auth;
 
   return (
     <View style={styles.container}>
@@ -19,7 +20,9 @@ const TobBar = props => {
       </View>
 
       <View style={{ flex: 7 }}>
-        <Text style={styles.name}>MaruSamaj</Text>
+        <Text numberOfLines={1} style={styles.name}>
+          {authUser.caste.name}
+        </Text>
       </View>
 
       <View style={{ flex: 1 }}>

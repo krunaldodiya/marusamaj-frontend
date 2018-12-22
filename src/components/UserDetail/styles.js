@@ -17,12 +17,9 @@ export default StyleSheet.create({
     marginRight: 5
   },
   termsHeader: {
-    fontWeight: "400",
-    fontFamily: theme.fonts.TitilliumWebSemiBold,
-    color: "white",
-    fontSize: 18
+    backgroundColor: "#d80402"
   },
   termsBody: {
-    margin: 0
-  },
+    fontFamily: theme.fonts.TitilliumWebRegular    
+  }
 });
