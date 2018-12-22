@@ -63,7 +63,7 @@ export default StyleSheet.create({
   submitButtonText: {
     textAlign: "center",
     fontFamily: theme.fonts.TitilliumWebSemiBold,
-    color: "red"
+    color: "#d80402"
   },
   submitButtonTextDisabled: {
     textAlign: "center",

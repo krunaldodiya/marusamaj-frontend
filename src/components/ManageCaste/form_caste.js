@@ -82,7 +82,7 @@ class CasteForm extends React.Component {
             style={{
               fontFamily: theme.fonts.TitilliumWebSemiBold,
               fontSize: 13,
-              color: "red"
+              color: "#d80402"
             }}
           >
             Change

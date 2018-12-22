@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 const TobBar = props => {
-  const { toggleDrawer } = props;
+  const { toggleDrawer, navigation } = props;
 
   return (
     <View style={styles.container}>
@@ -23,10 +23,10 @@ const TobBar = props => {
       </View>
 
       <View style={{ flex: 1 }}>
-        <TouchableOpacity onPress={() => console.log("test")}>
+        <TouchableOpacity onPress={() => navigation.push("SearchScreen")}>
           <Icon
             type="MaterialIcons"
-            name="search"
+            name="filter-list"
             style={{ fontSize: 28, textAlign: "center", color: "white" }}
           />
         </TouchableOpacity>

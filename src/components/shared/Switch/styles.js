@@ -2,19 +2,26 @@ import { StyleSheet } from "react-native";
 import theme from "../../../libs/theme";
 
 export default StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    width: 150,
-    marginTop: 10,
+  container: width => {
+    return {
+      flexDirection: "row",
+      width,
+      margin: 5,
+      borderWidth: 1,
+      borderColor: '#000',
+      borderRadius: 20
+    };
   },
-  switchOptionWrapper: (option, selected, index) => {    
+  switchOptionWrapper: (option, selected, index, total) => {
     return {
       flex: 1,
-      backgroundColor: option === selected ? "black" : "#ddd",
+      backgroundColor: option === selected ? "#d80402" : "#fff",
+      borderLeftWidth: index !== 0 ? 1 : 0,
+      borderLeftColor: "#000",
       borderTopLeftRadius: index === 0 ? 20 : 0,
       borderBottomLeftRadius: index === 0 ? 20 : 0,
-      borderTopRightRadius: index === 1 ? 20 : 0,
-      borderBottomRightRadius: index === 1 ? 20 : 0,
+      borderTopRightRadius: index === total - 1 ? 20 : 0,
+      borderBottomRightRadius: index === total - 1 ? 20 : 0,
       padding: 7
     };
   },
@@ -23,7 +30,7 @@ export default StyleSheet.create({
       color: option === selected ? "white" : "black",
       fontSize: 14,
       textAlign: "center",
-      fontFamily: theme.fonts.TitilliumWebRegular,
+      fontFamily: theme.fonts.TitilliumWebRegular
     };
   }
 });

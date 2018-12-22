@@ -6,12 +6,12 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,
-    backgroundColor: 'red'
+    backgroundColor: "#d80402"
   },
 
   name: {
     justifyContent: "center",
-    color: 'white',
+    color: "white",
     marginLeft: 15,
     fontSize: 18,
     fontFamily: theme.fonts.TitilliumWebSemiBold

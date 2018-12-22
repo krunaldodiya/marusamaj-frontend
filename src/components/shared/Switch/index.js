@@ -5,15 +5,20 @@ import { TouchableOpacity } from "react-native";
 import styles from "./styles";
 
 const Switch = props => {
-  const { options, selected, onChange } = props;
+  const { options, selected, onChange, width } = props;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container(width)}>
       {options.map((option, index) => (
         <TouchableOpacity
           key={index.toString()}
           onPress={() => onChange(option)}
-          style={styles.switchOptionWrapper(option, selected, index)}
+          style={styles.switchOptionWrapper(
+            option,
+            selected,
+            index,
+            options.length
+          )}
         >
           <Text style={styles.switchOptionText(option, selected)}>
             {option}

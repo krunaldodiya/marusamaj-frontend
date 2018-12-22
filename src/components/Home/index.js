@@ -17,7 +17,7 @@ class Home extends React.Component {
             paddingTop: 10,
             paddingBottom: 15,
             paddingHorizontal: 15,
-            backgroundColor: "red"
+            backgroundColor: "#d80402"
           }}
         >
           <Text

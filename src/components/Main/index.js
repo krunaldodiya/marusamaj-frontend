@@ -1,7 +1,6 @@
 import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
-import NoNetwork from "../NoNetwork";
 import AvatarScreen from "../../containers/AvatarScreen";
 import HomeScreen from "../../containers/HomeScreen";
 import LoginScreen from "../../containers/LoginScreen";
@@ -9,7 +8,9 @@ import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RegisterScreen from "../../containers/RegisterScreen";
+import SearchScreen from "../../containers/SearchScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
+import NoNetwork from "../NoNetwork";
 
 const getAppNavigator = auth => {
   const initialRouteName = getInitialScreen(auth);
@@ -24,6 +25,7 @@ const getAppNavigator = auth => {
       ManageFamilyScreen: { screen: ManageFamilyScreen },
       UserDetailScreen: { screen: UserDetailScreen },
       AvatarScreen: { screen: AvatarScreen },
+      SearchScreen: { screen: SearchScreen },
     },
     {
       initialRouteName,

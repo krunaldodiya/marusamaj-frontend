@@ -122,6 +122,7 @@ class ProfileForm extends React.Component {
           <Item style={styles.buttonWrapper}>
             <Switch
               {...this.props}
+              width={150}
               options={["Male", "Female"]}
               selected={authUser.gender}
               onChange={gender => updateUserData({ gender })}
@@ -131,6 +132,7 @@ class ProfileForm extends React.Component {
           <Item style={styles.buttonWrapper}>
             <Switch
               {...this.props}
+              width={150}
               options={["Married", "Single"]}
               selected={authUser.marital_status}
               onChange={marital_status => updateUserData({ marital_status })}
