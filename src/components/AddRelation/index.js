@@ -3,7 +3,7 @@ import React from "react";
 import ContentBody from "./content_body";
 import ContentHeader from "./content_header";
 
-class Family extends React.Component {
+class AddRelation extends React.Component {
   render() {
     return (
       <Container style={{ flex: 1 }}>
@@ -14,4 +14,4 @@ class Family extends React.Component {
   }
 }
 
-export default Family;
+export default AddRelation;

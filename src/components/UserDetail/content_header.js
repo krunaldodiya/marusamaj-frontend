@@ -37,9 +37,11 @@ const ContentHeader = props => {
         {authUser.id !== user.id && (
           <Icon
             type="MaterialIcons"
-            name="add"
+            name="person-add"
             style={styles.termsIcon}
-            onPress={() => navigation.push("FamilyScreen")}
+            onPress={() =>
+              navigation.push("AddRelationScreen", { relative: user })
+            }
           />
         )}
       </Right>

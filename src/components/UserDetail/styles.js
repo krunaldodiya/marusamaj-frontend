@@ -13,7 +13,8 @@ export default StyleSheet.create({
     backgroundColor: "#d80402"
   },
   termsIcon: {
-    color: "white"
+    color: "white",
+    marginRight: 5
   },
   termsHeader: {
     fontWeight: "400",
