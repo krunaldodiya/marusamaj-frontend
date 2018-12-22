@@ -5,7 +5,8 @@ import {
   UPDATE_USER_PROFILE,
   UPDATE_USER_PROFILE_FAIL,
   UPDATE_USER_PROFILE_SUCCESS,
-  SET_AUTH_USER
+  SET_AUTH_USER,
+  CHANGE_AVATAR
 } from "../actions";
 
 const initialState = {
@@ -76,6 +77,13 @@ export default (state = initialState, action) => {
     }
 
     case SET_AUTH_USER: {
+      return {
+        ...state,
+        authUser: action.payload.authUser
+      };
+    }
+
+    case CHANGE_AVATAR: {
       return {
         ...state,
         authUser: action.payload.authUser

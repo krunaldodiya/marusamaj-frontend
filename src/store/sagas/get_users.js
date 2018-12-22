@@ -1,13 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-
-import {
-  GET_USERS,
-  GET_USERS_SUCCESS,
-  GET_USERS_FAIL
-} from "../actions/get_users";
-
 import { api } from "../../libs/api";
 import { makeRequest } from "../../services";
+import { GET_USERS, GET_USERS_FAIL, GET_USERS_SUCCESS } from "../actions";
 
 function* getUsers() {
   try {

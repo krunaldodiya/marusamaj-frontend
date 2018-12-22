@@ -1,13 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-
-import {
-  GET_CASTES,
-  GET_CASTES_SUCCESS,
-  GET_CASTES_FAIL
-} from "../actions/get_castes";
-
 import { api } from "../../libs/api";
 import { makeRequest } from "../../services";
+import { GET_CASTES, GET_CASTES_FAIL, GET_CASTES_SUCCESS } from "../actions";
 
 function* getCastes() {
   try {

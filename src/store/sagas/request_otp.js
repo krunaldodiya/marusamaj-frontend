@@ -1,14 +1,8 @@
 import { Alert } from "react-native";
 import { call, put, takeEvery } from "redux-saga/effects";
-
-import {
-  REQUEST_OTP,
-  REQUEST_OTP_SUCCESS,
-  REQUEST_OTP_FAIL
-} from "../actions/request_otp";
-
 import { api } from "../../libs/api";
 import { makeRequest } from "../../services";
+import { REQUEST_OTP, REQUEST_OTP_FAIL, REQUEST_OTP_SUCCESS } from "../actions";
 
 function* requestOtp(action) {
   const { mobile, navigation, mode } = action.payload;

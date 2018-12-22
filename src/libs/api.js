@@ -17,7 +17,8 @@ const api = {
   login: `${httpUrl}/api/guest/login`,
   register: `${httpUrl}/api/guest/register`,
   getUsers: `${httpUrl}/api/users/all`,
-  wallet: `${httpUrl}/api/wallet/info`
+  wallet: `${httpUrl}/api/wallet/info`,
+  changeAvatar: `${httpUrl}/api/avatar/change`,
 };
 
 export { api };

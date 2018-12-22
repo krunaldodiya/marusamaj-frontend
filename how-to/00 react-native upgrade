@@ -1,3 +1,5 @@
 react-native upgrade && react-native link
 
 https://www.resource-generator.com
+
+adjustResize => adjustPan in AndroidManifest.xml

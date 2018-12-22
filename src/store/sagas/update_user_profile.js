@@ -5,7 +5,7 @@ import {
   UPDATE_USER_PROFILE,
   UPDATE_USER_PROFILE_FAIL,
   UPDATE_USER_PROFILE_SUCCESS
-} from "../actions/update_user_profile";
+} from "../actions";
 
 function* updateUserProfile(action) {
   const { authUser, navigation, screen, url } = action.payload;

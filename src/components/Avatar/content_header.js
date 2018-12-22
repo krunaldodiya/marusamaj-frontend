@@ -1,18 +1,19 @@
+import axios from "axios";
 import { Body, Header, Icon, Left, Right, Text } from "native-base";
 import React from "react";
 import ImagePicker from "react-native-image-crop-picker";
 import RNFetchBlob from "rn-fetch-blob";
+import { api } from "../../libs/api";
+import { getAuthToken } from "../../services/auth";
 import styles from "./styles";
 
-const uploadAvatar = changeAvatar => {
-  ImagePicker.openPicker({
-    cropping: true
-  })
-    .then(response => {
-      changeAvatar({ loading: true });
+const uploadAvatar = (authUser, uploading, changeAvatar) => {
+  ImagePicker.openPicker({ cropping: true, height: 480, width: 480 })
+    .then(image => {
+      const { mime, path, cropRect } = image;
+      const { height, width, x, y } = cropRect;
 
-      const { height, width, x, y } = response.cropRect;
-      const cropData = `upload/c_crop,h_${height},w_${width},x_${x},y_${y}`;
+      uploading({ loading: true });
 
       RNFetchBlob.fetch(
         "POST",
@@ -24,25 +25,38 @@ const uploadAvatar = changeAvatar => {
           {
             name: "file",
             filename: "filename",
-            type: response.mime,
-            data: RNFetchBlob.wrap(response.path)
+            type: mime,
+            data: RNFetchBlob.wrap(path)
           }
         ]
       )
         .then(response => response.json())
         .then(response => {
-          const avatar = response.secure_url.replace('upload', cropData);
-          changeAvatar({ avatar, loading: false });
+          getAuthToken().then(token => {
+            const cropData = `upload/c_crop,h_${height},w_${width},x_${x},y_${y}`;
+            const avatar = response.secure_url.replace("upload", cropData);
+            const headers = { Authorization: `Bearer ${token}` };
+
+            axios
+              .post(api.changeAvatar, { avatar }, { headers })
+              .then(() => {
+                changeAvatar({ authUser: { ...authUser, avatar } });
+                uploading({ loading: false });
+              })
+              .catch(() => {
+                uploading({ loading: false });
+              });
+          });
         });
     })
-    .catch(e => {
-      console.log(e);
+    .catch(() => {
+      uploading({ loading: false });
     });
 };
 
 class ContentHeader extends React.Component {
   render() {
-    const { auth, navigation, changeAvatar } = this.props;
+    const { auth, navigation, uploading, changeAvatar } = this.props;
     const { authUser } = auth;
     const { user } = this.props.navigation.state.params;
 
@@ -69,7 +83,7 @@ class ContentHeader extends React.Component {
               type="MaterialIcons"
               name="photo-camera"
               style={styles.termsIcon}
-              onPress={() => uploadAvatar(changeAvatar)}
+              onPress={() => uploadAvatar(authUser, uploading, changeAvatar)}
             />
           )}
         </Right>
