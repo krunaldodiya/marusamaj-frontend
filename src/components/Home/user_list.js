@@ -41,7 +41,7 @@ renderItem = (data, navigation) => {
               fontFamily: theme.fonts.TitilliumWebRegular
             }}
           >
-            {item.age} {item.gender}, {item.father_city}
+            {item.age} {item.gender}, {item.marital_status}
           </Text>
           <Text
             note
@@ -61,12 +61,18 @@ renderItem = (data, navigation) => {
 };
 
 UserList = props => {
-  const { users, navigation } = props;
+  const { users, navigation, getUsers } = props;
   const { data } = users;
 
   return (
     <FlatList
       data={data}
+      onEndReached={() => {
+        if (users.last_page > users.page) {
+          getUsers({ page: users.page + 1 });
+        }
+      }}
+      onEndReachedThreshold={0.5}
       keyExtractor={(_, index) => index.toString()}
       renderItem={data => this.renderItem(data, navigation)}
     />

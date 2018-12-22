@@ -6,7 +6,7 @@ import theme from "../../libs/theme";
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.getUsers();
+    this.props.getUsers({ page: 1 });
   }
 
   render() {
@@ -24,7 +24,7 @@ class Home extends React.Component {
             style={{
               fontSize: 18,
               fontFamily: theme.fonts.TitilliumWebSemiBold,
-              color: 'white'
+              color: "white"
             }}
           >
             User List

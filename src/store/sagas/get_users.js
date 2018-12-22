@@ -3,9 +3,13 @@ import { api } from "../../libs/api";
 import { makeRequest } from "../../services";
 import { GET_USERS, GET_USERS_FAIL, GET_USERS_SUCCESS } from "../actions";
 
-function* getUsers() {
+function* getUsers(action) {
   try {
-    const { data } = yield call(makeRequest, api.getUsers, {});
+    const { data } = yield call(makeRequest, api.getUsers, {
+      page: action.payload.page,
+      filters: action.payload.filters
+    });
+    
     const { users } = data;
 
     yield put({

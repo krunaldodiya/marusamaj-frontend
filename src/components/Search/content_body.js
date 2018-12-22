@@ -8,29 +8,24 @@ class ContentBody extends React.Component {
     super(props);
 
     this.state = {
-      filter: {
-        name: null,
-        city: null,
-        gender: "Any",
-        marital_status: "Any"
-      }
+      filters: props.users.filters
     };
   }
 
   render() {
-    const { filter } = this.state;
+    const { filters } = this.state;
+    const { navigation, getUsers } = this.props;
 
     return (
       <Form style={styles.formWrapper}>
         <Item style={styles.inputWrapper}>
           <Input
-            onFocus={() => avoidKeyboardView(false)}
             placeholder="Name / Mobile"
             placeholderTextColor="#000"
             autoCorrect={false}
-            value={filter.name}
-            onChangeText={name =>
-              this.setState({ filter: { ...filter, name } })
+            value={filters.keywords}
+            onChangeText={keywords =>
+              this.setState({ filters: { ...filters, keywords } })
             }
             style={styles.input}
           />
@@ -38,13 +33,12 @@ class ContentBody extends React.Component {
 
         <Item style={styles.inputWrapper}>
           <Input
-            onFocus={() => avoidKeyboardView(true)}
             placeholder="ગામ"
             placeholderTextColor="#000"
             autoCorrect={false}
-            value={filter.city}
-            onChangeText={city =>
-              this.setState({ filter: { ...filter, city } })
+            value={filters.father_city}
+            onChangeText={father_city =>
+              this.setState({ filters: { ...filters, father_city } })
             }
             style={styles.input}
           />
@@ -52,13 +46,12 @@ class ContentBody extends React.Component {
 
         <Item style={styles.inputWrapper}>
           <Input
-            onFocus={() => avoidKeyboardView(true)}
             placeholder="મોસાડ"
             placeholderTextColor="#000"
             autoCorrect={false}
-            value={filter.city}
-            onChangeText={city =>
-              this.setState({ filter: { ...filter, city } })
+            value={filters.mother_city}
+            onChangeText={mother_city =>
+              this.setState({ filters: { ...filters, mother_city } })
             }
             style={styles.input}
           />
@@ -70,9 +63,9 @@ class ContentBody extends React.Component {
               {...this.props}
               width={200}
               options={["Any", "Male", "Female"]}
-              selected={filter.gender}
+              selected={filters.gender}
               onChange={gender =>
-                this.setState({ filter: { ...filter, gender } })
+                this.setState({ filters: { ...filters, gender } })
               }
             />
           </Item>
@@ -82,9 +75,9 @@ class ContentBody extends React.Component {
               {...this.props}
               width={200}
               options={["Any", "Married", "Single"]}
-              selected={filter.marital_status}
+              selected={filters.marital_status}
               onChange={marital_status =>
-                this.setState({ filter: { ...filter, marital_status } })
+                this.setState({ filters: { ...filters, marital_status } })
               }
             />
           </Item>
@@ -94,7 +87,10 @@ class ContentBody extends React.Component {
               rounded
               small
               style={styles.submitButton}
-              onPress={() => checkVerification(props)}
+              onPress={() => {
+                getUsers({ filters, page: 1, data: [] });
+                navigation.goBack();
+              }}
             >
               <Text style={styles.submitButtonText}>APPLY</Text>
             </Button>
