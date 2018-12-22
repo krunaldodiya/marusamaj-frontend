@@ -33,6 +33,15 @@ const ContentHeader = props => {
             onPress={() => navigation.replace("ManageProfileScreen")}
           />
         )}
+
+        {authUser.id !== user.id && (
+          <Icon
+            type="MaterialIcons"
+            name="add"
+            style={styles.termsIcon}
+            onPress={() => navigation.push("FamilyScreen")}
+          />
+        )}
       </Right>
     </Header>
   );
