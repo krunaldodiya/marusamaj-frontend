@@ -9,6 +9,7 @@ import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RegisterScreen from "../../containers/RegisterScreen";
 import SearchScreen from "../../containers/SearchScreen";
+import SettingsScreen from "../../containers/SettingsScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
 import NoNetwork from "../NoNetwork";
 
@@ -26,6 +27,7 @@ const getAppNavigator = auth => {
       UserDetailScreen: { screen: UserDetailScreen },
       AvatarScreen: { screen: AvatarScreen },
       SearchScreen: { screen: SearchScreen },
+      SettingsScreen: { screen: SettingsScreen },
     },
     {
       initialRouteName,

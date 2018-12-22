@@ -14,8 +14,7 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 const ContentBody = props => {
-  const { navigation, auth } = props;
-  const { authUser } = auth;
+  const { navigation } = props;
   const { user } = navigation.state.params;
 
   return (
@@ -83,20 +82,6 @@ const ContentBody = props => {
                 Mobile
               </Text>
             </View>
-
-            {authUser.id === user.id && (
-              <View style={{ marginRight: 20 }}>
-                <Text
-                  style={{
-                    fontFamily: theme.fonts.TitilliumWebRegular,
-                    fontSize: 14,
-                    color: "green"
-                  }}
-                >
-                  Change
-                </Text>
-              </View>
-            )}
           </View>
         </Separator>
 

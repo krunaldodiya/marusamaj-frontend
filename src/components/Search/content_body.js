@@ -20,6 +20,7 @@ class ContentBody extends React.Component {
       <Form style={styles.formWrapper}>
         <Item style={styles.inputWrapper}>
           <Input
+            clearButtonMode="always"
             placeholder="Name / Mobile"
             placeholderTextColor="#000"
             autoCorrect={false}
@@ -33,6 +34,7 @@ class ContentBody extends React.Component {
 
         <Item style={styles.inputWrapper}>
           <Input
+            clearButtonMode="always"
             placeholder="ગામ"
             placeholderTextColor="#000"
             autoCorrect={false}
@@ -46,6 +48,7 @@ class ContentBody extends React.Component {
 
         <Item style={styles.inputWrapper}>
           <Input
+            clearButtonMode="always"
             placeholder="મોસાડ"
             placeholderTextColor="#000"
             autoCorrect={false}

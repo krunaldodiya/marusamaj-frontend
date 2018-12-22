@@ -79,22 +79,7 @@ Menu = props => {
           </View>
 
           <TouchableOpacity
-            onPress={() => console.log("test")}
-            style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
-          >
-            <Text
-              style={{
-                color: "#333",
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14
-              }}
-            >
-              Settings
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => console.log("test")}
+            onPress={() => navigation.push("SettingsScreen")}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
           >
             <Text
@@ -104,7 +89,7 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Share App
+              Settings
             </Text>
           </TouchableOpacity>
         </View>
