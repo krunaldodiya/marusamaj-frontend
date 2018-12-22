@@ -1,22 +1,43 @@
-import { Body, Header, Left, Text, Icon, Right } from "native-base";
+import { Body, Header, Icon, Left, Right, Text } from "native-base";
 import React from "react";
+import ImagePicker from "react-native-image-crop-picker";
+import RNFetchBlob from "rn-fetch-blob";
 import styles from "./styles";
 
-import ImagePicker from "react-native-image-picker";
-
 const uploadAvatar = changeAvatar => {
-  const options = {
-    title: "Select Avatar",
-    customButtons: [{ name: "fb", title: "Choose Photo from Facebook" }],
-    storageOptions: {
-      skipBackup: true,
-      path: "images"
-    }
-  };
+  ImagePicker.openPicker({
+    cropping: true
+  })
+    .then(response => {
+      changeAvatar({ loading: true });
 
-  ImagePicker.showImagePicker(options, response => {    
-    changeAvatar(response.uri);
-  });
+      const { height, width, x, y } = response.cropRect;
+      const cropData = `upload/c_crop,h_${height},w_${width},x_${x},y_${y}`;
+
+      RNFetchBlob.fetch(
+        "POST",
+        "https://api.cloudinary.com/v1_1/marusamaj/image/upload?upload_preset=default",
+        {
+          "Content-Type": "multipart/form-data"
+        },
+        [
+          {
+            name: "file",
+            filename: "filename",
+            type: response.mime,
+            data: RNFetchBlob.wrap(response.path)
+          }
+        ]
+      )
+        .then(response => response.json())
+        .then(response => {
+          const avatar = response.secure_url.replace('upload', cropData);
+          changeAvatar({ avatar, loading: false });
+        });
+    })
+    .catch(e => {
+      console.log(e);
+    });
 };
 
 class ContentHeader extends React.Component {

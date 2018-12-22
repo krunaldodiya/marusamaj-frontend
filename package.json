@@ -16,7 +16,7 @@
     "react-native-confirmation-code-input": "^1.0.4",
     "react-native-drawer": "^2.5.1",
     "react-native-gesture-handler": "^1.0.10",
-    "react-native-image-picker": "^0.27.2",
+    "react-native-image-crop-picker": "^0.21.3",
     "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-masked-text": "^1.9.2",
     "react-native-popup-menu": "^0.14.0",
@@ -24,7 +24,8 @@
     "react-navigation": "^3.0.1",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
-    "redux-saga": "^0.16.2"
+    "redux-saga": "^0.16.2",
+    "rn-fetch-blob": "^0.10.14"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
