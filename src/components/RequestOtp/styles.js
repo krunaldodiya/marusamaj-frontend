@@ -4,18 +4,7 @@ import theme from "../../libs/theme";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink"
-  },
-  topImageWrapper: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 30,
-    backgroundColor: "white"
-  },
-  topImage: {
-    width: 180,
-    height: 180
+    backgroundColor: "#7EF9FF"
   },
   infoWrapper: {
     flex: 1,
@@ -81,5 +70,5 @@ export default StyleSheet.create({
     textAlign: "center",
     fontFamily: theme.fonts.TitilliumWebSemiBold,
     color: "#ccc"
-  },
+  }
 });

@@ -1,23 +1,22 @@
 import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import theme from "../../../libs/theme";
 import styles from "./styles";
+import theme from "../../../libs/theme";
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: null,
-      password: null
+      username: ""
     };
   }
 
   render() {
-    const { guest, navigation, login } = this.props;
-    const { loading, errors } = guest;
-    const { username, password } = this.state;
+    const { guest, navigation } = this.props;
+    const { errors } = guest;
+    const { username } = this.state;
 
     return (
       <React.Fragment>
@@ -39,40 +38,22 @@ class LoginForm extends React.Component {
             />
           </Item>
 
-          <Item style={styles.inputWrapper}>
-            <Input
-              secureTextEntry
-              placeholder={
-                errors && errors.errors.password
-                  ? errors.errors.password[0]
-                  : "Password"
-              }
-              placeholderTextColor={
-                errors && errors.errors.password ? "#e74c3c" : "gray"
-              }
-              autoCorrect={false}
-              value={errors && errors.errors.password ? null : password}
-              onChangeText={number => this.setState({ password: number })}
-              style={styles.input(errors && errors.errors.password)}
-            />
-          </Item>
-
           <Item style={[styles.submitButtonWrapper, { marginTop: 20 }]}>
             <Button
               rounded
               small
-              disabled={loading}
+              disabled={username.length !== 10}
               style={styles.submitButton}
-              onPress={() => login({ username, password, navigation })}
+              onPress={() => console.log("send otp")}
             >
-              <Text style={styles.submitButtonText}>LOGIN</Text>
+              <Text style={styles.submitButtonText}>Send Otp</Text>
             </Button>
           </Item>
         </Form>
 
         <View style={{ padding: 15 }}>
           <TouchableOpacity
-            onPress={() => navigation.replace("SearchAccountScreen")}
+            onPress={() => navigation.push("AccountListScreen")}
           >
             <Text
               style={{
@@ -82,24 +63,22 @@ class LoginForm extends React.Component {
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              forgot password ?
+              forgot username ?
             </Text>
           </TouchableOpacity>
         </View>
 
         <View style={{ padding: 15, backgroundColor: "#7EF9FF" }}>
-          <TouchableOpacity
-            onPress={() => navigation.replace("RegisterScreen")}
-          >
+          <TouchableOpacity onPress={() => navigation.replace("LoginScreen")}>
             <Text
               style={{
                 textAlign: "center",
-                color: "black",
+                color: "#000",
                 fontSize: 18,
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              REGISTER
+              LOGIN
             </Text>
           </TouchableOpacity>
         </View>

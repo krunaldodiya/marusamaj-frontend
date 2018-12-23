@@ -1,6 +1,7 @@
 import React from "react";
 import { NetInfo, StatusBar, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
+import AccountListScreen from "../../containers/AccountListScreen";
 import AddRelationScreen from "../../containers/AddRelationScreen";
 import AvatarScreen from "../../containers/AvatarScreen";
 import HomeScreen from "../../containers/HomeScreen";
@@ -9,9 +10,13 @@ import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
 import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RegisterScreen from "../../containers/RegisterScreen";
+import RequestOtpScreen from "../../containers/RequestOtpScreen";
+import ResetPasswordScreen from "../../containers/ResetPasswordScreen";
+import SearchAccountScreen from "../../containers/SearchAccountScreen";
 import SearchScreen from "../../containers/SearchScreen";
 import SettingsScreen from "../../containers/SettingsScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
+import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 import NoNetwork from "../NoNetwork";
 
 const getAppNavigator = auth => {
@@ -30,6 +35,11 @@ const getAppNavigator = auth => {
       SearchScreen: { screen: SearchScreen },
       SettingsScreen: { screen: SettingsScreen },
       AddRelationScreen: { screen: AddRelationScreen },
+      ResetPasswordScreen: { screen: ResetPasswordScreen },
+      RequestOtpScreen: { screen: RequestOtpScreen },
+      VerifyOtpScreen: { screen: VerifyOtpScreen },
+      AccountListScreen: { screen: AccountListScreen },
+      SearchAccountScreen: { screen: SearchAccountScreen },
     },
     {
       initialRouteName,

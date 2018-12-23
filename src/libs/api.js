@@ -9,6 +9,7 @@ const api = {
   // api
   me: `${httpUrl}/api/users/me`,
   castes: `${httpUrl}/api/castes`,
+  getUsersByMobile: `${httpUrl}/api/users/mobile`,
   updateUserCaste: `${httpUrl}/api/users/caste/update`,
   updateUserProfile: `${httpUrl}/api/users/profile/update`,
   updateUserFamily: `${httpUrl}/api/users/family/update`,

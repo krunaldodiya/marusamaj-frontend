@@ -35,6 +35,7 @@ class RegisterForm extends React.Component {
               }
               autoCorrect={false}
               keyboardType="number-pad"
+              maxLength={10}
               value={errors && errors.errors.mobile ? null : mobile}
               onChangeText={number => this.setState({ mobile: number })}
               style={styles.input(errors && errors.errors.mobile)}

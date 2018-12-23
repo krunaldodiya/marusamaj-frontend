@@ -1,17 +1,17 @@
 import { StyleSheet } from "react-native";
-import theme from "../../libs/theme";
+import theme from "../../../libs/theme";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#7EF9FF"
+    flex: 1
   },
   infoWrapper: {
-    flex: 1,
+    flex: 3,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    padding: 30
+    padding: 30,
+    backgroundColor: "#7EF9FF"
   },
   infoHeading: {
     fontSize: 26,
@@ -28,19 +28,18 @@ export default StyleSheet.create({
     fontFamily: theme.fonts.TitilliumWebRegular
   },
   formWrapper: {
-    flex: 1,
+    flex: 4,
     flexDirection: "column",
-    padding: 30,
-    justifyContent: "space-around"
+    justifyContent: "center"
   },
   inputWrapper: {
     borderBottomWidth: 0
   },
   input: errors => {
     return {
-      borderColor: errors ? "#e74c3c" : "black",
+      borderColor: errors ? "#e74c3c" : "gray",
       marginHorizontal: 20,
-      marginTop: 10,
+      marginBottom: 5,
       borderWidth: 1,
       borderRadius: 10,
       paddingLeft: 20,
@@ -48,7 +47,6 @@ export default StyleSheet.create({
     };
   },
   submitButtonWrapper: {
-    marginTop: 40,
     alignSelf: "center",
     borderBottomWidth: 0
   },
@@ -71,35 +69,5 @@ export default StyleSheet.create({
     textAlign: "center",
     fontFamily: theme.fonts.TitilliumWebSemiBold,
     color: "#ccc"
-  },
-  changeMobileWrapper: {
-    alignSelf: "center"
-  },
-  changeMobileButton: {
-    borderColor: "indigo",
-    borderRadius: 5
-  },
-  changeMobileText: {
-    textAlign: "center",
-    fontSize: 12,
-    color: "indigo",
-    fontFamily: theme.fonts.TitilliumWebRegular
-  },
-  timerWrapper: {
-    alignSelf: "center"
-  },
-  timer: {
-    borderWidth: 1,
-    justifyContent: "center",
-    width: 40,
-    height: 40,
-    borderColor: "indigo",
-    borderRadius: 40
-  },
-  timerText: {
-    textAlign: "center",
-    fontSize: 14,
-    color: "indigo",
-    fontFamily: theme.fonts.TitilliumWebSemiBold
   }
 });
