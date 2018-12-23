@@ -4,7 +4,8 @@ import { makeRequest } from "../../services";
 import {
   GET_AUTH_USER,
   GET_AUTH_USER_FAIL,
-  GET_AUTH_USER_SUCCESS
+  GET_AUTH_USER_SUCCESS,
+  INIT
 } from "../actions";
 
 function* getAuthUser() {
@@ -16,11 +17,13 @@ function* getAuthUser() {
       type: GET_AUTH_USER_SUCCESS,
       payload: { authUser: user }
     });
+    yield put({ type: INIT });
   } catch (error) {
     yield put({
       type: GET_AUTH_USER_FAIL,
       payload: { errors: error.response.data }
     });
+    yield put({ type: INIT });
   }
 }
 

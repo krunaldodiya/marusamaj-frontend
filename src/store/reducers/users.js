@@ -22,7 +22,6 @@ export default (state = initialState, action) => {
     case GET_USERS: {
       return {
         ...state,
-        ...action.payload,
         loading: true,
         loaded: false
       };

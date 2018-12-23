@@ -19,9 +19,7 @@ import UserDetailScreen from "../../containers/UserDetailScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 import NoNetwork from "../NoNetwork";
 
-const getAppNavigator = auth => {
-  const initialRouteName = getInitialScreen(auth);
-
+const getAppNavigator = initialRouteName => {
   return createStackNavigator(
     {
       TabsScreen: { screen: TabsScreen },
@@ -39,7 +37,7 @@ const getAppNavigator = auth => {
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
       AccountListScreen: { screen: AccountListScreen },
-      SearchAccountScreen: { screen: SearchAccountScreen },
+      SearchAccountScreen: { screen: SearchAccountScreen }
     },
     {
       initialRouteName,
@@ -50,9 +48,7 @@ const getAppNavigator = auth => {
   );
 };
 
-const getInitialScreen = auth => {
-  const { authUser } = auth;
-
+const getInitialScreen = authUser => {
   if (authUser) {
     const { caste_updated, profile_updated } = authUser;
 
@@ -71,18 +67,41 @@ const getInitialScreen = auth => {
 };
 
 export default class Main extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shouldUpdate: true
+    };
+  }
+
   componentWillMount() {
     NetInfo.addEventListener("connectionChange", netInfo => {
-      return this.props.handleNetworkChange(netInfo);
+      this.setState({ shouldUpdate: true }, () => {
+        this.props.handleNetworkChange(netInfo);
+      });
     });
   }
 
-  render() {
-    const { network, auth } = this.props;
-    const { connection } = network;
-    const { authInitialized } = auth;
+  componentWillReceiveProps(props) {
+    if (props.init.initialized) {
+      this.setState({ shouldUpdate: false });
+    }
+  }
 
-    const AppNavigator = getAppNavigator(auth);
+  shouldComponentUpdate() {
+    return this.state.shouldUpdate;
+  }
+
+  render() {
+    const { network, auth, init } = this.props;
+
+    const { connection } = network;
+    const { authUser } = auth;
+    const { initialized } = init;
+
+    const initialRouteName = getInitialScreen(authUser);
+    const AppNavigator = getAppNavigator(initialRouteName);
     const AppContainer = createAppContainer(AppNavigator);
 
     const noConnection = connection && connection.type === "none";
@@ -91,7 +110,7 @@ export default class Main extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         {noConnection && <NoNetwork />}
-        {hasConnection && authInitialized && <AppContainer />}
+        {hasConnection && initialized && <AppContainer />}
       </View>
     );
   }

@@ -11,7 +11,7 @@ class HomeTabs extends React.Component {
       <SideDrawer {...this.props}>
         <TopBar {...this.props} />
 
-        <Tabs tabBarUnderlineStyle={{ height: 2 }}>
+        <Tabs tabBarUnderlineStyle={{ height: 2 }} tabBarPosition="top">
           <Tab
             heading="Users"
             textStyle={{

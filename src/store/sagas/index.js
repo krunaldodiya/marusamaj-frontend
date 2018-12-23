@@ -1,4 +1,5 @@
 import { all } from "redux-saga/effects";
+import { addRelationWatcher } from "./add_relation";
 import { getAuthUserWatcher } from "./get_auth_user";
 import { getCastesWatcher } from "./get_castes";
 import { getUsersWatcher } from "./get_users";
@@ -21,7 +22,8 @@ function* rootSaga() {
     getUsersWatcher(),
     loginWatcher(),
     registerWatcher(),
-    logoutWatcher()
+    logoutWatcher(),
+    addRelationWatcher()
   ]);
 }
 

@@ -20,6 +20,7 @@ const api = {
   getUsers: `${httpUrl}/api/users/all`,
   wallet: `${httpUrl}/api/wallet/info`,
   changeAvatar: `${httpUrl}/api/avatar/change`,
+  requestRelation: `${httpUrl}/api/relation/request`,
 };
 
 export { api };
