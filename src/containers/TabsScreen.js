@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Home from "../components/Home";
+import Tabs from "../components/Tabs";
 import { getUsers, logout, toggleDrawer } from "../store/actions";
 
 const mapStateToProps = state => ({
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(Tabs);

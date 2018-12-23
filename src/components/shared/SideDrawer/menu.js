@@ -80,7 +80,7 @@ Menu = props => {
 
           <TouchableOpacity
             onPress={() => navigation.push("SettingsScreen")}
-            style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
+            style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
               style={{
@@ -90,6 +90,21 @@ Menu = props => {
               }}
             >
               Settings
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.push("SettingsScreen")}
+            style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
+          >
+            <Text
+              style={{
+                color: "#333",
+                fontFamily: theme.fonts.TitilliumWebRegular,
+                fontSize: 14
+              }}
+            >
+              Invite a friend
             </Text>
           </TouchableOpacity>
         </View>
@@ -103,7 +118,7 @@ Menu = props => {
                 color: "black"
               }}
             >
-              Events
+              Help
             </Text>
           </View>
 
@@ -118,10 +133,25 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Event List
+              FAQs
             </Text>
           </TouchableOpacity>
 
+          <TouchableOpacity
+            onPress={() => navigation.push("SettingsScreen")}
+            style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
+          >
+            <Text
+              style={{
+                color: "#333",
+                fontFamily: theme.fonts.TitilliumWebRegular,
+                fontSize: 14
+              }}
+            >
+              Contact us
+            </Text>
+          </TouchableOpacity>
+          
           <TouchableOpacity
             onPress={() => console.log("test")}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
@@ -133,7 +163,7 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Add Event
+              Terms & Privacy Policy
             </Text>
           </TouchableOpacity>
         </View>

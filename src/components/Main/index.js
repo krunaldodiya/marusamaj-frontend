@@ -1,10 +1,9 @@
 import React from "react";
-import { NetInfo, StatusBar, View } from "react-native";
+import { NetInfo, View } from "react-native";
 import { createAppContainer, createStackNavigator } from "react-navigation";
 import AccountListScreen from "../../containers/AccountListScreen";
 import AddRelationScreen from "../../containers/AddRelationScreen";
 import AvatarScreen from "../../containers/AvatarScreen";
-import HomeScreen from "../../containers/HomeScreen";
 import LoginScreen from "../../containers/LoginScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
@@ -15,6 +14,7 @@ import ResetPasswordScreen from "../../containers/ResetPasswordScreen";
 import SearchAccountScreen from "../../containers/SearchAccountScreen";
 import SearchScreen from "../../containers/SearchScreen";
 import SettingsScreen from "../../containers/SettingsScreen";
+import TabsScreen from "../../containers/TabsScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 import NoNetwork from "../NoNetwork";
@@ -24,7 +24,7 @@ const getAppNavigator = auth => {
 
   return createStackNavigator(
     {
-      HomeScreen: { screen: HomeScreen },
+      TabsScreen: { screen: TabsScreen },
       LoginScreen: { screen: LoginScreen },
       RegisterScreen: { screen: RegisterScreen },
       ManageProfileScreen: { screen: ManageProfileScreen },
@@ -64,7 +64,7 @@ const getInitialScreen = auth => {
       return "ManageProfileScreen";
     }
 
-    return "HomeScreen";
+    return "TabsScreen";
   }
 
   return "LoginScreen";
@@ -90,7 +90,6 @@ export default class Main extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar backgroundColor="#d80402" barStyle="light-content" />
         {noConnection && <NoNetwork />}
         {hasConnection && authInitialized && <AppContainer />}
       </View>

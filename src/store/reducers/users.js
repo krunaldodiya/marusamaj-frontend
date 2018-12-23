@@ -4,6 +4,7 @@ const initialState = {
   data: [],
   page: 1,
   last_page: null,
+  total: null,
   filters: {
     keywords: null,
     father_city: null,
@@ -34,6 +35,7 @@ export default (state = initialState, action) => {
         ...state,
         data: [...state.data, ...users.data],
         last_page: users.last_page,
+        total: users.total,
         loading: false,
         loaded: true
       };
