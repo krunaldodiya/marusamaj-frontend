@@ -29,9 +29,15 @@ class ContentBody extends React.Component {
   constructor(props) {
     super(props);
 
+    const { auth, navigation } = props;
+    const { authUser } = auth;
+    const { relative } = navigation.state.params;
+
     this.state = {
-      user_relation: null,
-      relative_relation: null,
+      from: authUser,
+      to: relative,
+      from_relation: null,
+      to_relation: null,
       relation: null
     };
   }
@@ -47,45 +53,57 @@ class ContentBody extends React.Component {
   setRelation = props => {
     const { auth, navigation } = props;
     const { authUser } = auth;
+    const { relatives } = authUser;
     const { relative } = navigation.state.params;
 
-    if (authUser.relatives.length) {
-      const relation = authUser.relatives.filter(
-        rel => relative.id === rel.relative_id
-      )[0];
-
+    if (relatives.length) {
+      const relation = relatives.filter(data => relative.id === data.from)[0];
       this.setState({ relation });
     }
   };
 
   render() {
-    const { navigation, auth, addRelation } = this.props;
-    const { user_relation, relative_relation, relation } = this.state;
-    const { authUser } = auth;
-    const { relative } = navigation.state.params;
-
-    const relationship =
-      user_relations[relative.gender][relative.marital_status];
+    const { addRelation } = this.props;
+    const { from, to, from_relation, to_relation, relation } = this.state;
+    const user_relationship = user_relations[to.gender][to.marital_status];
 
     return (
       <View style={{ flex: 1, padding: 10 }}>
         <View style={{ margin: 10 }}>
-          <Text
-            style={{
-              fontSize: 22,
-              fontFamily: theme.fonts.TitilliumWebSemiBold
-            }}
-          >
-            {relative.name}
-          </Text>
+          <View style={{ marginBottom: 5 }}>
+            <Text
+              style={{
+                fontSize: 22,
+                fontFamily: theme.fonts.TitilliumWebSemiBold,
+                color: "black"
+              }}
+            >
+              {to.name}
+            </Text>
+          </View>
+
+          {relation && (
+            <View style={{ marginBottom: 5 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  color: "red"
+                }}
+              >
+                {relation.to_relation}
+              </Text>
+            </View>
+          )}
         </View>
 
         {!relation && (
           <View style={{ flex: 1 }}>
             <View style={{ flex: 1 }}>
-              {relationship.map((user_relation_data, index) => {
-                const relative_relation_data =
-                  relative_relations[user_relation_data][authUser.gender];
+              {user_relationship.map((user_relation, index) => {
+                const { gender } = from;
+                const relative_relation =
+                  relative_relations[user_relation][gender];
 
                 return (
                   <View
@@ -95,23 +113,21 @@ class ContentBody extends React.Component {
                     <Text
                       onPress={() =>
                         this.setState({
-                          user_relation: user_relation_data,
-                          relative_relation: relative_relation_data
+                          from_relation: user_relation,
+                          to_relation: relative_relation
                         })
                       }
                       style={{
                         fontSize: 18,
                         fontFamily:
-                          user_relation === user_relation_data
+                          from_relation === user_relation
                             ? theme.fonts.TitilliumWebSemiBold
                             : theme.fonts.TitilliumWebRegular,
                         color:
-                          user_relation === user_relation_data
-                            ? "green"
-                            : "black"
+                          from_relation === user_relation ? "green" : "black"
                       }}
                     >
-                      {user_relation_data}
+                      {user_relation}
                     </Text>
                   </View>
                 );
@@ -119,12 +135,12 @@ class ContentBody extends React.Component {
             </View>
 
             <TouchableOpacity
-              disabled={!user_relation}
               onPress={() =>
                 addRelation({
-                  relative_id: relative.id,
-                  user_relation,
-                  relative_relation
+                  from: from.id,
+                  to: to.id,
+                  from_relation,
+                  to_relation
                 })
               }
               style={{
@@ -151,42 +167,73 @@ class ContentBody extends React.Component {
 
         {relation && (
           <View style={{ flex: 1 }}>
-            <View style={{ flex: 1 }} />
-
-            <View
-              style={{
-                justifyContent: "space-around",
-                flexDirection: "row"
-              }}
-            >
-              <View style={{ margin: 10 }}>
-                <Button
-                  small
-                  rounded
-                  bordered
-                  success={relation.status ? true : false}
-                  danger={relation.status ? false : true}
+            {relation.user_id === to.id && (
+              <View style={{ flex: 1, justifyContent: "flex-end" }}>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    flexDirection: "row"
+                  }}
                 >
-                  <Text>
-                    {relation.status
-                      ? `Added as ${relation.user_relation}`
-                      : `Request as ${relation.user_relation}`}
-                  </Text>
-                </Button>
-              </View>
+                  <View style={{ margin: 10 }}>
+                    <Button
+                      small
+                      rounded
+                      bordered
+                      success
+                    >
+                      <Text>accept</Text>
+                    </Button>
+                  </View>
 
-              <View style={{ margin: 10 }}>
-                <Button
-                  small
-                  rounded
-                  bordered
-                  success={relation.status ? true : false}
-                  danger={relation.status ? false : true}
-                >
-                  <Text>cancel</Text>
-                </Button>
+                  <View style={{ margin: 10 }}>
+                    <Button
+                      small
+                      rounded
+                      bordered
+                      danger
+                    >
+                      <Text>decline</Text>
+                    </Button>
+                  </View>
+                </View>
               </View>
-            </View>
+            )}
+
+            {relation.user_id === from.id && (
+              <View style={{ flex: 1, justifyContent: "flex-end" }}>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    flexDirection: "row"
+                  }}
+                >
+                  <View style={{ margin: 10 }}>
+                    <Button
+                      small
+                      rounded
+                      bordered
+                      success={relation.status ? true : false}
+                      danger={relation.status ? false : true}
+                    >
+                      <Text>{relation.status ? `Added` : `Requested`}</Text>
+                    </Button>
+                  </View>
+
+                  <View style={{ margin: 10 }}>
+                    <Button
+                      small
+                      rounded
+                      bordered
+                      success={relation.status ? true : false}
+                      danger={relation.status ? false : true}
+                    >
+                      <Text>cancel</Text>
+                    </Button>
+                  </View>
+                </View>
+              </View>
+            )}
           </View>
         )}
       </View>
