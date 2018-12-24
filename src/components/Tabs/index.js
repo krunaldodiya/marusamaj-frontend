@@ -2,8 +2,9 @@ import { Tab, Tabs, Text } from "native-base";
 import React from "react";
 import SideDrawer from "../../components/shared/SideDrawer";
 import TopBar from "../../components/shared/TopBar";
-import UserTab from "./UserTab";
 import theme from "../../libs/theme";
+import FamilyTab from "./FamilyTab";
+import UserTab from "./UserTab";
 
 class HomeTabs extends React.Component {
   render() {
@@ -57,7 +58,7 @@ class HomeTabs extends React.Component {
             tabStyle={{ backgroundColor: "#d80402" }}
             activeTabStyle={{ backgroundColor: "#d80402" }}
           >
-            <Text>hello</Text>
+            <FamilyTab {...this.props} />
           </Tab>
         </Tabs>
       </SideDrawer>

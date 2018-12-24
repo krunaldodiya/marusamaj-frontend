@@ -35,7 +35,7 @@ class ContentBody extends React.Component {
     const { relatives } = authUser;
     const { relative } = navigation.state.params;
 
-    if (!relative.length) {
+    if (!relatives.length) {
       this.setState({ relation: null });
     }
 
@@ -48,6 +48,8 @@ class ContentBody extends React.Component {
   render() {
     const { from, to, relation } = this.state;
 
+    console.log(relation);
+    
     return (
       <View style={{ flex: 1, padding: 10 }}>
         <Top {...this.props} to={to} relation={relation} />

@@ -13,7 +13,7 @@ import React from "react";
 import theme from "../../libs/theme";
 import styles from "./styles";
 
-const ContentBody = props => {
+const UserProfile = props => {
   const { navigation } = props;
   const { user } = navigation.state.params;
 
@@ -257,4 +257,4 @@ const ContentBody = props => {
   );
 };
 
-export default ContentBody;
+export default UserProfile;

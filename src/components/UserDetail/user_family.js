@@ -1,9 +1,9 @@
 import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
 import { FlatList } from "react-native";
-import theme from "../../../libs/theme";
+import theme from "../../libs/theme";
 
-class FamilyTab extends React.Component {
+class UserFamily extends React.Component {
   renderItem = (data, navigation) => {
     const { item } = data;
 
@@ -41,22 +41,18 @@ class FamilyTab extends React.Component {
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {item.to_relation}
+              {item.user.age} {item.user.gender}, {item.user.marital_status}
             </Text>
             <Text
               note
               style={{
                 marginTop: 5,
                 fontSize: 12,
-                color: "green",
-                fontFamily: theme.fonts.TitilliumWebSemiBold
+                color: "indigo",
+                fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {item.status == 1
-                ? "Accepted"
-                : item.status == 0 && item.user_id == item.to
-                ? "Requested"
-                : "Manage"}
+              {item.to_relation}
             </Text>
           </Body>
         </ListItem>
@@ -65,8 +61,9 @@ class FamilyTab extends React.Component {
   };
 
   render() {
-    const { auth, navigation } = this.props;
-    const { relatives } = auth.authUser;
+    const { navigation } = this.props;
+    const { user } = navigation.state.params;
+    const { relatives } = user;
 
     return (
       <View style={{ flex: 1 }}>
@@ -80,4 +77,4 @@ class FamilyTab extends React.Component {
   }
 }
 
-export default FamilyTab;
+export default UserFamily;

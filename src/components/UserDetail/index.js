@@ -1,8 +1,9 @@
-import { Container, View, Text } from "native-base";
+import { Container } from "native-base";
 import React from "react";
-import ContentBody from "./content_body";
 import ContentHeader from "./content_header";
 import styles from "./styles";
+import UserFamily from "./user_family";
+import UserProfile from "./user_profile";
 
 class UserDetail extends React.Component {
   constructor(props) {
@@ -27,12 +28,8 @@ class UserDetail extends React.Component {
           segment={segment}
           toggleSegment={this.toggleSegment}
         />
-        {segment === "profile" && <ContentBody {...this.props} />}
-        {segment === "family" && (
-          <View style={{ padding: 10 }}>
-            <Text>Family</Text>
-          </View>
-        )}
+        {segment === "profile" && <UserProfile {...this.props} />}
+        {segment === "family" && <UserFamily {...this.props} />}
       </Container>
     );
   }
