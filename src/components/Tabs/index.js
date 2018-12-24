@@ -45,7 +45,7 @@ class HomeTabs extends React.Component {
           </Tab>
 
           <Tab
-            heading="Alerts"
+            heading="Family"
             textStyle={{
               color: "#dedede",
               fontFamily: theme.fonts.TitilliumWebRegular

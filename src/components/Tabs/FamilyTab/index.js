@@ -1,7 +1,7 @@
 import { Text, View } from 'native-base';
 import React from 'react';
 
-​export default class NotificationTab extends React.Component {
+​export default class FamilyTab extends React.Component {
   render() {
     return (
       <View>
