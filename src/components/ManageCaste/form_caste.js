@@ -93,8 +93,8 @@ class CasteForm extends React.Component {
   };
 
   render() {
-    const { castes, casteData, updateUserData } = this.props;
-    const { caste_id, sub_caste_id } = casteData;
+    const { castes, authUser, updateUserData } = this.props;    
+    const { caste_id, sub_caste_id } = authUser;
 
     const data =
       caste_id === null
@@ -111,7 +111,7 @@ class CasteForm extends React.Component {
 
         <FlatList
           data={data}
-          extraData={casteData}
+          extraData={authUser}
           keyExtractor={(_, index) => index.toString()}
           renderItem={data => {
             return caste_id === null

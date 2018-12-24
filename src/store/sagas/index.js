@@ -8,7 +8,7 @@ import { loginWatcher } from "./login";
 import { logoutWatcher } from "./logout";
 import { registerWatcher } from "./register";
 import { requestOtpWatcher } from "./request_otp";
-import { updateUserProfileWatcher } from "./update_user_profile";
+import { updateAuthUserWatcher } from "./update_auth_user";
 import { verifyOtpWatcher } from "./verify_otp";
 
 function* rootSaga() {
@@ -18,7 +18,7 @@ function* rootSaga() {
     requestOtpWatcher(),
     verifyOtpWatcher(),
     getCastesWatcher(),
-    updateUserProfileWatcher(),
+    updateAuthUserWatcher(),
     getUsersWatcher(),
     loginWatcher(),
     registerWatcher(),

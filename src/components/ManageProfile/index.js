@@ -15,6 +15,13 @@ class ManageProfile extends React.Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    const { auth } = props;
+    const { authUser, errors } = auth;
+
+    this.setState({ authUser, errors });
+  }
+
   updateUserData = item => {
     const { authUser } = this.state;
 

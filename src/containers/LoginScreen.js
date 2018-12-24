@@ -4,7 +4,7 @@ import Login from "../components/Auth/Login";
 import { login } from "../store/actions";
 
 const mapStateToProps = state => ({
-  guest: state.guest
+  session: state.session
 });
 
 const mapDispatchToProps = dispatch => {

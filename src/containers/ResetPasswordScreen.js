@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import ResetPassword from "../components/Auth/ResetPassword";
 
 const mapStateToProps = state => ({
-  guest: state.guest
+  session: state.session
 });
 
 const mapDispatchToProps = dispatch => {

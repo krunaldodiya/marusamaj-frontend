@@ -6,10 +6,9 @@ import {
   GET_AUTH_USER,
   GET_AUTH_USER_FAIL,
   GET_AUTH_USER_SUCCESS,
-  SET_AUTH_USER,
-  UPDATE_USER_PROFILE,
-  UPDATE_USER_PROFILE_FAIL,
-  UPDATE_USER_PROFILE_SUCCESS
+  UPDATE_AUTH_USER,
+  UPDATE_AUTH_USER_SUCCESS,
+  UPDATE_AUTH_USER_FAIL,
 } from "../actions";
 
 const initialState = {
@@ -48,7 +47,7 @@ export default (state = initialState, action) => {
       };
     }
 
-    case UPDATE_USER_PROFILE: {
+    case UPDATE_AUTH_USER: {
       return {
         ...state,
         loading: true,
@@ -56,7 +55,7 @@ export default (state = initialState, action) => {
       };
     }
 
-    case UPDATE_USER_PROFILE_SUCCESS: {
+    case UPDATE_AUTH_USER_SUCCESS: {
       return {
         ...state,
         authUser: action.payload.authUser,
@@ -66,7 +65,7 @@ export default (state = initialState, action) => {
       };
     }
 
-    case UPDATE_USER_PROFILE_FAIL: {
+    case UPDATE_AUTH_USER_FAIL: {
       return {
         ...state,
         errors: action.payload.errors,
@@ -99,13 +98,6 @@ export default (state = initialState, action) => {
         errors: action.payload.errors,
         loading: false,
         loaded: true
-      };
-    }
-
-    case SET_AUTH_USER: {
-      return {
-        ...state,
-        authUser: action.payload.authUser
       };
     }
 

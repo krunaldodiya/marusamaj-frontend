@@ -7,7 +7,8 @@ import RegisterInfo from "./register_info";
 
 class Register extends React.Component {
   render() {
-    const { guest } = this.props;
+    const { session } = this.props;
+    const { loading } = session;
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -17,7 +18,7 @@ class Register extends React.Component {
           style={{ flex: 1 }}
           contentContainerStyle={{ flex: 1 }}
         >
-          <Loader loading={guest.loading} />
+          <Loader loading={loading} />
           <RegisterInfo />
           <RegisterForm {...this.props} />
         </KeyboardAvoidingView>

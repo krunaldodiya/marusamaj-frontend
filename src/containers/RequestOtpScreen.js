@@ -4,7 +4,7 @@ import RequestOtp from "../components/RequestOtp";
 import { handleOtpInput, requestOtp } from "../store/actions";
 
 const mapStateToProps = state => ({
-  guest: state.guest
+  session: state.session
 });
 
 const mapDispatchToProps = dispatch => {

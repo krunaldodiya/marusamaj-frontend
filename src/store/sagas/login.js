@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { api } from "../../libs/api";
+import { getInitialScreen } from "../../libs/screen";
 import { makeRequest, setAuthToken } from "../../services";
 import {
   GET_AUTH_USER_SUCCESS,
@@ -9,7 +10,7 @@ import {
 } from "../actions";
 
 function* login(action) {
-  const { username, password } = action.payload;
+  const { username, password, navigation } = action.payload;
 
   try {
     const { data } = yield call(makeRequest, api.login, {
@@ -27,6 +28,8 @@ function* login(action) {
       type: GET_AUTH_USER_SUCCESS,
       payload: { authUser: user }
     });
+
+    navigation.replace(getInitialScreen(user));
   } catch (error) {
     yield put({
       type: LOGIN_FAIL,

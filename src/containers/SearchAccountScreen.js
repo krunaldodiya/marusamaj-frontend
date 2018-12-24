@@ -3,7 +3,7 @@ import { bindActionCreators } from "redux";
 import SearchAccount from "../components/Auth/SearchAccount";
 
 const mapStateToProps = state => ({
-  guest: state.guest
+  session: state.session
 });
 
 const mapDispatchToProps = dispatch => {

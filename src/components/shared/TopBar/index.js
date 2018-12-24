@@ -10,9 +10,7 @@ const TobBar = props => {
     <Header
       androidStatusBarColor="#d80402"
       hasTabs
-      style={{
-        backgroundColor: "#d80402"
-      }}
+      style={{ backgroundColor: "#d80402" }}
     >
       <Left>
         <Icon

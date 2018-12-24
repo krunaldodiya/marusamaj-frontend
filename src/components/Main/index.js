@@ -17,6 +17,7 @@ import SettingsScreen from "../../containers/SettingsScreen";
 import TabsScreen from "../../containers/TabsScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
+import { getInitialScreen } from "../../libs/screen";
 import NoNetwork from "../NoNetwork";
 
 const getAppNavigator = initialRouteName => {
@@ -46,24 +47,6 @@ const getAppNavigator = initialRouteName => {
       }
     }
   );
-};
-
-const getInitialScreen = authUser => {
-  if (authUser) {
-    const { caste_updated, profile_updated } = authUser;
-
-    if (!caste_updated) {
-      return "ManageCasteScreen";
-    }
-
-    if (!profile_updated) {
-      return "ManageProfileScreen";
-    }
-
-    return "TabsScreen";
-  }
-
-  return "LoginScreen";
 };
 
 export default class Main extends React.Component {

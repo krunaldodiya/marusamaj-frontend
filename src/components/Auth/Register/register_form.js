@@ -16,8 +16,8 @@ class RegisterForm extends React.Component {
   }
 
   render() {
-    const { guest, navigation, register } = this.props;
-    const { loading, errors } = guest;
+    const { session, navigation, register } = this.props;
+    const { loading, errors } = session;
     const { mobile, username, password } = this.state;
 
     return (

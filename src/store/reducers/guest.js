@@ -1,16 +1,11 @@
 import {
-  LOGIN,
-  LOGIN_FAIL,
-  LOGIN_SUCCESS,
-  REGISTER,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS
+  GET_GUEST_USER,
+  GET_GUEST_USER_FAIL,
+  GET_GUEST_USER_SUCCESS
 } from "../actions";
 
 const initialState = {
-  mobile: null,
-  username: null,
-  password: null,
+  guestUser: null,
   errors: null,
   loading: false,
   loaded: false
@@ -18,7 +13,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN: {
+    case GET_GUEST_USER: {
       return {
         ...state,
         loading: true,
@@ -26,41 +21,17 @@ export default (state = initialState, action) => {
       };
     }
 
-    case LOGIN_SUCCESS: {
+    case GET_GUEST_USER_SUCCESS: {
       return {
         ...state,
+        authUser: action.payload.authUser,
+        errors: null,
         loading: false,
         loaded: true
       };
     }
 
-    case LOGIN_FAIL: {
-      return {
-        ...state,
-        errors: action.payload.errors,
-        mobile: null,
-        loading: false,
-        loaded: true
-      };
-    }
-
-    case REGISTER: {
-      return {
-        ...state,
-        loading: true,
-        loaded: false
-      };
-    }
-
-    case REGISTER_SUCCESS: {
-      return {
-        ...state,
-        loading: false,
-        loaded: true
-      };
-    }
-
-    case REGISTER_FAIL: {
+    case GET_GUEST_USER_FAIL: {
       return {
         ...state,
         errors: action.payload.errors,

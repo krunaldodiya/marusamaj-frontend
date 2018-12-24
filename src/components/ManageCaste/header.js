@@ -5,8 +5,8 @@ import { api } from "../../libs/api";
 import styles from "./styles";
 
 const TermsHeader = props => {
-  const { updateUserProfile, casteData, authUser, navigation } = props;
-  const { caste_id, sub_caste_id } = casteData;
+  const { updateAuthUser, authUser, navigation } = props;
+  const { caste_id, sub_caste_id } = authUser;
 
   return (
     <View style={styles.termsWrapper}>
@@ -23,14 +23,12 @@ const TermsHeader = props => {
       {caste_id && sub_caste_id && (
         <TouchableOpacity
           onPress={() =>
-            updateUserProfile({
+            updateAuthUser({
               authUser: {
                 ...authUser,
-                caste_id,
-                sub_caste_id
+                caste_updated: true
               },
               navigation,
-              screen: "ManageProfileScreen",
               url: api.updateUserCaste
             })
           }

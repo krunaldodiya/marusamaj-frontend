@@ -12,7 +12,6 @@ const api = {
   getUsersByMobile: `${httpUrl}/api/users/mobile`,
   updateUserCaste: `${httpUrl}/api/users/caste/update`,
   updateUserProfile: `${httpUrl}/api/users/profile/update`,
-  updateUserFamily: `${httpUrl}/api/users/family/update`,
   requestOtp: `${httpUrl}/api/auth/request-otp`,
   verifyOtp: `${httpUrl}/api/auth/verify-otp`,
   login: `${httpUrl}/api/guest/login`,

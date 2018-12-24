@@ -5,7 +5,7 @@ import { api } from "../../libs/api";
 import styles from "./styles";
 
 const TermsHeader = props => {
-  const { updateUserProfile, authUser, navigation } = props;
+  const { updateAuthUser, authUser, navigation } = props;
 
   return (
     <View style={styles.termsWrapper}>
@@ -15,10 +15,12 @@ const TermsHeader = props => {
 
       <TouchableOpacity
         onPress={() =>
-          updateUserProfile({
-            authUser,
+          updateAuthUser({
+            authUser: {
+              ...authUser,
+              profile_updated: true
+            },
             navigation,
-            screen: "TabsScreen",
             url: api.updateUserProfile
           })
         }

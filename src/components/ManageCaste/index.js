@@ -10,33 +10,37 @@ class ManageCaste extends React.Component {
     super(props);
 
     this.state = {
-      casteData: {
-        caste_id: props.auth.authUser.caste_id,
-        sub_caste_id: props.auth.authUser.sub_caste_id
-      }
+      authUser: props.auth.authUser
     };
   }
 
-  updateUserData = data => {
-    this.setState({ casteData: { ...this.state.casteData, ...data } });
+  componentWillReceiveProps(props) {
+    const { auth } = props;
+    const { authUser, errors } = auth;
+
+    this.setState({ authUser, errors });
+  }
+
+  updateUserData = item => {
+    const { authUser } = this.state;
+
+    this.setState({
+      authUser: { ...authUser, ...item }
+    });
   };
 
   render() {
+    const { authUser } = this.state;
     const { auth } = this.props;
-    const { authUser } = auth;
-    const { casteData } = this.state;
+    const { loading } = auth;
 
     return (
       <View style={styles.container}>
-        <Loader loading={auth.loading} />
-        <TermsHeader
-          {...this.props}
-          casteData={casteData}
-          authUser={authUser}
-        />
+        <Loader loading={loading} />
+        <TermsHeader {...this.props} authUser={authUser} />
         <CasteForm
           {...this.props}
-          casteData={casteData}
+          authUser={authUser}
           updateUserData={this.updateUserData}
         />
       </View>

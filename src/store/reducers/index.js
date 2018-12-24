@@ -6,6 +6,7 @@ import guest from "./guest";
 import init from "./init";
 import network from "./network";
 import otp from "./otp";
+import session from "./session";
 import users from "./users";
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   init,
   network,
   otp,
+  session,
   users
 });
 
