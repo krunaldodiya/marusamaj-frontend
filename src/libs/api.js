@@ -8,6 +8,7 @@ const api = {
   terms: `${httpUrl}/terms`,
   // api
   me: `${httpUrl}/api/users/me`,
+  getUserById: `${httpUrl}/api/users/id`,
   castes: `${httpUrl}/api/castes`,
   getUsersByMobile: `${httpUrl}/api/users/mobile`,
   updateUserCaste: `${httpUrl}/api/users/caste/update`,

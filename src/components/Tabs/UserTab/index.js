@@ -15,7 +15,7 @@ class UserTab extends React.Component {
       <List>
         <ListItem
           avatar
-          onPress={() => navigation.push("UserDetailScreen", { user: item })}
+          onPress={() => navigation.push("UserDetailScreen", { user_id: item.id })}
         >
           <Left>
             <Thumbnail

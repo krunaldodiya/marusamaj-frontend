@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
     case GET_GUEST_USER_SUCCESS: {
       return {
         ...state,
-        authUser: action.payload.authUser,
+        guestUser: action.payload.guestUser,
         errors: null,
         loading: false,
         loaded: true

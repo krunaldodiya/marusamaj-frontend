@@ -2,6 +2,7 @@ import { all } from "redux-saga/effects";
 import { addRelationWatcher } from "./add_relation";
 import { getAuthUserWatcher } from "./get_auth_user";
 import { getCastesWatcher } from "./get_castes";
+import { getGuestUserWatcher } from "./get_guest_user";
 import { getUsersWatcher } from "./get_users";
 import { handleNetworkWatcher } from "./handle_network";
 import { loginWatcher } from "./login";
@@ -23,7 +24,8 @@ function* rootSaga() {
     loginWatcher(),
     registerWatcher(),
     logoutWatcher(),
-    addRelationWatcher()
+    addRelationWatcher(),
+    getGuestUserWatcher()
   ]);
 }
 

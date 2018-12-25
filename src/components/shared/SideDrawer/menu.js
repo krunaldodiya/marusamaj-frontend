@@ -44,7 +44,7 @@ Menu = props => {
 
               <TouchableOpacity
                 onPress={() =>
-                  navigation.push("UserDetailScreen", { user: authUser })
+                  navigation.push("UserDetailScreen", { user_id: authUser.id })
                 }
               >
                 <Text

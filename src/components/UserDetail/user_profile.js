@@ -14,8 +14,8 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 const UserProfile = props => {
-  const { navigation } = props;
-  const { user } = navigation.state.params;
+  const { navigation, guest } = props;
+  const { guestUser } = guest;
 
   return (
     <Content style={styles.termsBody}>
@@ -26,7 +26,7 @@ const UserProfile = props => {
         >
           <Left>
             <Thumbnail
-              source={{ uri: user.avatar }}
+              source={{ uri: guestUser.avatar }}
               style={{ width: 65, height: 65 }}
             />
           </Left>
@@ -38,7 +38,7 @@ const UserProfile = props => {
                 fontFamily: theme.fonts.TitilliumWebSemiBold
               }}
             >
-              {user.name}
+              {guestUser.name}
             </Text>
             <Text
               note
@@ -49,7 +49,7 @@ const UserProfile = props => {
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {user.age} {user.gender}, {user.marital_status}
+              {guestUser.age} {guestUser.gender}, {guestUser.marital_status}
             </Text>
             <Text
               note
@@ -60,7 +60,7 @@ const UserProfile = props => {
                 fontFamily: theme.fonts.TitilliumWebRegular
               }}
             >
-              {user.sub_caste.name}, {user.caste.name}
+              {guestUser.sub_caste.name}, {guestUser.caste.name}
             </Text>
           </Body>
         </ListItem>
@@ -93,7 +93,7 @@ const UserProfile = props => {
               letterSpacing: 1
             }}
           >
-            {user.gender === "Female" ? "Private" : user.mobile}
+            {guestUser.gender === "Female" ? "Private" : guestUser.mobile}
           </Text>
         </ListItem>
       </List>
@@ -125,7 +125,7 @@ const UserProfile = props => {
               letterSpacing: 1
             }}
           >
-            {user.gender === "Female" ? "Private" : user.dob}
+            {guestUser.gender === "Female" ? "Private" : guestUser.dob}
           </Text>
         </ListItem>
       </List>
@@ -156,7 +156,7 @@ const UserProfile = props => {
               fontSize: 14
             }}
           >
-            {user.education}
+            {guestUser.education}
           </Text>
         </ListItem>
       </List>
@@ -187,7 +187,7 @@ const UserProfile = props => {
               fontSize: 14
             }}
           >
-            {user.occupation}
+            {guestUser.occupation}
           </Text>
         </ListItem>
       </List>
@@ -218,7 +218,7 @@ const UserProfile = props => {
               fontSize: 14
             }}
           >
-            {user.father_city}
+            {guestUser.father_city}
           </Text>
         </ListItem>
       </List>
@@ -249,7 +249,7 @@ const UserProfile = props => {
               fontSize: 14
             }}
           >
-            {user.mother_city}
+            {guestUser.mother_city}
           </Text>
         </ListItem>
       </List>

@@ -13,9 +13,9 @@ import styles from "./styles";
 import theme from "../../libs/theme";
 
 const ContentHeader = props => {
-  const { auth, navigation, segment, toggleSegment } = props;
+  const { auth, guest, navigation, segment, toggleSegment } = props;
   const { authUser } = auth;
-  const { user } = props.navigation.state.params;
+  const { guestUser } = guest;
 
   return (
     <Header
@@ -70,7 +70,7 @@ const ContentHeader = props => {
       </Body>
 
       <Right>
-        {authUser.id === user.id && (
+        {authUser.id === guestUser.id && (
           <Icon
             type="MaterialIcons"
             name="edit"
@@ -79,7 +79,7 @@ const ContentHeader = props => {
           />
         )}
 
-        {authUser.id !== user.id && (
+        {authUser.id !== guestUser.id && (
           <Icon
             type="MaterialIcons"
             name="person-add"

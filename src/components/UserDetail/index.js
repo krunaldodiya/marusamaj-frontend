@@ -1,4 +1,4 @@
-import { Container } from "native-base";
+import { Container, Spinner, View } from "native-base";
 import React from "react";
 import ContentHeader from "./content_header";
 import styles from "./styles";
@@ -14,22 +14,37 @@ class UserDetail extends React.Component {
     };
   }
 
+  componentWillMount() {
+    const { getGuestUser, navigation } = this.props;
+    const { user_id } = navigation.state.params;
+
+    getGuestUser({ user_id });
+  }
+
   toggleSegment = segment => {
     this.setState({ segment });
   };
 
   render() {
     const { segment } = this.state;
+    const { guest } = this.props;
+    const { loading, loaded } = guest;
 
     return (
       <Container style={styles.container}>
-        <ContentHeader
-          {...this.props}
-          segment={segment}
-          toggleSegment={this.toggleSegment}
-        />
-        {segment === "profile" && <UserProfile {...this.props} />}
-        {segment === "family" && <UserFamily {...this.props} />}
+        {loading && <Spinner size="small" />}
+
+        {loaded && (
+          <React.Fragment>
+            <ContentHeader
+              {...this.props}
+              segment={segment}
+              toggleSegment={this.toggleSegment}
+            />
+            {segment === "profile" && <UserProfile {...this.props} />}
+            {segment === "family" && <UserFamily {...this.props} />}
+          </React.Fragment>
+        )}
       </Container>
     );
   }
