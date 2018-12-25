@@ -4,7 +4,8 @@ import Avatar from "../components/Avatar";
 import { changeAvatar } from "../store/actions";
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  guest: state.guest
 });
 
 const mapDispatchToProps = dispatch => {

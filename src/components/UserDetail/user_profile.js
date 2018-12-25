@@ -22,7 +22,7 @@ const UserProfile = props => {
       <List style={{ backgroundColor: "#fff" }}>
         <ListItem
           avatar
-          onPress={() => navigation.push("AvatarScreen", { user })}
+          onPress={() => navigation.push("AvatarScreen")}
         >
           <Left>
             <Thumbnail

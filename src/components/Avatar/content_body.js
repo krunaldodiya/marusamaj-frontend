@@ -4,8 +4,9 @@ import styles from "./styles";
 
 class ContentBody extends React.Component {
   render() {
-    const { navigation } = this.props;
-    const { avatar } = navigation.state.params.user;
+    const { guest } = this.props;
+    const { guestUser } = guest;
+    const { avatar } = guestUser;
 
     const baseUrl = "https://res.cloudinary.com/marusamaj/image/upload";
     const splitAvatar = avatar.split(baseUrl);

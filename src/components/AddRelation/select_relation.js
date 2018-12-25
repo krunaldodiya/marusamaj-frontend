@@ -28,13 +28,13 @@ class SelectRelation extends React.Component {
   constructor(props) {
     super(props);
 
-    const { auth, navigation } = props;
+    const { auth, guest } = props;
     const { authUser } = auth;
-    const { relative } = navigation.state.params;
+    const { guestUser } = guest;
 
     this.state = {
       from: authUser,
-      to: relative,
+      to: guestUser,
       from_relation: null,
       to_relation: null
     };
@@ -83,7 +83,7 @@ class SelectRelation extends React.Component {
         <TouchableOpacity
           onPress={() =>
             addRelation({
-              type: 'send',
+              type: "send",
               from: from.id,
               to: to.id,
               from_relation,

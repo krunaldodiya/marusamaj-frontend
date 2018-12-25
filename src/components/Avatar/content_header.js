@@ -56,9 +56,9 @@ const uploadAvatar = (authUser, uploading, changeAvatar) => {
 
 class ContentHeader extends React.Component {
   render() {
-    const { auth, navigation, uploading, changeAvatar } = this.props;
+    const { auth, guest, navigation, uploading, changeAvatar } = this.props;
     const { authUser } = auth;
-    const { user } = this.props.navigation.state.params;
+    const { guestUser } = guest;
 
     return (
       <Header style={styles.termsWrapper} androidStatusBarColor="#d80402">
@@ -73,12 +73,12 @@ class ContentHeader extends React.Component {
 
         <Body>
           <Text numberOfLines={1} style={styles.termsHeader}>
-            {user.name}
+            {guestUser.name}
           </Text>
         </Body>
 
         <Right>
-          {authUser.id === user.id && (
+          {authUser.id === guestUser.id && (
             <Icon
               type="MaterialIcons"
               name="photo-camera"
