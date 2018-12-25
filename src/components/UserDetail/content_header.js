@@ -84,9 +84,7 @@ const ContentHeader = props => {
             type="MaterialIcons"
             name="person-add"
             style={styles.termsIcon}
-            onPress={() =>
-              navigation.push("AddRelationScreen", { relative: user })
-            }
+            onPress={() => navigation.push("AddRelationScreen")}
           />
         )}
       </Right>

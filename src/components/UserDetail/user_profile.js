@@ -93,7 +93,7 @@ const UserProfile = props => {
               letterSpacing: 1
             }}
           >
-            {guestUser.gender === "Female" ? "Private" : guestUser.mobile}
+            {guestUser.setting.show_mobile ? guestUser.mobile : "Private"}
           </Text>
         </ListItem>
       </List>
@@ -111,7 +111,7 @@ const UserProfile = props => {
                   color: "gray"
                 }}
               >
-                Birthdate
+                Birthday
               </Text>
             </View>
           </View>
@@ -125,7 +125,7 @@ const UserProfile = props => {
               letterSpacing: 1
             }}
           >
-            {guestUser.gender === "Female" ? "Private" : guestUser.dob}
+            {guestUser.setting.show_birthday ? guestUser.dob : "Private"}
           </Text>
         </ListItem>
       </List>

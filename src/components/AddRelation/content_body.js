@@ -10,13 +10,13 @@ class ContentBody extends React.Component {
   constructor(props) {
     super(props);
 
-    const { auth, navigation } = props;
+    const { auth, guest } = props;
     const { authUser } = auth;
-    const { relative } = navigation.state.params;
+    const { guestUser } = guest;
 
     this.state = {
       from: authUser,
-      to: relative,
+      to: guestUser,
       relation: null
     };
   }
@@ -30,25 +30,23 @@ class ContentBody extends React.Component {
   }
 
   setRelation = props => {
-    const { auth, navigation } = props;
+    const { auth, guest } = props;
     const { authUser } = auth;
     const { relatives } = authUser;
-    const { relative } = navigation.state.params;
+    const { guestUser } = guest;
 
     if (!relatives.length) {
       this.setState({ relation: null });
     }
 
     if (relatives.length) {
-      const relation = relatives.filter(data => relative.id === data.from)[0];
+      const relation = relatives.filter(data => guestUser.id === data.from)[0];
       this.setState({ relation });
     }
   };
 
   render() {
     const { from, to, relation } = this.state;
-
-    console.log(relation);
     
     return (
       <View style={{ flex: 1, padding: 10 }}>
