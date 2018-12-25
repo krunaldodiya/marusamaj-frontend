@@ -66,8 +66,9 @@ class FamilyTab extends React.Component {
 
   render() {
     const { auth, navigation } = this.props;
-    const { relatives } = auth.authUser;
-
+    const { authUser } = auth;
+    const { relatives } = authUser;
+    
     return (
       <View style={{ flex: 1 }}>
         <FlatList
