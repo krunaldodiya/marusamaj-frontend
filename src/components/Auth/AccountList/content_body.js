@@ -71,9 +71,21 @@ class ContentBody extends React.Component {
         </View>
 
         <View style={{ flex: 1 }}>
-          {loading && <Text>Please, wait...</Text>}
+          {loading && (
+            <View style={{ padding: 10 }}>
+              <Text
+                style={{
+                  color: "black",
+                  fontFamily: theme.fonts.TitilliumWebSemiBold,
+                  fontSize: 14
+                }}
+              >
+                Please, wait...
+              </Text>
+            </View>
+          )}
 
-          {loaded && (
+          {!loading && (
             <View style={{ padding: 5, marginBottom: 5 }}>
               {data.map(test => (
                 <View>

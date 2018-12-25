@@ -14,8 +14,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { guest, navigation } = this.props;
-    const { errors } = guest;
+    const { session, navigation } = this.props;
+    const { errors } = session;
     const { username } = this.state;
 
     return (
