@@ -81,7 +81,7 @@ Menu = props => {
           <TouchableOpacity
             onPress={() => {
               toggleDrawer({ isOpen: false });
-              navigation.navigate("AccountListScreen", { type: "switch" });
+              navigation.replace("AccountListScreen", { type: "switch" });
             }}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
