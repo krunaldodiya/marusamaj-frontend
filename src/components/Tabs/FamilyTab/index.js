@@ -11,9 +11,9 @@ class FamilyTab extends React.Component {
       <List>
         <ListItem
           avatar
-          onPress={() =>
-            navigation.push("UserDetailScreen", { user_id: item.user.id })
-          }
+          onPress={() => {
+            navigation.push("UserDetailScreen", { user_id: item.user.id });
+          }}
         >
           <Left>
             <Thumbnail
@@ -68,7 +68,7 @@ class FamilyTab extends React.Component {
     const { auth, navigation } = this.props;
     const { authUser } = auth;
     const { relatives } = authUser;
-    
+
     return (
       <View style={{ flex: 1 }}>
         <FlatList

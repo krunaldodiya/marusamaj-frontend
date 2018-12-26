@@ -1,6 +1,7 @@
 import {
   Body,
   Content,
+  Icon,
   Left,
   List,
   ListItem,
@@ -14,22 +15,36 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 const UserProfile = props => {
-  const { navigation, guest } = props;
+  const { navigation, guest, auth } = props;
   const { guestUser } = guest;
+  const { authUser } = auth;
 
   return (
     <Content style={styles.termsBody}>
       <List style={{ backgroundColor: "#fff" }}>
-        <ListItem
-          avatar
-          onPress={() => navigation.push("AvatarScreen")}
-        >
+        <ListItem avatar onPress={() => navigation.push("AvatarScreen")}>
           <Left>
             <Thumbnail
               source={{ uri: guestUser.avatar }}
               style={{ width: 65, height: 65 }}
             />
+            {guestUser.id === authUser.id && (
+              <Icon
+                type="MaterialIcons"
+                name="photo-camera"
+                style={{
+                  textAlign: 'center',
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  backgroundColor: "white",
+                  borderRadius: 10,
+                  fontSize: 15
+                }}
+              />
+            )}
           </Left>
+
           <Body style={{ borderBottomWidth: 0 }}>
             <Text
               style={{

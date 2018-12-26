@@ -1,21 +1,36 @@
 import {
   Body,
+  Button,
   Header,
-  Left,
-  Text,
   Icon,
+  Left,
   Right,
   Segment,
-  Button
+  Text
 } from "native-base";
 import React from "react";
-import styles from "./styles";
 import theme from "../../libs/theme";
+import styles from "./styles";
+
+getRelationStatus = (authUser, guestUser) => {
+  const { relatives } = authUser;
+
+  if (!relatives.length) {
+    return "person-add";
+  }
+
+  if (relatives.length) {
+    const relation = relatives.filter(data => guestUser.id === data.from)[0];
+    return relation && relation.status ? "verified-user" : "access-alarms";
+  }
+};
 
 const ContentHeader = props => {
   const { auth, guest, navigation, segment, toggleSegment } = props;
   const { authUser } = auth;
   const { guestUser } = guest;
+
+  const status = getRelationStatus(authUser, guestUser);
 
   return (
     <Header
@@ -82,7 +97,7 @@ const ContentHeader = props => {
         {authUser.id !== guestUser.id && (
           <Icon
             type="MaterialIcons"
-            name="person-add"
+            name={status}
             style={styles.termsIcon}
             onPress={() => navigation.push("AddRelationScreen")}
           />

@@ -1,4 +1,4 @@
-import { Container, Spinner, View } from "native-base";
+import { Container, Spinner } from "native-base";
 import React from "react";
 import ContentHeader from "./content_header";
 import styles from "./styles";
@@ -20,10 +20,6 @@ class UserDetail extends React.Component {
 
     getGuestUser({ user_id });
   }
-
-  toggleSegment = segment => {
-    this.setState({ segment });
-  };
 
   render() {
     const { segment } = this.state;
