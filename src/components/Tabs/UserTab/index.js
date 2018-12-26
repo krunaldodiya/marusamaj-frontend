@@ -1,4 +1,12 @@
-import { Body, Left, List, ListItem, Thumbnail, View } from "native-base";
+import {
+  Body,
+  Left,
+  List,
+  ListItem,
+  Spinner,
+  Thumbnail,
+  View
+} from "native-base";
 import React from "react";
 import { FlatList, Text } from "react-native";
 import theme from "../../../libs/theme";
@@ -69,21 +77,51 @@ class UserTab extends React.Component {
 
   render() {
     const { users, navigation, getUsers } = this.props;
-    const { data } = users;
+    const { data, loading, page, last_page } = users;
 
     return (
       <View style={{ flex: 1 }}>
-        <FlatList
-          data={data}
-          onEndReached={() => {
-            if (users.last_page > users.page) {
-              getUsers({ page: users.page + 1 });
-            }
-          }}
-          onEndReachedThreshold={0.5}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={data => this.renderItem(data, navigation)}
-        />
+        {loading && (
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <Spinner color="#000" size="small" />
+          </View>
+        )}
+
+        {!loading && (
+          <FlatList
+            data={data}
+            onEndReached={() => {
+              if (users.last_page > users.page) {
+                getUsers({ page: users.page + 1 });
+              }
+            }}
+            ListFooterComponent={() => {
+              return (
+                <View style={{ justifyContent: "center" }}>
+                  {page < last_page ? (
+                    <View style={{ padding: 10 }}>
+                      <Spinner color="#000" size="small" />
+                    </View>
+                  ) : (
+                    <View style={{ padding: 10 }}>
+                      <Text
+                        style={{
+                          textAlign: "center",
+                          fontFamily: theme.fonts.TitilliumWebRegular
+                        }}
+                      >
+                        No more data.
+                      </Text>
+                    </View>
+                  )}
+                </View>
+              );
+            }}
+            onEndReachedThreshold={0.5}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={data => this.renderItem(data, navigation)}
+          />
+        )}
       </View>
     );
   }
