@@ -17,7 +17,7 @@ class ContentBody extends React.Component {
     };
   }
 
-  searchAccount = () => {
+  ForgotPassword = () => {
     const { mobile, data } = this.state;
     this.setState({ loading: true });
 
@@ -63,7 +63,7 @@ class ContentBody extends React.Component {
               bordered
               danger
               disabled={mobile.length !== 10}
-              onPress={() => this.searchAccount()}
+              onPress={() => this.ForgotPassword()}
             >
               <Text style={{ fontSize: 12 }}>SEARCH</Text>
             </Button>

@@ -72,7 +72,7 @@ class LoginForm extends React.Component {
 
         <View style={{ padding: 15 }}>
           <TouchableOpacity
-            onPress={() => navigation.replace("SearchAccountScreen")}
+            onPress={() => navigation.replace("ForgotPasswordScreen")}
           >
             <Text
               style={{

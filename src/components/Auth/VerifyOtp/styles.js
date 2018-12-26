@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import theme from "../../libs/theme";
+import theme from "../../../libs/theme";
 
 export default StyleSheet.create({
   container: {
@@ -40,6 +40,7 @@ export default StyleSheet.create({
     return {
       borderColor: errors ? "#e74c3c" : "black",
       marginHorizontal: 20,
+      marginTop: 10,
       borderWidth: 1,
       borderRadius: 10,
       paddingLeft: 20,
@@ -47,7 +48,7 @@ export default StyleSheet.create({
     };
   },
   submitButtonWrapper: {
-    marginTop: 30,
+    marginTop: 40,
     alignSelf: "center",
     borderBottomWidth: 0
   },
@@ -70,5 +71,35 @@ export default StyleSheet.create({
     textAlign: "center",
     fontFamily: theme.fonts.TitilliumWebSemiBold,
     color: "#ccc"
+  },
+  changeMobileWrapper: {
+    alignSelf: "center"
+  },
+  changeMobileButton: {
+    borderColor: "indigo",
+    borderRadius: 5
+  },
+  changeMobileText: {
+    textAlign: "center",
+    fontSize: 12,
+    color: "indigo",
+    fontFamily: theme.fonts.TitilliumWebRegular
+  },
+  timerWrapper: {
+    alignSelf: "center"
+  },
+  timer: {
+    borderWidth: 1,
+    justifyContent: "center",
+    width: 40,
+    height: 40,
+    borderColor: "indigo",
+    borderRadius: 40
+  },
+  timerText: {
+    textAlign: "center",
+    fontSize: 14,
+    color: "indigo",
+    fontFamily: theme.fonts.TitilliumWebSemiBold
   }
 });

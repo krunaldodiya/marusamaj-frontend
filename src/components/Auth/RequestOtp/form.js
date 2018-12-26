@@ -3,8 +3,8 @@ import React from "react";
 import styles from "./styles";
 
 const RequestOtpForm = props => {
-  const { guest, navigation, requestOtp, handleOtpInput } = props;
-  const { mobile, errors, loading } = guest;
+  const { otp, navigation, requestOtp, handleOtpInput } = props;
+  const { mobile, errors, loading } = otp;
 
   return (
     <Form style={styles.formWrapper}>

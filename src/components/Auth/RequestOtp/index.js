@@ -1,17 +1,19 @@
 import React from "react";
 import { KeyboardAvoidingView, SafeAreaView } from "react-native";
 // component
-import Loader from "../../shared/Loader";
-import LoginForm from "./reset_form";
-import LoginInfo from "./reset_info";
+import Loader from "../../../components/shared/Loader";
+import RequestOtpForm from "./form";
+import Info from "./info";
+// styles
+import styles from "./styles";
 
-class SearchAccount extends React.Component {
+class RequestOtp extends React.Component {
   render() {
-    const { session } = this.props;
-    const { loading } = session;
+    const { otp } = this.props;
+    const { loading } = otp;
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
         <KeyboardAvoidingView
           behavior="position"
           enabled
@@ -19,12 +21,12 @@ class SearchAccount extends React.Component {
           contentContainerStyle={{ flex: 1 }}
         >
           <Loader loading={loading} />
-          <LoginInfo />
-          <LoginForm {...this.props} />
+          <Info />
+          <RequestOtpForm {...this.props} />
         </KeyboardAvoidingView>
       </SafeAreaView>
     );
   }
 }
 
-export default SearchAccount;
+export default RequestOtp;

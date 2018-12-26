@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import SearchAccount from "../components/Auth/SearchAccount";
+import ForgotPassword from "../components/Auth/ForgotPassword";
 
 const mapStateToProps = state => ({
   session: state.session
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchAccount);
+)(ForgotPassword);

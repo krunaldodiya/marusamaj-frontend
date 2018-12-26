@@ -3,7 +3,7 @@ import React from "react";
 import { Image } from "react-native";
 import styles from "./styles";
 
-const phoneHand = require("../../../assets/images/logo.png");
+const phoneHand = require("../../../../assets/images/logo.png");
 
 const TopImage = () => (
   <View style={styles.topImageWrapper}>

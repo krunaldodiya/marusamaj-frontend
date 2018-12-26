@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   mobile: null,
-  otp: null,
+  serverOtp: null,
   clientOtp: null,
   otpVerified: false,
   errors: null,
@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
     case REQUEST_OTP_SUCCESS: {
       return {
         ...state,
-        otp: action.payload.otp,
+        serverOtp: action.payload.otp,
         loading: false,
         loaded: true
       };

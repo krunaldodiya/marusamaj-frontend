@@ -13,7 +13,7 @@ const getInitialScreen = authUser => {
     return "TabsScreen";
   }
 
-  return "LoginScreen";
+  return "RequestOtpScreen";
 };
 
 export { getInitialScreen };

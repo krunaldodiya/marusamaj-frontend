@@ -11,7 +11,7 @@ import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RegisterScreen from "../../containers/RegisterScreen";
 import RequestOtpScreen from "../../containers/RequestOtpScreen";
 import ResetPasswordScreen from "../../containers/ResetPasswordScreen";
-import SearchAccountScreen from "../../containers/SearchAccountScreen";
+import ForgotPasswordScreen from "../../containers/ForgotPasswordScreen";
 import SearchScreen from "../../containers/SearchScreen";
 import SettingsScreen from "../../containers/SettingsScreen";
 import TabsScreen from "../../containers/TabsScreen";
@@ -38,7 +38,7 @@ const getAppNavigator = initialRouteName => {
       RequestOtpScreen: { screen: RequestOtpScreen },
       VerifyOtpScreen: { screen: VerifyOtpScreen },
       AccountListScreen: { screen: AccountListScreen },
-      SearchAccountScreen: { screen: SearchAccountScreen }
+      ForgotPasswordScreen: { screen: ForgotPasswordScreen }
     },
     {
       initialRouteName,
@@ -67,9 +67,11 @@ export default class Main extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.init.initialized) {
-      this.setState({ shouldUpdate: false });
-    }
+    this.setState({ shouldUpdate: true });
+
+    // if (props.init.initialized) {
+    //   this.setState({ shouldUpdate: false });
+    // }
   }
 
   shouldComponentUpdate() {
