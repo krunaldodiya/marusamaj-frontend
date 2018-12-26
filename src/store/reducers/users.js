@@ -1,4 +1,5 @@
 import {
+  CHANGE_AVATAR,
   GET_USERS,
   GET_USERS_FAIL,
   GET_USERS_SUCCESS,
@@ -60,6 +61,19 @@ export default (state = initialState, action) => {
         data: [],
         loading: false,
         loaded: true
+      };
+    }
+
+    case CHANGE_AVATAR: {
+      const { authUser } = action.payload;
+
+      const users = state.data.map(user => {
+        return user.id === authUser.id ? authUser : user;
+      });
+
+      return {
+        ...state,
+        data: users
       };
     }
 

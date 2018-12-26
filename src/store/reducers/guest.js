@@ -1,7 +1,8 @@
 import {
   GET_GUEST_USER,
   GET_GUEST_USER_FAIL,
-  GET_GUEST_USER_SUCCESS
+  GET_GUEST_USER_SUCCESS,
+  CHANGE_AVATAR
 } from "../actions";
 
 const initialState = {
@@ -37,6 +38,13 @@ export default (state = initialState, action) => {
         errors: action.payload.errors,
         loading: false,
         loaded: true
+      };
+    }
+
+    case CHANGE_AVATAR: {
+      return {
+        ...state,
+        guestUser: action.payload.authUser
       };
     }
 
