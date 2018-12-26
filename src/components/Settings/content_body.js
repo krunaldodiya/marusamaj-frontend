@@ -1,9 +1,13 @@
-import { Button, Input, Switch, Text, View } from "native-base";
+import { Button, Switch, Text, View } from "native-base";
 import React from "react";
+import { TextInput } from "react-native";
 import theme from "../../libs/theme";
 
 class ContentBody extends React.Component {
   render() {
+    const { auth } = this.props;
+    const { authUser } = auth;
+
     return (
       <View style={{ justifyContent: "center" }}>
         <View
@@ -70,17 +74,78 @@ class ContentBody extends React.Component {
               color: "#d80402"
             }}
           >
+            UPDATE AADHAAR CARD
+          </Text>
+
+          <TextInput
+            placeholder="Update Aadhaar Card"
+            placeholderTextColor="#000"
+            keyboardType="number-pad"
+            maxLength={10}
+            value={authUser.username}
+            onChangeText={number => console.log(number)}
+            style={{
+              color: 'black',
+              borderWidth: 1,
+              borderColor: "gray",
+              marginTop: 10,
+              borderRadius: 30,
+              paddingVertical: 5,
+              paddingLeft: 15,
+              fontFamily: theme.fonts.TitilliumWebRegular
+            }}
+          />
+
+          <View style={{ marginTop: 20, marginBottom: 10 }}>
+            <Button small danger rounded>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 14,
+                  color: "white"
+                }}
+              >
+                UPDATE
+              </Text>
+            </Button>
+          </View>
+        </View>
+
+
+        <View
+          style={{
+            padding: 10,
+            marginBottom: 10,
+            borderBottomWidth: 1,
+            borderBottomColor: "#d80402"
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: theme.fonts.TitilliumWebRegular,
+              fontSize: 14,
+              color: "#d80402"
+            }}
+          >
             CHANGE MOBILE
           </Text>
 
-          <Input
+          <TextInput
             placeholder="Change Mobile"
+            placeholderTextColor="#000"
+            keyboardType="number-pad"
+            maxLength={10}
+            value={authUser.mobile}
+            onChangeText={number => console.log(number)}
             style={{
+              color: 'black',
               borderWidth: 1,
+              borderColor: "gray",
               marginTop: 10,
-              padding: 15,
-              borderRadius: 20,
-              borderColor: "gray"
+              borderRadius: 30,
+              paddingVertical: 5,
+              paddingLeft: 15,
+              fontFamily: theme.fonts.TitilliumWebRegular
             }}
           />
 
@@ -99,6 +164,7 @@ class ContentBody extends React.Component {
           </View>
         </View>
 
+
         <View
           style={{
             padding: 10
@@ -111,43 +177,39 @@ class ContentBody extends React.Component {
               color: "#d80402"
             }}
           >
-            CHANGE PASSWORD
+            DEFAULT ACCOUNT
           </Text>
 
-          <Input
-            placeholder="New Password"
+          <View
             style={{
-              borderWidth: 1,
-              marginTop: 10,
-              padding: 15,
-              borderRadius: 20,
-              borderColor: "gray"
+              marginTop: 20,
+              flexDirection: "row",
+              justifyContent: "space-between"
             }}
-          />
+          >
+            <View style={{ justifyContent: "center" }}>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebSemiBold,
+                  fontSize: 18,
+                  color: "#000"
+                }}
+              >
+                Krunal Arvindkumar Dodiya
+              </Text>
+            </View>
 
-          <Input
-            placeholder="New Password"
-            style={{
-              borderWidth: 1,
-              marginTop: 10,
-              padding: 15,
-              borderRadius: 20,
-              borderColor: "gray"
-            }}
-          />
-
-          <View style={{ marginTop: 20, marginBottom: 10 }}>
-            <Button small danger rounded>
+            <View style={{ justifyContent: "center" }}>
               <Text
                 style={{
                   fontFamily: theme.fonts.TitilliumWebRegular,
                   fontSize: 14,
-                  color: "white"
+                  color: "#d80402"
                 }}
               >
                 CHANGE
               </Text>
-            </Button>
+            </View>
           </View>
         </View>
       </View>

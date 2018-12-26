@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
 
 Menu = props => {
-  const { navigation, auth, logout } = props;
+  const { toggleDrawer, navigation, auth, logout } = props;
   const { authUser } = auth;
 
   return (
@@ -79,7 +79,10 @@ Menu = props => {
           </View>
 
           <TouchableOpacity
-            onPress={() => navigation.push("SettingsScreen")}
+            onPress={() => {
+              toggleDrawer({ isOpen: false });
+              navigation.push("SettingsScreen");
+            }}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
@@ -151,7 +154,7 @@ Menu = props => {
               Contact us
             </Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             onPress={() => console.log("test")}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
@@ -170,7 +173,12 @@ Menu = props => {
       </View>
 
       <View style={{ backgroundColor: "lightblue", padding: 15 }}>
-        <TouchableOpacity onPress={() => logout({ navigation })}>
+        <TouchableOpacity
+          onPress={() => {
+            toggleDrawer({ isOpen: false });
+            logout({ navigation });
+          }}
+        >
           <Text
             style={{
               fontFamily: theme.fonts.TitilliumWebRegular,
