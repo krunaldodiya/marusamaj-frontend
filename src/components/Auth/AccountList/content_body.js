@@ -10,6 +10,7 @@ import {
   View
 } from "native-base";
 import React from "react";
+import Loader from "../../../components/shared/Loader";
 import { api } from "../../../libs/api";
 import theme from "../../../libs/theme";
 import { getAuthMobile } from "../../../services";
@@ -47,9 +48,11 @@ class ContentBody extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
+        <Loader loading={loading} />
+
         <View style={{ flex: 1 }}>
-          {loading && (
-            <View style={{ padding: 10 }}>
+          {!data.length ? (
+            <View style={{ padding: 20 }}>
               <Text
                 style={{
                   color: "black",
@@ -57,73 +60,57 @@ class ContentBody extends React.Component {
                   fontSize: 14
                 }}
               >
-                Please, wait...
+                {loading ? "Loading, please wait..." : "No Accounts"}
               </Text>
             </View>
-          )}
+          ) : (
+            <View>
+              {data.map(user => (
+                <List>
+                  <ListItem
+                    avatar
+                    onPress={() => {
+                      this.setState({ loading: true });
 
-          {!loading && (
-            <View style={{ flex: 1 }}>
-              {!data.length ? (
-                <View>
-                  <Text
-                    style={{
-                      color: "black",
-                      fontFamily: theme.fonts.TitilliumWebSemiBold,
-                      fontSize: 14
+                      return login({
+                        user_id: user.id,
+                        navigation,
+                        authenticated: type === "switch"
+                      });
                     }}
                   >
-                    No Accounts
-                  </Text>
-                </View>
-              ) : (
-                <View>
-                  {data.map(user => (
-                    <List>
-                      <ListItem
-                        avatar
-                        onPress={() => {
-                          return login({
-                            user_id: user.id,
-                            navigation,
-                            authenticated: type === "switch"
-                          });
+                    <Left>
+                      <Thumbnail
+                        source={{ uri: user.avatar }}
+                        style={{ width: 40, height: 40 }}
+                      />
+                    </Left>
+                    <Body>
+                      <Text
+                        numberOfLines={1}
+                        style={{
+                          fontSize: 16,
+                          color: "#000",
+                          fontFamily: theme.fonts.TitilliumWebSemiBold
                         }}
                       >
-                        <Left>
-                          <Thumbnail
-                            source={{ uri: user.avatar }}
-                            style={{ width: 40, height: 40 }}
-                          />
-                        </Left>
-                        <Body>
-                          <Text
-                            numberOfLines={1}
-                            style={{
-                              fontSize: 16,
-                              color: "#000",
-                              fontFamily: theme.fonts.TitilliumWebSemiBold
-                            }}
-                          >
-                            {user.name}
-                          </Text>
-                          <Text
-                            note
-                            style={{
-                              marginTop: 1,
-                              fontSize: 12,
-                              color: "#333",
-                              fontFamily: theme.fonts.TitilliumWebRegular
-                            }}
-                          >
-                            {user.age} {user.gender}, {user.marital_status}
-                          </Text>
-                        </Body>
-                      </ListItem>
-                    </List>
-                  ))}
-                </View>
-              )}
+                        {user.name}
+                      </Text>
+                      <Text
+                        note
+                        style={{
+                          marginTop: 1,
+                          fontSize: 12,
+                          color: "#333",
+                          fontFamily: theme.fonts.TitilliumWebRegular
+                        }}
+                      >
+                        {user.age} {user.gender}, {user.marital_status}
+                      </Text>
+                    </Body>
+                  </ListItem>
+                </List>
+              ))}
             </View>
           )}
         </View>
@@ -133,6 +120,8 @@ class ContentBody extends React.Component {
             small
             danger
             onPress={() => {
+              this.setState({ loading: true });
+
               return register({
                 mobile,
                 navigation,

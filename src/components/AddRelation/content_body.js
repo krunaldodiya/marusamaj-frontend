@@ -1,5 +1,6 @@
 import { View } from "native-base";
 import React from "react";
+import Loader from "../../components/shared/Loader";
 import FromRequest from "./from_request";
 import RequestAccepted from "./request_accepted";
 import SelectRelation from "./select_relation";
@@ -47,9 +48,13 @@ class ContentBody extends React.Component {
 
   render() {
     const { from, to, relation } = this.state;
-    
+    const { auth } = this.props;
+    const { loading } = auth;
+
     return (
       <View style={{ flex: 1, padding: 10 }}>
+        <Loader loading={loading} />
+
         <Top {...this.props} to={to} relation={relation} />
 
         {!relation && <SelectRelation {...this.props} />}
