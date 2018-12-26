@@ -1,12 +1,14 @@
-import { Text, View } from 'native-base';
-import React from 'react';
+import { Text, View } from "native-base";
+import React from "react";
 
-​export default class EventTab extends React.Component {
+class EventTab extends React.Component {
   render() {
     return (
-      <View>
-          <Text>hello</Text>
+      <View style={{ flex: 1, padding: 20 }}>
+        <Text>No Events Yet.</Text>
       </View>
     );
   }
 }
+
+export default EventTab;

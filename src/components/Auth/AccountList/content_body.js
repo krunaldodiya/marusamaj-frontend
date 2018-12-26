@@ -43,7 +43,8 @@ class ContentBody extends React.Component {
 
   render() {
     const { loading, mobile, data } = this.state;
-    const { login, register, navigation } = this.props;
+    const { login, register, navigation, auth } = this.props;
+    const { authUser } = auth;
     const { type } = navigation.state.params;
 
     return (
@@ -66,7 +67,12 @@ class ContentBody extends React.Component {
           ) : (
             <View>
               {data.map(user => (
-                <List>
+                <List
+                  style={{
+                    backgroundColor:
+                      authUser && authUser.id === user.id ? "#eee" : "white"
+                  }}
+                >
                   <ListItem
                     avatar
                     onPress={() => {
