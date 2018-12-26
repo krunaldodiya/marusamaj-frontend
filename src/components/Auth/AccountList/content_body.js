@@ -1,9 +1,10 @@
 import axios from "axios";
 import { Button, Text, View } from "native-base";
 import React from "react";
-import { TextInput } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { api } from "../../../libs/api";
 import theme from "../../../libs/theme";
+import { getAuthMobile } from "../../../services";
 
 class ContentBody extends React.Component {
   constructor(props) {
@@ -11,65 +12,33 @@ class ContentBody extends React.Component {
 
     this.state = {
       loading: false,
-      loaded: false,
-      mobile: "",
+      mobile: null,
       data: []
     };
   }
 
-  ForgotPassword = () => {
-    const { mobile, data } = this.state;
-    this.setState({ loading: true });
+  componentDidMount = async () => {
+    const mobile = await getAuthMobile();
+
+    this.setState({ loading: true, mobile });
 
     axios
       .post(api.getUsersByMobile, { mobile }, {})
       .then(({ data }) => {
-        this.setState({ data: data.users, loading: false, loaded: true });
+        this.setState({ data: data.users, loading: false });
       })
       .catch(() => {
-        this.setState({ loading: false, loaded: true });
+        this.setState({ loading: false });
       });
   };
 
   render() {
-    const { mobile, loading, loaded, data } = this.state;
+    const { loading, mobile, data } = this.state;
+    const { login, register, navigation, switchAccount } = this.props;
+    const { type } = navigation.state.params;
 
     return (
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            borderBottomWidth: 0.5,
-            borderBottomColor: mobile.length !== 10 ? "#ccc" : "#d9534f"
-          }}
-        >
-          <View style={{ marginLeft: 5 }}>
-            <TextInput
-              placeholder="Mobile Number"
-              placeholderTextColor="gray"
-              autoCorrect={false}
-              keyboardType="number-pad"
-              maxLength={10}
-              onChangeText={number => this.setState({ mobile: number })}
-              style={{ width: 200, fontSize: 16 }}
-            />
-          </View>
-
-          <View style={{ marginRight: 5, justifyContent: "center" }}>
-            <Button
-              rounded
-              small
-              bordered
-              danger
-              disabled={mobile.length !== 10}
-              onPress={() => this.ForgotPassword()}
-            >
-              <Text style={{ fontSize: 12 }}>SEARCH</Text>
-            </Button>
-          </View>
-        </View>
-
         <View style={{ flex: 1 }}>
           {loading && (
             <View style={{ padding: 10 }}>
@@ -86,34 +55,71 @@ class ContentBody extends React.Component {
           )}
 
           {!loading && (
-            <View style={{ padding: 5, marginBottom: 5 }}>
-              {data.map(test => (
+            <View style={{ padding: 10, marginBottom: 5 }}>
+              {!data.length ? (
                 <View>
-                  <View style={{ margin: 3 }}>
-                    <Text
-                      style={{
-                        color: "black",
-                        fontFamily: theme.fonts.TitilliumWebSemiBold,
-                        fontSize: 14
-                      }}
-                    >
-                      {test.name}
-                    </Text>
-                    <Text
-                      style={{
-                        color: "#333",
-                        fontFamily: theme.fonts.TitilliumWebRegular,
-                        fontSize: 12,
-                        marginTop: 2
-                      }}
-                    >
-                      {test.username}
-                    </Text>
-                  </View>
+                  <Text
+                    style={{
+                      color: "black",
+                      fontFamily: theme.fonts.TitilliumWebSemiBold,
+                      fontSize: 14
+                    }}
+                  >
+                    No Accounts
+                  </Text>
                 </View>
-              ))}
+              ) : (
+                <View>
+                  {data.map(user => (
+                    <TouchableOpacity
+                      key={user.id}
+                      onPress={() => {
+                        return type === "switch"
+                          ? switchAccount({ user_id: user.id, navigation })
+                          : login({ user_id: user.id, navigation });
+                      }}
+                    >
+                      <View style={{ marginBottom: 5 }}>
+                        <Text
+                          style={{
+                            color: "black",
+                            fontFamily: theme.fonts.TitilliumWebSemiBold,
+                            fontSize: 14
+                          }}
+                        >
+                          {user.name}
+                        </Text>
+                        <Text
+                          style={{
+                            color: "#333",
+                            fontFamily: theme.fonts.TitilliumWebRegular,
+                            fontSize: 12,
+                            marginTop: 2
+                          }}
+                        >
+                          {user.username}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
             </View>
           )}
+        </View>
+
+        <View style={{ margin: 20, alignSelf: "center" }}>
+          <Button small danger onPress={() => register({ mobile, navigation })}>
+            <Text
+              style={{
+                color: "white",
+                fontFamily: theme.fonts.TitilliumWebSemiBold,
+                fontSize: 14
+              }}
+            >
+              Add Account
+            </Text>
+          </Button>
         </View>
       </View>
     );

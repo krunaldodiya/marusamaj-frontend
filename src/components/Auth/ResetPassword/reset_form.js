@@ -46,7 +46,7 @@ class LoginForm extends React.Component {
               small
               disabled={mobile.length !== 10}
               style={styles.submitButton}
-              onPress={() => navigation.push("AccountListScreen", { mobile })}
+              onPress={() => console.log("test")}
             >
               <Text style={styles.submitButtonText}>SEARCH</Text>
             </Button>

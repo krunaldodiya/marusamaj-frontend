@@ -4,6 +4,7 @@ import { createAppContainer, createStackNavigator } from "react-navigation";
 import AccountListScreen from "../../containers/AccountListScreen";
 import AddRelationScreen from "../../containers/AddRelationScreen";
 import AvatarScreen from "../../containers/AvatarScreen";
+import ForgotPasswordScreen from "../../containers/ForgotPasswordScreen";
 import LoginScreen from "../../containers/LoginScreen";
 import ManageCasteScreen from "../../containers/ManageCasteScreen";
 import ManageFamilyScreen from "../../containers/ManageFamilyScreen";
@@ -11,7 +12,6 @@ import ManageProfileScreen from "../../containers/ManageProfileScreen";
 import RegisterScreen from "../../containers/RegisterScreen";
 import RequestOtpScreen from "../../containers/RequestOtpScreen";
 import ResetPasswordScreen from "../../containers/ResetPasswordScreen";
-import ForgotPasswordScreen from "../../containers/ForgotPasswordScreen";
 import SearchScreen from "../../containers/SearchScreen";
 import SettingsScreen from "../../containers/SettingsScreen";
 import TabsScreen from "../../containers/TabsScreen";
@@ -67,11 +67,9 @@ export default class Main extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ shouldUpdate: true });
-
-    // if (props.init.initialized) {
-    //   this.setState({ shouldUpdate: false });
-    // }
+    if (props.init.initialized) {
+      this.setState({ shouldUpdate: false });
+    }
   }
 
   shouldComponentUpdate() {
@@ -86,6 +84,7 @@ export default class Main extends React.Component {
     const { initialized } = init;
 
     const initialRouteName = getInitialScreen(authUser);
+
     const AppNavigator = getAppNavigator(initialRouteName);
     const AppContainer = createAppContainer(AppNavigator);
 

@@ -1,4 +1,4 @@
-const getInitialScreen = authUser => {
+const getInitialScreen = (authUser) => {
   if (authUser) {
     const { caste_updated, profile_updated } = authUser;
 
@@ -17,4 +17,3 @@ const getInitialScreen = authUser => {
 };
 
 export { getInitialScreen };
-

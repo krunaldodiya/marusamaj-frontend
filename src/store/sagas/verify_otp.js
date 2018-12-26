@@ -1,10 +1,10 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { api } from "../../libs/api";
-import { makeRequest, setAuthToken } from "../../services";
-import { GET_AUTH_USER_SUCCESS, VERIFY_OTP, VERIFY_OTP_FAIL, VERIFY_OTP_SUCCESS } from "../actions";
+import { makeRequest, setAuthMobile } from "../../services";
+import { VERIFY_OTP, VERIFY_OTP_FAIL, VERIFY_OTP_SUCCESS } from "../actions";
 
 function* verifyOtp(action) {
-  const { mobile, otp } = action.payload;
+  const { mobile, otp, navigation } = action.payload;
 
   try {
     const { data } = yield call(makeRequest, api.verifyOtp, {
@@ -12,16 +12,13 @@ function* verifyOtp(action) {
       otp
     });
 
-    const { user, token } = data;
+    const { success } = data;
 
-    yield call(setAuthToken, token);
+    if (success) yield call(setAuthMobile, mobile);
 
     yield put({ type: VERIFY_OTP_SUCCESS });
 
-    yield put({
-      type: GET_AUTH_USER_SUCCESS,
-      payload: { authUser: user }
-    });
+    navigation.replace("AccountListScreen", { type: "login" });
   } catch (error) {
     yield put({
       type: VERIFY_OTP_FAIL,
@@ -35,4 +32,3 @@ function* verifyOtpWatcher() {
 }
 
 export { verifyOtpWatcher };
-

@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
 
         <View style={{ padding: 15 }}>
           <TouchableOpacity
-            onPress={() => navigation.push("AccountListScreen")}
+            onPress={() => console.log("test")}
           >
             <Text
               style={{

@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
 
 Menu = props => {
-  const { toggleDrawer, navigation, auth, logout } = props;
+  const { navigation, auth, toggleDrawer, logout } = props;
   const { authUser } = auth;
 
   return (
@@ -39,7 +39,7 @@ Menu = props => {
                   fontFamily: theme.fonts.TitilliumWebRegular
                 }}
               >
-                {authUser.username}
+                {authUser.mobile}
               </Text>
 
               <TouchableOpacity
@@ -81,7 +81,7 @@ Menu = props => {
           <TouchableOpacity
             onPress={() => {
               toggleDrawer({ isOpen: false });
-              navigation.push("SettingsScreen");
+              navigation.navigate("AccountListScreen", { type: "switch" });
             }}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
@@ -92,12 +92,15 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Settings
+              Switch Account
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.push("SettingsScreen")}
+            onPress={() => {
+              toggleDrawer({ isOpen: false });
+              navigation.push("SettingsScreen");
+            }}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
           >
             <Text
@@ -107,7 +110,7 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Invite a friend
+              Settings
             </Text>
           </TouchableOpacity>
         </View>
@@ -152,6 +155,21 @@ Menu = props => {
               }}
             >
               Contact us
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.push("SettingsScreen")}
+            style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
+          >
+            <Text
+              style={{
+                color: "#333",
+                fontFamily: theme.fonts.TitilliumWebRegular,
+                fontSize: 14
+              }}
+            >
+              Invite Friends
             </Text>
           </TouchableOpacity>
 

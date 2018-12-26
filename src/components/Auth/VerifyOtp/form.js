@@ -9,11 +9,11 @@ const checkOtp = (isValid, otpVerified) => {
 };
 
 const checkVerification = props => {
-  const { otp, verifyOtp } = props;
+  const { otp, verifyOtp, navigation } = props;
   const { mobile, serverOtp, otpVerified } = otp;
 
   if (otpVerified) {
-    return verifyOtp({ mobile, otp: serverOtp });
+    return verifyOtp({ mobile, otp: serverOtp, navigation });
   }
 
   return Alert.alert("Oops!", "Invalid OTP");

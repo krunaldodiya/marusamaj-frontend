@@ -4,22 +4,22 @@ import { getInitialScreen } from "../../libs/screen";
 import { makeRequest, setAuthToken } from "../../services";
 import {
   GET_AUTH_USER_SUCCESS,
-  REGISTER,
-  REGISTER_FAIL,
-  REGISTER_SUCCESS
+  SWITCH_ACCOUNT,
+  SWITCH_ACCOUNT_FAIL,
+  SWITCH_ACCOUNT_SUCCESS
 } from "../actions";
 
-function* register(action) {
-  const { mobile, navigation } = action.payload;
+function* switchAccount(action) {  
+  const { user_id, navigation } = action.payload;
 
   try {
-    const { data } = yield call(makeRequest, api.guestRegister, { mobile });
+    const { data } = yield call(makeRequest, api.authLogin, { user_id });
 
     const { user, token } = data;
 
     yield call(setAuthToken, token);
 
-    yield put({ type: REGISTER_SUCCESS });
+    yield put({ type: SWITCH_ACCOUNT_SUCCESS });
 
     yield put({
       type: GET_AUTH_USER_SUCCESS,
@@ -29,14 +29,14 @@ function* register(action) {
     navigation.replace(getInitialScreen(user));
   } catch (error) {
     yield put({
-      type: REGISTER_FAIL,
+      type: SWITCH_ACCOUNT_FAIL,
       payload: { errors: error.response.data }
     });
   }
 }
 
-function* registerWatcher() {
-  yield takeEvery(REGISTER, register);
+function* switchAccountWatcher() {
+  yield takeEvery(SWITCH_ACCOUNT, switchAccount);
 }
 
-export { registerWatcher };
+export { switchAccountWatcher };

@@ -4,14 +4,15 @@ import styles from "./styles";
 
 class ContentHeader extends React.Component {
   render() {
-    const { navigation } = this.props;
+    const { navigation, auth } = this.props;
+    const { authUser } = auth;
 
     return (
       <Header style={styles.termsWrapper} androidStatusBarColor="#d80402">
         <Left>
           <Icon
             type="MaterialIcons"
-            name="arrow-back"
+            name={authUser ? "arrow-back" : "account-box"}
             style={styles.termsIcon}
             onPress={() => navigation.goBack()}
           />

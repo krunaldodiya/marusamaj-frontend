@@ -10,13 +10,10 @@ import {
 } from "../actions";
 
 function* login(action) {
-  const { username, password, navigation } = action.payload;
+  const { user_id, navigation } = action.payload;
 
   try {
-    const { data } = yield call(makeRequest, api.login, {
-      username,
-      password
-    });
+    const { data } = yield call(makeRequest, api.guestLogin, { user_id });
 
     const { user, token } = data;
 

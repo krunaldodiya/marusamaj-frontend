@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { getInitialScreen } from "../../libs/screen";
-import { resetAuthToken } from "../../services";
+import { resetAuth } from "../../services";
 import { GET_AUTH_USER_SUCCESS, LOGOUT } from "../actions";
 
 function* logout(action) {
   const { navigation } = action.payload;
 
-  yield call(resetAuthToken);
+  yield call(resetAuth);
 
   yield put({
     type: GET_AUTH_USER_SUCCESS,
