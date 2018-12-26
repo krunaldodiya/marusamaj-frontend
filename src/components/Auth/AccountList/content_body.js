@@ -68,6 +68,7 @@ class ContentBody extends React.Component {
             <View>
               {data.map(user => (
                 <List
+                  key={user.id}
                   style={{
                     backgroundColor:
                       authUser && authUser.id === user.id ? "#eee" : "white"

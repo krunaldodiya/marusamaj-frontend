@@ -14,9 +14,7 @@ function* register(action) {
   const { mobile, navigation, authenticated } = action.payload;
 
   try {
-    yield put({
-      type: RESET_USERS
-    });
+    yield put({ type: RESET_USERS });
 
     const { data } = yield call(
       makeRequest,

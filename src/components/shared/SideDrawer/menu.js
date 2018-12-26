@@ -43,9 +43,10 @@ Menu = props => {
               </Text>
 
               <TouchableOpacity
-                onPress={() =>
-                  navigation.push("UserDetailScreen", { user_id: authUser.id })
-                }
+                onPress={() => {
+                  toggleDrawer({ isOpen: false });
+                  navigation.push("UserDetailScreen", { user_id: authUser.id });
+                }}
               >
                 <Text
                   note

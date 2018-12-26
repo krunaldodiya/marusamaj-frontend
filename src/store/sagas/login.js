@@ -2,15 +2,19 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { api } from "../../libs/api";
 import { getInitialScreen } from "../../libs/screen";
 import { makeRequest, setAuthToken } from "../../services";
-import { GET_AUTH_USER_SUCCESS, LOGIN, LOGIN_FAIL, LOGIN_SUCCESS, RESET_USERS } from "../actions";
+import {
+  GET_AUTH_USER_SUCCESS,
+  LOGIN,
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  RESET_USERS
+} from "../actions";
 
 function* login(action) {
   const { user_id, navigation, authenticated } = action.payload;
 
   try {
-    yield put({
-      type: RESET_USERS,
-    });
+    yield put({ type: RESET_USERS });
 
     const { data } = yield call(
       makeRequest,
@@ -43,4 +47,3 @@ function* loginWatcher() {
 }
 
 export { loginWatcher };
-
