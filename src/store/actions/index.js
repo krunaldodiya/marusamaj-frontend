@@ -11,7 +11,6 @@ export * from "./login";
 export * from "./logout";
 export * from "./register";
 export * from "./request_otp";
-export * from "./switch_account";
 export * from "./toggle_drawer";
 export * from "./update_auth_user";
 export * from "./verify_otp";

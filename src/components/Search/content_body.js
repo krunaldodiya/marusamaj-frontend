@@ -1,5 +1,6 @@
 import { Button, Form, Input, Item, Text, View } from "native-base";
 import React from "react";
+import theme from "../../libs/theme";
 import Switch from "../shared/Switch";
 import styles from "./styles";
 
@@ -96,6 +97,39 @@ class ContentBody extends React.Component {
               }}
             >
               <Text style={styles.submitButtonText}>APPLY</Text>
+            </Button>
+          </Item>
+
+          <Item style={styles.submitButtonWrapper}>
+            <Button
+              rounded
+              bordered
+              small
+              danger
+              onPress={() => {
+                getUsers({
+                  filters: {
+                    keywords: null,
+                    father_city: null,
+                    mother_city: null,
+                    gender: "Any",
+                    marital_status: "Any"
+                  },
+                  page: 1,
+                  data: []
+                });
+
+                navigation.goBack();
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebSemiBold,
+                  fontSize: 12
+                }}
+              >
+                Reset
+              </Text>
             </Button>
           </Item>
         </View>

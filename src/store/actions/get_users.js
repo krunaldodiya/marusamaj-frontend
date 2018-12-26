@@ -1,6 +1,14 @@
+const RESET_USERS = "RESET_USERS";
 const GET_USERS = "GET_USERS";
 const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
 const GET_USERS_FAIL = "GET_USERS_FAIL";
+
+const resetUsers = payload => {
+  return {
+    type: RESET_USERS,
+    payload
+  };
+};
 
 const getUsers = payload => {
   return {
@@ -24,9 +32,11 @@ const getUsersFail = payload => {
 };
 
 export {
+  RESET_USERS,
   GET_USERS,
   GET_USERS_SUCCESS,
   GET_USERS_FAIL,
+  resetUsers,
   getUsers,
   getUsersSuccess,
   getUsersFail

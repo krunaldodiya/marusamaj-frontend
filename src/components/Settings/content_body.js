@@ -82,7 +82,7 @@ class ContentBody extends React.Component {
             placeholderTextColor="#000"
             keyboardType="number-pad"
             maxLength={10}
-            value={authUser.username}
+            value={authUser.uid}
             onChangeText={number => console.log(number)}
             style={{
               color: 'black',

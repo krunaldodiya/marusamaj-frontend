@@ -6,14 +6,23 @@ import {
   GET_AUTH_USER_SUCCESS,
   REGISTER,
   REGISTER_FAIL,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  RESET_USERS
 } from "../actions";
 
 function* register(action) {
-  const { mobile, navigation } = action.payload;
+  const { mobile, navigation, authenticated } = action.payload;
 
   try {
-    const { data } = yield call(makeRequest, api.guestRegister, { mobile });
+    yield put({
+      type: RESET_USERS
+    });
+
+    const { data } = yield call(
+      makeRequest,
+      authenticated ? api.authRegister : api.guestRegister,
+      { mobile }
+    );
 
     const { user, token } = data;
 

@@ -1,4 +1,9 @@
-import { GET_USERS, GET_USERS_FAIL, GET_USERS_SUCCESS } from "../actions";
+import {
+  GET_USERS,
+  GET_USERS_FAIL,
+  GET_USERS_SUCCESS,
+  RESET_USERS
+} from "../actions";
 
 const initialState = {
   data: [],
@@ -19,6 +24,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case RESET_USERS: {
+      return {
+        ...state,
+        ...initialState
+      };
+    }
+
     case GET_USERS: {
       return {
         ...state,
