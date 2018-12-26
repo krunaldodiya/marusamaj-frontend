@@ -177,7 +177,7 @@ class ContentBody extends React.Component {
               color: "#d80402"
             }}
           >
-            DEFAULT ACCOUNT
+            CURRENT ACCOUNT
           </Text>
 
           <View
@@ -195,19 +195,7 @@ class ContentBody extends React.Component {
                   color: "#000"
                 }}
               >
-                Krunal Arvindkumar Dodiya
-              </Text>
-            </View>
-
-            <View style={{ justifyContent: "center" }}>
-              <Text
-                style={{
-                  fontFamily: theme.fonts.TitilliumWebRegular,
-                  fontSize: 14,
-                  color: "#d80402"
-                }}
-              >
-                CHANGE
+                {authUser.name}
               </Text>
             </View>
           </View>

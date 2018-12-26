@@ -4,6 +4,10 @@ import { FlatList, Text } from "react-native";
 import theme from "../../../libs/theme";
 
 class UserTab extends React.Component {
+  componentWillMount() {
+    this.props.resetUsers();
+  }
+
   componentDidMount() {
     this.props.getUsers({ page: 1 });
   }
@@ -15,7 +19,9 @@ class UserTab extends React.Component {
       <List>
         <ListItem
           avatar
-          onPress={() => navigation.push("UserDetailScreen", { user_id: item.id })}
+          onPress={() =>
+            navigation.push("UserDetailScreen", { user_id: item.id })
+          }
         >
           <Left>
             <Thumbnail
