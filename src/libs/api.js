@@ -23,6 +23,10 @@ const api = {
   wallet: `${httpUrl}/api/wallet/info`,
   changeAvatar: `${httpUrl}/api/avatar/change`,
   requestRelation: `${httpUrl}/api/relation/request`,
+  setMobileStatus: `${httpUrl}/api/settings/set-mobile-status`,
+  setBirthdayStatus: `${httpUrl}/api/settings/set-birthday-status`,
+  updateAadhaarCard: `${httpUrl}/api/settings/update-aadhaar-card`,
+  updateSecondaryMobile: `${httpUrl}/api/settings/update-secondary-mobile`,
 };
 
 export { api };

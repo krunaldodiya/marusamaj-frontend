@@ -1,6 +1,7 @@
 import { Button, Switch, Text, View } from "native-base";
 import React from "react";
 import { KeyboardAvoidingView, SafeAreaView, TextInput } from "react-native";
+import { api } from "../../libs/api";
 import theme from "../../libs/theme";
 
 class ContentBody extends React.Component {
@@ -11,22 +12,14 @@ class ContentBody extends React.Component {
     const { authUser } = auth;
 
     this.state = {
-      show_mobile: authUser.setting.show_mobile,
-      show_birthday: authUser.setting.show_birthday,
-      uid: authUser.uid,
-      secondary_mobile: authUser.secondary_mobile,
-      mobile: authUser.mobile
+      loading: false,
+      authUser
     };
   }
 
   render() {
-    const {
-      show_mobile,
-      show_birthday,
-      uid,
-      secondary_mobile,
-      mobile
-    } = this.state;
+    const { updateSettings } = this.props;
+    const { authUser } = this.state;
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -62,11 +55,13 @@ class ContentBody extends React.Component {
                 SHOW MOBILE
               </Text>
               <Switch
-                value={show_mobile}
+                value={authUser.setting.show_mobile ? true: false}
                 onValueChange={value => {
-                  this.setState({ show_mobile: value }, () => {
-                    console.log("test");
-                  });
+                  const setting = { ...authUser.setting, show_mobile: value };
+                  const user = { ...authUser, setting };
+
+                  this.setState({ authUser: user });
+                  updateSettings({ authUser: user, url: api.setMobileStatus });
                 }}
               />
             </View>
@@ -89,10 +84,15 @@ class ContentBody extends React.Component {
                 SHOW BIRTHDAY
               </Text>
               <Switch
-                value={show_birthday}
+                value={authUser.setting.show_birthday ? true: false}
                 onValueChange={value => {
-                  this.setState({ show_birthday: value }, () => {
-                    console.log("test");
+                  const setting = { ...authUser.setting, show_birthday: value };
+                  const user = { ...authUser, setting };
+
+                  this.setState({ authUser: user });
+                  updateSettings({
+                    authUser: user,
+                    url: api.setBirthdayStatus
                   });
                 }}
               />
@@ -121,9 +121,11 @@ class ContentBody extends React.Component {
               placeholder="Update Aadhaar Card"
               placeholderTextColor="#000"
               keyboardType="number-pad"
-              maxLength={10}
-              value={uid}
-              onChangeText={number => this.setState({ uid: number })}
+              maxLength={12}
+              value={authUser.uid}
+              onChangeText={value => {
+                this.setState({ authUser: { ...authUser, uid: value } });
+              }}
               style={{
                 color: "black",
                 borderWidth: 1,
@@ -142,7 +144,7 @@ class ContentBody extends React.Component {
                 danger
                 rounded
                 onPress={() => {
-                  console.log("test");
+                  updateSettings({ authUser, url: api.updateAadhaarCard });
                 }}
               >
                 <Text
@@ -181,10 +183,12 @@ class ContentBody extends React.Component {
               placeholderTextColor="#000"
               keyboardType="number-pad"
               maxLength={10}
-              value={secondary_mobile}
-              onChangeText={number =>
-                this.setState({ secondary_mobile: number })
-              }
+              value={authUser.secondary_mobile}
+              onChangeText={value => {
+                this.setState({
+                  authUser: { ...authUser, secondary_mobile: value }
+                });
+              }}
               style={{
                 color: "black",
                 borderWidth: 1,
@@ -203,7 +207,7 @@ class ContentBody extends React.Component {
                 danger
                 rounded
                 onPress={() => {
-                  console.log("test");
+                  updateSettings({ authUser, url: api.updateSecondaryMobile });
                 }}
               >
                 <Text
@@ -249,7 +253,7 @@ class ContentBody extends React.Component {
                     color: "#000"
                   }}
                 >
-                  {mobile}
+                  {authUser.mobile}
                 </Text>
               </View>
             </View>

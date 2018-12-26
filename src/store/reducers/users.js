@@ -3,7 +3,8 @@ import {
   GET_USERS,
   GET_USERS_FAIL,
   GET_USERS_SUCCESS,
-  RESET_USERS
+  RESET_USERS,
+  UPDATE_SETTINGS_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -61,6 +62,19 @@ export default (state = initialState, action) => {
         data: [],
         loading: false,
         loaded: true
+      };
+    }
+
+    case UPDATE_SETTINGS_SUCCESS: {
+      const { authUser } = action.payload;
+
+      const users = state.data.map(user => {
+        return user.id === authUser.id ? authUser : user;
+      });
+
+      return {
+        ...state,
+        data: users
       };
     }
 

@@ -13,4 +13,5 @@ export * from "./register";
 export * from "./request_otp";
 export * from "./toggle_drawer";
 export * from "./update_auth_user";
+export * from "./update_settings";
 export * from "./verify_otp";

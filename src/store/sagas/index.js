@@ -10,6 +10,7 @@ import { logoutWatcher } from "./logout";
 import { registerWatcher } from "./register";
 import { requestOtpWatcher } from "./request_otp";
 import { updateAuthUserWatcher } from "./update_auth_user";
+import { updateSettingsWatcher } from "./update_settings";
 import { verifyOtpWatcher } from "./verify_otp";
 
 function* rootSaga() {
@@ -26,6 +27,7 @@ function* rootSaga() {
     logoutWatcher(),
     addRelationWatcher(),
     getGuestUserWatcher(),
+    updateSettingsWatcher()
   ]);
 }
 
