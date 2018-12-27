@@ -2,6 +2,9 @@ import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
 import { Linking, TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
+import { httpUrl } from "../../../libs/vars";
+
+const app_id = "com.marusamaj";
 
 Menu = props => {
   const { navigation, auth, toggleDrawer, logout } = props;
@@ -130,7 +133,7 @@ Menu = props => {
           </View>
 
           <TouchableOpacity
-            onPress={() => Linking.openURL("market://details?id=com.marusamaj")}
+            onPress={() => Linking.openURL(`market://details?id=${app_id}`)}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
@@ -145,7 +148,11 @@ Menu = props => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => Linking.openURL(`whatsapp://send?text=https://play.google.com/store/apps/details?id=com.marusamaj&rdid=com.marusamaj`)}
+            onPress={() =>
+              Linking.openURL(
+                `whatsapp://send?text=https://play.google.com/store/apps/details?id=${app_id}&rdid=${app_id}`
+              )
+            }
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
@@ -160,7 +167,7 @@ Menu = props => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => Linking.openURL("https://marusamaj.tk/terms")}
+            onPress={() => Linking.openURL(`${httpUrl}/terms`)}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
           >
             <Text
