@@ -45,5 +45,7 @@ android {
     }
 }
 
+also change versionCode & versionName in app/build.gradle everytime you upload to playstore
+
 $ cd android
 $ ./gradlew assembleRelease
