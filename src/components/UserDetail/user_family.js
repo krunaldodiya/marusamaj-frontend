@@ -65,10 +65,14 @@ class UserFamily extends React.Component {
     const { guestUser } = guest;
     const { relatives } = guestUser;
 
+    const activeRelatives = relatives.filter(
+      relative => relative.status == true
+    );
+
     return (
       <View style={{ flex: 1 }}>
         <FlatList
-          data={relatives}
+          data={activeRelatives}
           keyExtractor={(_, index) => index.toString()}
           renderItem={data => this.renderItem(data, navigation)}
         />

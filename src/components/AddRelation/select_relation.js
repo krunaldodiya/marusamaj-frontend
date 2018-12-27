@@ -4,13 +4,13 @@ import theme from "../../libs/theme";
 
 const relative_relations = {
   Brother: { Male: "Brother", Female: "Sister" },
-  Son: { Male: "Brother", Female: "Sister" },
-  Father: { Male: "Brother", Female: "Sister" },
-  Husband: { Male: "Brother", Female: "Sister" },
   Sister: { Male: "Brother", Female: "Sister" },
-  Daughter: { Male: "Brother", Female: "Sister" },
-  Mother: { Male: "Brother", Female: "Sister" },
-  Wife: { Male: "Brother", Female: "Sister" }
+  Son: { Male: "Father", Female: "Mother" },
+  Daughter: { Male: "Father", Female: "Mother" },
+  Father: { Male: "Son", Female: "Daughter" },
+  Mother: { Male: "Son", Female: "Daughter" },
+  Husband: { Female: "Wife" },
+  Wife: { Male: "Husband" }
 };
 
 const user_relations = {

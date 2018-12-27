@@ -3,7 +3,8 @@ import {
   GET_GUEST_USER_FAIL,
   GET_GUEST_USER_SUCCESS,
   CHANGE_AVATAR,
-  UPDATE_SETTINGS_SUCCESS
+  UPDATE_SETTINGS_SUCCESS,
+  RESET_GUEST_USER
 } from "../actions";
 
 const initialState = {
@@ -15,6 +16,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case RESET_GUEST_USER: {
+      return {
+        ...state,
+        guestUser: null
+      };
+    }
+
     case GET_GUEST_USER: {
       return {
         ...state,

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import UserDetail from "../components/UserDetail";
-import { getGuestUser } from "../store/actions";
+import { getGuestUser, resetGuestUser } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      getGuestUser: getGuestUser
+      getGuestUser: getGuestUser,
+      resetGuestUser: resetGuestUser
     },
     dispatch
   );

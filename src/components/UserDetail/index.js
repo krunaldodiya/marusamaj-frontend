@@ -14,23 +14,31 @@ class UserDetail extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { getGuestUser, navigation } = this.props;
     const { user_id } = navigation.state.params;
 
     getGuestUser({ user_id });
   }
 
+  componentWillUnmount() {
+    this.props.resetGuestUser();
+  }
+
+  toggleSegment = segment => {
+    this.setState({ segment });
+  };
+
   render() {
     const { segment } = this.state;
     const { guest } = this.props;
-    const { loading, loaded } = guest;
+    const { loading, guestUser } = guest;
 
     return (
       <Container style={styles.container}>
         {loading && <Spinner size="small" />}
 
-        {loaded && (
+        {!loading && guestUser && (
           <React.Fragment>
             <ContentHeader
               {...this.props}
