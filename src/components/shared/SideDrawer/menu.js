@@ -1,6 +1,6 @@
 import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
 import theme from "../../../libs/theme";
 
 Menu = props => {
@@ -130,7 +130,7 @@ Menu = props => {
           </View>
 
           <TouchableOpacity
-            onPress={() => navigation.push("SettingsScreen")}
+            onPress={() => Linking.openURL("market://details?id=com.marusamaj")}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
@@ -140,12 +140,12 @@ Menu = props => {
                 fontSize: 14
               }}
             >
-              Contact us
+              Rate us
             </Text>
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => navigation.push("SettingsScreen")}
+            onPress={() => Linking.openURL(`whatsapp://send?text=https://play.google.com/store/apps/details?id=com.marusamaj&rdid=com.marusamaj`)}
             style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
           >
             <Text
@@ -160,7 +160,7 @@ Menu = props => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => console.log("test")}
+            onPress={() => Linking.openURL("https://marusamaj.tk/terms")}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
           >
             <Text
