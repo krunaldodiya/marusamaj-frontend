@@ -4,8 +4,7 @@ import {
   GET_GUEST_USER,
   GET_GUEST_USER_FAIL,
   GET_GUEST_USER_SUCCESS,
-  RESET_GUEST_USER,
-  UPDATE_SETTINGS_SUCCESS
+  RESET_GUEST_USER
 } from "../actions";
 
 const initialState = {
@@ -52,13 +51,6 @@ export default (state = initialState, action) => {
     }
 
     case CHANGE_AVATAR: {
-      return {
-        ...state,
-        guestUser: action.payload.authUser
-      };
-    }
-
-    case UPDATE_SETTINGS_SUCCESS: {
       return {
         ...state,
         guestUser: action.payload.authUser

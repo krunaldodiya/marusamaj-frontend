@@ -1,6 +1,7 @@
 import { Button, Switch, Text, View } from "native-base";
 import React from "react";
 import { KeyboardAvoidingView, SafeAreaView, TextInput } from "react-native";
+import Loader from "../../components/shared/Loader";
 import { api } from "../../libs/api";
 import theme from "../../libs/theme";
 
@@ -12,13 +13,13 @@ class ContentBody extends React.Component {
     const { authUser } = auth;
 
     this.state = {
-      loading: false,
       authUser
     };
   }
 
   render() {
-    const { updateSettings } = this.props;
+    const { updateSettings, auth } = this.props;
+    const { loading } = auth;
     const { authUser } = this.state;
 
     return (
@@ -29,6 +30,8 @@ class ContentBody extends React.Component {
           style={{ flex: 1 }}
           contentContainerStyle={{ flex: 1 }}
         >
+          <Loader loading={loading} />
+
           <View
             style={{
               padding: 10,
@@ -55,7 +58,7 @@ class ContentBody extends React.Component {
                 SHOW MOBILE
               </Text>
               <Switch
-                value={authUser.setting.show_mobile ? true: false}
+                value={authUser.setting.show_mobile ? true : false}
                 onValueChange={value => {
                   const setting = { ...authUser.setting, show_mobile: value };
                   const user = { ...authUser, setting };
@@ -84,7 +87,7 @@ class ContentBody extends React.Component {
                 SHOW BIRTHDAY
               </Text>
               <Switch
-                value={authUser.setting.show_birthday ? true: false}
+                value={authUser.setting.show_birthday ? true : false}
                 onValueChange={value => {
                   const setting = { ...authUser.setting, show_birthday: value };
                   const user = { ...authUser, setting };
