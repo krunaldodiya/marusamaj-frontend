@@ -13,6 +13,9 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 getRelationStatus = (authUser, guestUser) => {
+  console.log("auth", authUser);
+  console.log("guest", guestUser);
+
   const { relatives } = authUser;
 
   if (!relatives.length) {
@@ -20,8 +23,15 @@ getRelationStatus = (authUser, guestUser) => {
   }
 
   if (relatives.length) {
-    const relation = relatives.filter(data => guestUser.id === data.from)[0];
-    return relation && relation.status ? "verified-user" : "access-alarms";
+    const relations = relatives.filter(data => guestUser.id === data.from);
+
+    if (relations.length) {
+      const relation = relations[0];
+
+      return relation.status ? "verified-user" : "access-alarms";
+    }
+
+    return "person-add";
   }
 };
 
@@ -31,6 +41,7 @@ const ContentHeader = props => {
   const { guestUser } = guest;
 
   const status = getRelationStatus(authUser, guestUser);
+  console.log(status);
 
   return (
     <Header
