@@ -1,10 +1,11 @@
 import {
+  ADD_RELATION_SUCCESS,
+  CHANGE_AVATAR,
   GET_GUEST_USER,
   GET_GUEST_USER_FAIL,
   GET_GUEST_USER_SUCCESS,
-  CHANGE_AVATAR,
-  UPDATE_SETTINGS_SUCCESS,
-  RESET_GUEST_USER
+  RESET_GUEST_USER,
+  UPDATE_SETTINGS_SUCCESS
 } from "../actions";
 
 const initialState = {
@@ -61,6 +62,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         guestUser: action.payload.authUser
+      };
+    }
+
+    case ADD_RELATION_SUCCESS: {
+      return {
+        ...state,
+        guestUser: action.payload.guestUser
       };
     }
 

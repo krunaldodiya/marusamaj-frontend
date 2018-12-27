@@ -13,9 +13,6 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 getRelationStatus = (authUser, guestUser) => {
-  console.log("auth", authUser);
-  console.log("guest", guestUser);
-
   const { relatives } = authUser;
 
   if (!relatives.length) {
@@ -41,7 +38,6 @@ const ContentHeader = props => {
   const { guestUser } = guest;
 
   const status = getRelationStatus(authUser, guestUser);
-  console.log(status);
 
   return (
     <Header

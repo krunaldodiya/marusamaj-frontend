@@ -14,11 +14,11 @@ function* addRelation(action) {
       api.requestRelation,
       action.payload
     );
-    const { user } = data;
+    const { from, to } = data;
 
     yield put({
       type: ADD_RELATION_SUCCESS,
-      payload: { authUser: user }
+      payload: { authUser: from, guestUser: to }
     });
   } catch (error) {
     yield put({
