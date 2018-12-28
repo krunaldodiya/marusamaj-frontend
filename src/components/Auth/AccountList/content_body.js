@@ -26,20 +26,20 @@ class ContentBody extends React.Component {
     };
   }
 
-  componentDidMount = async () => {
+  async componentWillMount() {
+    this.setState({ loading: true });
+
     const mobile = await getAuthMobile();
 
-    this.setState({ loading: true, mobile });
-
     axios
-      .post(api.getUsersByMobile, { mobile }, {})
+      .post(api.getUsersByMobile, { mobile })
       .then(({ data }) => {
-        this.setState({ data: data.users, loading: false });
+        this.setState({ data: data.users, mobile, loading: false });
       })
       .catch(() => {
-        this.setState({ loading: false });
+        this.setState({ data: [], mobile, loading: false });
       });
-  };
+  }
 
   render() {
     const { loading, mobile, data } = this.state;

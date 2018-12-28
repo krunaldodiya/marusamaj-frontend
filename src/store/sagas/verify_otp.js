@@ -7,14 +7,9 @@ function* verifyOtp(action) {
   const { mobile, otp, navigation } = action.payload;
 
   try {
-    const { data } = yield call(makeRequest, api.verifyOtp, {
-      mobile,
-      otp
-    });
+    yield call(makeRequest, api.verifyOtp, { mobile, otp });
 
-    const { success } = data;
-
-    if (success) yield call(setAuthMobile, mobile);
+    yield call(setAuthMobile, mobile);
 
     yield put({ type: VERIFY_OTP_SUCCESS });
 
