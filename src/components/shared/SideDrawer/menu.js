@@ -85,24 +85,6 @@ Menu = props => {
           <TouchableOpacity
             onPress={() => {
               toggleDrawer({ isOpen: false });
-              navigation.replace("AccountListScreen", { type: "switch" });
-            }}
-            style={{ marginTop: 15, marginBottom: 0, marginLeft: 15 }}
-          >
-            <Text
-              style={{
-                color: "#333",
-                fontFamily: theme.fonts.TitilliumWebRegular,
-                fontSize: 14
-              }}
-            >
-              Switch Account
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              toggleDrawer({ isOpen: false });
               navigation.push("SettingsScreen");
             }}
             style={{ marginTop: 15, marginBottom: 15, marginLeft: 15 }}
@@ -187,17 +169,17 @@ Menu = props => {
         <TouchableOpacity
           onPress={() => {
             toggleDrawer({ isOpen: false });
-            logout({ navigation });
+            navigation.replace("AccountListScreen", { type: "switch" });
           }}
         >
           <Text
             style={{
               fontFamily: theme.fonts.TitilliumWebRegular,
               fontSize: 16,
-              color: "black"
+              color: "#d80402"
             }}
           >
-            Logout
+            Switch Account
           </Text>
         </TouchableOpacity>
       </View>
