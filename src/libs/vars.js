@@ -1,7 +1,7 @@
 const httpUrlDev = "http://192.168.2.200:8000";
 const wsUrlDev = "ws://192.168.2.200:8000";
 
-const httpUrlProd = "http://marusamaj.tk";
+const httpUrlProd = "https://marusamaj.tk";
 const wsUrlProd = "ws://marusamaj.tk";
 
 const httpUrl = __DEV__ ? httpUrlDev : httpUrlProd;
