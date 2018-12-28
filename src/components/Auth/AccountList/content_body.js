@@ -45,7 +45,8 @@ class ContentBody extends React.Component {
     const { loading, mobile, data } = this.state;
     const { login, register, navigation, auth } = this.props;
     const { authUser } = auth;
-    const { type } = navigation.state.params;
+    const { params } = navigation.state;
+    const type = params ? params.type : null;
 
     return (
       <View style={{ flex: 1 }}>

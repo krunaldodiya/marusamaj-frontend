@@ -18,6 +18,7 @@ import TabsScreen from "../../containers/TabsScreen";
 import UserDetailScreen from "../../containers/UserDetailScreen";
 import VerifyOtpScreen from "../../containers/VerifyOtpScreen";
 import { getInitialScreen } from "../../libs/screen";
+import { getAuthMobile } from "../../services";
 import NoNetwork from "../NoNetwork";
 
 const getAppNavigator = initialRouteName => {
@@ -54,11 +55,12 @@ export default class Main extends React.Component {
     super(props);
 
     this.state = {
-      shouldUpdate: true
+      shouldUpdate: true,
+      authMobile: null
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     NetInfo.addEventListener("connectionChange", netInfo => {
       this.setState({ shouldUpdate: true }, () => {
         this.props.handleNetworkChange(netInfo);
@@ -66,9 +68,11 @@ export default class Main extends React.Component {
     });
   }
 
-  componentWillReceiveProps(props) {
+  async componentWillReceiveProps(props) {
+    const authMobile = await getAuthMobile();
+
     if (props.init.initialized) {
-      this.setState({ shouldUpdate: false });
+      this.setState({ shouldUpdate: false, authMobile });
     }
   }
 
@@ -78,13 +82,13 @@ export default class Main extends React.Component {
 
   render() {
     const { network, auth, init } = this.props;
+    const { authMobile } = this.state;
 
     const { connection } = network;
     const { authUser } = auth;
     const { initialized } = init;
 
-    const initialRouteName = getInitialScreen(authUser);
-
+    const initialRouteName = getInitialScreen(authUser, authMobile);
     const AppNavigator = getAppNavigator(initialRouteName);
     const AppContainer = createAppContainer(AppNavigator);
 

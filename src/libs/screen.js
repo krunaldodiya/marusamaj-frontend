@@ -1,4 +1,4 @@
-const getInitialScreen = (authUser) => {
+const getInitialScreen = (authUser, authMobile = null) => {
   if (authUser) {
     const { caste_updated, profile_updated } = authUser;
 
@@ -11,6 +11,10 @@ const getInitialScreen = (authUser) => {
     }
 
     return "TabsScreen";
+  }
+
+  if (authMobile) {
+    return "AccountListScreen";
   }
 
   return "RequestOtpScreen";

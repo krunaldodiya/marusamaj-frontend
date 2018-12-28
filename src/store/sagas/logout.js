@@ -1,5 +1,4 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { getInitialScreen } from "../../libs/screen";
 import { resetAuth } from "../../services";
 import { GET_AUTH_USER_SUCCESS, LOGOUT } from "../actions";
 
@@ -13,7 +12,7 @@ function* logout(action) {
     payload: { authUser: null }
   });
 
-  navigation.replace(getInitialScreen(null));
+  navigation.replace("RequestOtpScreen");
 }
 
 function* logoutWatcher() {
