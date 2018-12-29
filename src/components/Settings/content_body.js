@@ -1,9 +1,10 @@
-import { Button, Switch, Text, View } from "native-base";
+import { Button, CheckBox, Switch, Text, View } from "native-base";
 import React from "react";
 import { KeyboardAvoidingView, SafeAreaView, TextInput } from "react-native";
 import Loader from "../../components/shared/Loader";
 import { api } from "../../libs/api";
 import theme from "../../libs/theme";
+import styles from "./styles";
 
 class ContentBody extends React.Component {
   constructor(props) {
@@ -13,14 +14,15 @@ class ContentBody extends React.Component {
     const { authUser } = auth;
 
     this.state = {
-      authUser
+      authUser,
+      agree: false
     };
   }
 
   render() {
     const { updateSettings, auth } = this.props;
     const { loading } = auth;
-    const { authUser } = this.state;
+    const { authUser, agree } = this.state;
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -160,28 +162,29 @@ class ContentBody extends React.Component {
               SECONDARY MOBILE
             </Text>
 
-            <TextInput
-              placeholder="Update Secondary Mobile"
-              placeholderTextColor="#000"
-              keyboardType="number-pad"
-              maxLength={10}
-              value={authUser.secondary_mobile}
-              onChangeText={value => {
-                this.setState({
-                  authUser: { ...authUser, secondary_mobile: value }
-                });
-              }}
-              style={{
-                color: "black",
-                borderWidth: 1,
-                borderColor: "gray",
-                marginTop: 10,
-                borderRadius: 30,
-                paddingVertical: 5,
-                paddingLeft: 15,
-                fontFamily: theme.fonts.TitilliumWebRegular
-              }}
-            />
+            <View style={{ marginTop: 20 }}>
+              <TextInput
+                placeholder="Secondary Mobile"
+                placeholderTextColor="#000"
+                keyboardType="number-pad"
+                maxLength={10}
+                value={authUser.secondary_mobile}
+                onChangeText={value => {
+                  this.setState({
+                    authUser: { ...authUser, secondary_mobile: value }
+                  });
+                }}
+                style={{
+                  color: "black",
+                  borderWidth: 1,
+                  borderColor: "gray",
+                  borderRadius: 30,
+                  paddingVertical: 5,
+                  paddingLeft: 15,
+                  fontFamily: theme.fonts.TitilliumWebRegular
+                }}
+              />
+            </View>
 
             <View style={{ marginTop: 20, marginBottom: 10 }}>
               <Button
@@ -205,11 +208,7 @@ class ContentBody extends React.Component {
             </View>
           </View>
 
-          <View
-            style={{
-              padding: 10,
-            }}
-          >
+          <View style={{ padding: 10 }}>
             <Text
               style={{
                 fontFamily: theme.fonts.TitilliumWebRegular,
@@ -220,43 +219,27 @@ class ContentBody extends React.Component {
               DELETE ACCOUNT
             </Text>
 
-            <TextInput
-              placeholder="type 'agree' to delete"
-              placeholderTextColor="#000"
-              keyboardType="number-pad"
-              maxLength={12}
-              value={authUser.uid}
-              onChangeText={value => {
-                this.setState({ authUser: { ...authUser, uid: value } });
-              }}
-              style={{
-                color: "black",
-                borderWidth: 1,
-                borderColor: "gray",
-                marginTop: 10,
-                borderRadius: 30,
-                paddingVertical: 5,
-                paddingLeft: 15,
-                fontFamily: theme.fonts.TitilliumWebRegular
-              }}
-            />
+            <View style={styles.agreeWrapper}>
+              <CheckBox
+                checked={agree ? true : false}
+                onPress={() => this.setState({ agree: !agree })}
+                style={styles.checkBox(agree)}
+              />
+
+              <Text style={styles.agreeText}>I verify to delete</Text>
+            </View>
 
             <View style={{ marginTop: 20, marginBottom: 10 }}>
               <Button
                 small
                 danger
                 rounded
+                disabled={!agree}
                 onPress={() => {
-                  updateSettings({ authUser, url: api.updateAadhaarCard });
+                  updateSettings({ authUser, url: api.deleteAccount });
                 }}
               >
-                <Text
-                  style={{
-                    fontFamily: theme.fonts.TitilliumWebRegular,
-                    fontSize: 14,
-                    color: "white"
-                  }}
-                >
+                <Text style={{ fontFamily: theme.fonts.TitilliumWebRegular }}>
                   DELETE ACCOUNT
                 </Text>
               </Button>

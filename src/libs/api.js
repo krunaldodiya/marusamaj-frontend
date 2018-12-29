@@ -26,6 +26,7 @@ const api = {
   setMobileStatus: `${httpUrl}/api/settings/set-mobile-status`,
   setBirthdayStatus: `${httpUrl}/api/settings/set-birthday-status`,
   updateAadhaarCard: `${httpUrl}/api/settings/update-aadhaar-card`,
+  deleteAccount: `${httpUrl}/api/settings/delete-account`,
   updateSecondaryMobile: `${httpUrl}/api/settings/update-secondary-mobile`,
 };
 

@@ -39,6 +39,25 @@ export default StyleSheet.create({
     paddingLeft: 20,
     fontFamily: theme.fonts.TitilliumWebRegular
   },
+  agreeWrapper: {
+    marginTop: 20,
+    flexDirection: "row",
+    borderBottomWidth: 0
+  },
+  agreeText: {
+    marginLeft: 20,
+    fontSize: 16,
+    fontFamily: theme.fonts.TitilliumWebSemiBold
+  },
+  checkBox: agree => {
+    return {
+      left: 1,
+      top: 1,
+      textAlign: "center",
+      borderColor: agree ? "#ff6666" : "#ccc",
+      backgroundColor: agree ? "#ff6666" : "white"
+    };
+  },
   buttonGroup: {
     marginTop: 0
   },
