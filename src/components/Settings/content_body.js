@@ -117,49 +117,28 @@ class ContentBody extends React.Component {
                 color: "#d80402"
               }}
             >
-              AADHAAR CARD
+              PRIMARY MOBILE
             </Text>
 
-            <TextInput
-              placeholder="Update Aadhaar Card"
-              placeholderTextColor="#000"
-              keyboardType="number-pad"
-              maxLength={12}
-              value={authUser.uid}
-              onChangeText={value => {
-                this.setState({ authUser: { ...authUser, uid: value } });
-              }}
+            <View
               style={{
-                color: "black",
-                borderWidth: 1,
-                borderColor: "gray",
-                marginTop: 10,
-                borderRadius: 30,
-                paddingVertical: 5,
-                paddingLeft: 15,
-                fontFamily: theme.fonts.TitilliumWebRegular
+                marginTop: 20,
+                marginBottom: 10,
+                flexDirection: "row",
+                justifyContent: "space-between"
               }}
-            />
-
-            <View style={{ marginTop: 20, marginBottom: 10 }}>
-              <Button
-                small
-                danger
-                rounded
-                onPress={() => {
-                  updateSettings({ authUser, url: api.updateAadhaarCard });
-                }}
-              >
+            >
+              <View style={{ justifyContent: "center" }}>
                 <Text
                   style={{
                     fontFamily: theme.fonts.TitilliumWebRegular,
-                    fontSize: 14,
-                    color: "white"
+                    fontSize: 16,
+                    color: "#000"
                   }}
                 >
-                  UPDATE
+                  {authUser.mobile}
                 </Text>
-              </Button>
+              </View>
             </View>
           </View>
 
@@ -228,7 +207,7 @@ class ContentBody extends React.Component {
 
           <View
             style={{
-              padding: 10
+              padding: 10,
             }}
           >
             <Text
@@ -238,27 +217,49 @@ class ContentBody extends React.Component {
                 color: "#d80402"
               }}
             >
-              PRIMARY MOBILE
+              DELETE ACCOUNT
             </Text>
 
-            <View
-              style={{
-                marginTop: 20,
-                flexDirection: "row",
-                justifyContent: "space-between"
+            <TextInput
+              placeholder="type 'agree' to delete"
+              placeholderTextColor="#000"
+              keyboardType="number-pad"
+              maxLength={12}
+              value={authUser.uid}
+              onChangeText={value => {
+                this.setState({ authUser: { ...authUser, uid: value } });
               }}
-            >
-              <View style={{ justifyContent: "center" }}>
+              style={{
+                color: "black",
+                borderWidth: 1,
+                borderColor: "gray",
+                marginTop: 10,
+                borderRadius: 30,
+                paddingVertical: 5,
+                paddingLeft: 15,
+                fontFamily: theme.fonts.TitilliumWebRegular
+              }}
+            />
+
+            <View style={{ marginTop: 20, marginBottom: 10 }}>
+              <Button
+                small
+                danger
+                rounded
+                onPress={() => {
+                  updateSettings({ authUser, url: api.updateAadhaarCard });
+                }}
+              >
                 <Text
                   style={{
                     fontFamily: theme.fonts.TitilliumWebRegular,
-                    fontSize: 18,
-                    color: "#000"
+                    fontSize: 14,
+                    color: "white"
                   }}
                 >
-                  {authUser.mobile}
+                  DELETE ACCOUNT
                 </Text>
-              </View>
+              </Button>
             </View>
           </View>
         </KeyboardAvoidingView>

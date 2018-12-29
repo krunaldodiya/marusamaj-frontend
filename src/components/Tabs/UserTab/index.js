@@ -12,12 +12,18 @@ import { FlatList, Text } from "react-native";
 import theme from "../../../libs/theme";
 
 class UserTab extends React.Component {
-  componentWillMount() {
-    this.props.resetUsers();
+  constructor(props) {
+    super(props);
+
+    this.state = {};
   }
 
   componentDidMount() {
     this.props.getUsers({ page: 1 });
+  }
+
+  componentWillUnmount() {
+    this.props.resetUsers();
   }
 
   renderItem = (data, navigation) => {
@@ -75,53 +81,52 @@ class UserTab extends React.Component {
     );
   };
 
+  loadingData = () => {
+    return (
+      <View style={{ padding: 10 }}>
+        <Spinner color="#000" size="small" />
+      </View>
+    );
+  };
+
   render() {
     const { users, navigation, getUsers } = this.props;
     const { data, loading, page, last_page } = users;
 
     return (
       <View style={{ flex: 1 }}>
-        {loading && (
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <Spinner color="#000" size="small" />
-          </View>
-        )}
+        <FlatList
+          data={data}
+          onEndReachedThreshold={5}
+          onEndReached={() => {
+            if (users.last_page > users.page) {
+              getUsers({ page: users.page + 1 });
+            }
+          }}
+          ListFooterComponent={() => {
+            return (
+              <View style={{ justifyContent: "center" }}>
+                {loading && this.loadingData()}
 
-        {!loading && (
-          <FlatList
-            data={data}
-            onEndReached={() => {
-              if (users.last_page > users.page) {
-                getUsers({ page: users.page + 1 });
-              }
-            }}
-            ListFooterComponent={() => {
-              return (
-                <View style={{ justifyContent: "center" }}>
-                  {page < last_page ? (
-                    <View style={{ padding: 10 }}>
-                      <Spinner color="#000" size="small" />
-                    </View>
-                  ) : (
-                    <View style={{ padding: 10 }}>
-                      <Text
-                        style={{
-                          textAlign: "center",
-                          fontFamily: theme.fonts.TitilliumWebRegular
-                        }}
-                      >
-                        No more data.
-                      </Text>
-                    </View>
-                  )}
-                </View>
-              );
-            }}
-            onEndReachedThreshold={0.5}
-            keyExtractor={(_, index) => index.toString()}
-            renderItem={data => this.renderItem(data, navigation)}
-          />
-        )}
+                {!loading && page >= last_page && (
+                  <View style={{ padding: 10 }}>
+                    <Text
+                      style={{
+                        textAlign: "center",
+                        fontFamily: theme.fonts.TitilliumWebRegular
+                      }}
+                    >
+                      No more data.
+                    </Text>
+                  </View>
+                )}
+              </View>
+            );
+          }}
+          onEndReachedThreshold={0.5}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={data => this.renderItem(data, navigation)}
+        />
       </View>
     );
   }

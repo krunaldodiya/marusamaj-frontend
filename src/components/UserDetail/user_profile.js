@@ -33,7 +33,7 @@ const UserProfile = props => {
                 type="MaterialIcons"
                 name="photo-camera"
                 style={{
-                  textAlign: 'center',
+                  textAlign: "center",
                   position: "absolute",
                   bottom: 0,
                   right: 0,
@@ -108,7 +108,11 @@ const UserProfile = props => {
               letterSpacing: 1
             }}
           >
-            {guestUser.setting.show_mobile ? guestUser.mobile : "Private"}
+            {guestUser.setting.show_mobile
+              ? guestUser.secondary_mobile
+                ? guestUser.secondary_mobile
+                : "N/A"
+              : "Private"}
           </Text>
         </ListItem>
       </List>
