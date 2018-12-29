@@ -59,7 +59,9 @@ class App extends React.Component {
 
   componentWillMount() {
     NetInfo.addEventListener("connectionChange", netInfo => {
-      store.dispatch(handleNetworkChange(netInfo));
+      this.setState({ connection: netInfo }, () => {
+        store.dispatch(handleNetworkChange(netInfo));
+      });
     });
   }
 
