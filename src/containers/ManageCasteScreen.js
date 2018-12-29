@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import ManageCaste from "../components/ManageCaste";
-import { setAuthUser, updateAuthUser } from "../store/actions";
+import { getCastes, setAuthUser, updateAuthUser } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
@@ -12,7 +12,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       updateAuthUser: updateAuthUser,
-      setAuthUser: setAuthUser
+      setAuthUser: setAuthUser,
+      getCastes:getCastes
     },
     dispatch
   );

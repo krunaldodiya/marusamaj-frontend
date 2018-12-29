@@ -17,7 +17,7 @@ class UserDetail extends React.Component {
   componentDidMount() {
     const { getGuestUser, navigation } = this.props;
     const { user_id } = navigation.state.params;
-
+    
     getGuestUser({ user_id });
   }
 

@@ -14,6 +14,10 @@ class ManageCaste extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.getCastes();
+  }
+
   componentWillReceiveProps(props) {
     const { auth } = props;
     const { authUser, errors } = auth;
