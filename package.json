@@ -16,6 +16,7 @@
     "pusher-js": "^4.3.1",
     "react": "16.6.1",
     "react-native": "0.57.7",
+    "react-native-code-push": "^5.5.1",
     "react-native-confirmation-code-input": "^1.0.4",
     "react-native-drawer": "^2.5.1",
     "react-native-gesture-handler": "^1.0.10",
