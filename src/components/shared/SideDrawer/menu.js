@@ -1,6 +1,6 @@
 import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
-import { Linking, Platform, TouchableOpacity } from "react-native";
+import { Linking, TouchableOpacity } from "react-native";
 import codePush from "react-native-code-push";
 import theme from "../../../libs/theme";
 import { httpUrl } from "../../../libs/vars";
@@ -169,10 +169,15 @@ Menu = props => {
       <View style={{ backgroundColor: "white", padding: 15 }}>
         <TouchableOpacity
           onPress={() => {
-            codePush.sync({
-              updateDialog: true,
-              installMode: codePush.InstallMode.IMMEDIATE
-            });
+            codePush
+              .sync({
+                updateDialog: true,
+                installMode: codePush.InstallMode.IMMEDIATE,
+                deploymentKey: "N_6wYjmYnRvYSw9IDTu8cLfdK1M0HyHQrprbE"
+              })
+              .then(data => {
+                console.log(data);
+              });
           }}
         >
           <Text
@@ -182,7 +187,7 @@ Menu = props => {
               color: "#000"
             }}
           >
-            App Info {""} {Platform.Version}
+            Check Updates
           </Text>
         </TouchableOpacity>
       </View>
