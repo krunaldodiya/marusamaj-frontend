@@ -1,6 +1,6 @@
 import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
-import { Linking, TouchableOpacity } from "react-native";
+import { Linking, Platform, TouchableOpacity } from "react-native";
 import codePush from "react-native-code-push";
 import theme from "../../../libs/theme";
 import { httpUrl } from "../../../libs/vars";
@@ -182,7 +182,7 @@ Menu = props => {
               color: "#000"
             }}
           >
-            App Info {""} v1.0.6
+            App Info {""} {Platform.Version}
           </Text>
         </TouchableOpacity>
       </View>
