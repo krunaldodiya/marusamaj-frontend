@@ -69,13 +69,32 @@ class FamilyTab extends React.Component {
     const { authUser } = auth;
     const { relatives } = authUser;
 
+    const pendingRequests = relatives.filter(
+      relative => relative.status != true
+    );
+
     return (
       <View style={{ flex: 1 }}>
-        <FlatList
-          data={relatives}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={data => this.renderItem(data, navigation)}
-        />
+        <React.Fragment>
+          {!pendingRequests.length && (
+            <View style={{ padding: 20 }}>
+              <Text
+                style={{
+                  fontFamily: theme.fonts.TitilliumWebRegular,
+                  fontSize: 16
+                }}
+              >
+                No pending request.
+              </Text>
+            </View>
+          )}
+
+          <FlatList
+            data={pendingRequests}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={data => this.renderItem(data, navigation)}
+          />
+        </React.Fragment>
       </View>
     );
   }
