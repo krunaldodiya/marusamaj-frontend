@@ -1,6 +1,6 @@
 import { Body, Left, List, ListItem, Text, Thumbnail, View } from "native-base";
 import React from "react";
-import { Linking, TouchableOpacity } from "react-native";
+import { Alert, Linking, TouchableOpacity } from "react-native";
 import codePush from "react-native-code-push";
 import theme from "../../../libs/theme";
 import { httpUrl } from "../../../libs/vars";
@@ -176,7 +176,9 @@ Menu = props => {
                 deploymentKey: "N_6wYjmYnRvYSw9IDTu8cLfdK1M0HyHQrprbE"
               })
               .then(data => {
-                console.log(data);
+                if (data === 0) {
+                  Alert.alert("Status", "Already up-to-date.");
+                }
               });
           }}
         >
