@@ -101,8 +101,8 @@ android {
         applicationId "com.marusamaj"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 6
+        versionName "1.0.6"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -148,6 +148,9 @@ android {
 }
 
 dependencies {
+    compile project(':appcenter-crashes')
+    compile project(':appcenter-analytics')
+    compile project(':appcenter')
     compile project(':rn-fetch-blob')
     compile project(':react-native-image-crop-picker')
     compile project(':react-native-gesture-handler')
