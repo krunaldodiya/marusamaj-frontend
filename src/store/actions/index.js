@@ -1,5 +1,6 @@
 export * from "./add_relation";
 export * from "./change_avatar";
+export * from "./delete_account";
 export * from "./get_auth_user";
 export * from "./get_castes";
 export * from "./get_guest_user";

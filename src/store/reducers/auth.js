@@ -3,6 +3,9 @@ import {
   ADD_RELATION_FAIL,
   ADD_RELATION_SUCCESS,
   CHANGE_AVATAR,
+  DELETE_ACCOUNT,
+  DELETE_ACCOUNT_FAIL,
+  DELETE_ACCOUNT_SUCCESS,
   GET_AUTH_USER,
   GET_AUTH_USER_FAIL,
   GET_AUTH_USER_SUCCESS,
@@ -108,6 +111,31 @@ export default (state = initialState, action) => {
       return {
         ...state,
         authUser: action.payload.authUser
+      };
+    }
+
+    case DELETE_ACCOUNT: {
+      return {
+        ...state,
+        loading: true,
+        loaded: false
+      };
+    }
+
+    case DELETE_ACCOUNT_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true
+      };
+    }
+
+    case DELETE_ACCOUNT_FAIL: {
+      return {
+        ...state,
+        errors: action.payload.errors,
+        loading: false,
+        loaded: true
       };
     }
 

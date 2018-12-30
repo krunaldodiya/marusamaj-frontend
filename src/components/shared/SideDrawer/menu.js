@@ -8,7 +8,7 @@ import { httpUrl } from "../../../libs/vars";
 const app_id = "com.marusamaj";
 
 Menu = props => {
-  const { navigation, auth, toggleDrawer, logout } = props;
+  const { navigation, auth, toggleDrawer, register } = props;
   const { authUser } = auth;
 
   return (
@@ -98,6 +98,24 @@ Menu = props => {
               }}
             >
               Settings
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              toggleDrawer({ isOpen: false });
+              navigation.replace("AccountListScreen", { type: "switch" });
+            }}
+            style={{ marginTop: 0, marginBottom: 15, marginLeft: 15 }}
+          >
+            <Text
+              style={{
+                color: "#333",
+                fontFamily: theme.fonts.TitilliumWebRegular,
+                fontSize: 14
+              }}
+            >
+              Add Member
             </Text>
           </TouchableOpacity>
         </View>

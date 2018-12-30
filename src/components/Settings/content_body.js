@@ -20,7 +20,7 @@ class ContentBody extends React.Component {
   }
 
   render() {
-    const { updateSettings, auth } = this.props;
+    const { updateSettings, auth, deleteAccount, navigation } = this.props;
     const { loading } = auth;
     const { authUser, agree } = this.state;
 
@@ -235,9 +235,7 @@ class ContentBody extends React.Component {
                 danger
                 rounded
                 disabled={!agree}
-                onPress={() => {
-                  updateSettings({ authUser, url: api.deleteAccount });
-                }}
+                onPress={() => deleteAccount({ navigation })}
               >
                 <Text style={{ fontFamily: theme.fonts.TitilliumWebRegular }}>
                   DELETE ACCOUNT
