@@ -41,7 +41,7 @@ const uploadAvatar = (authUser, uploading, changeAvatar) => {
               .post(api.changeAvatar, { avatar }, { headers })
               .then(() => {
                 changeAvatar({ authUser: { ...authUser, avatar } });
-                uploading({ loading: false });
+                uploading({ guestUser: { ...authUser, avatar }, loading: false });
               })
               .catch(() => {
                 uploading({ loading: false });
@@ -56,9 +56,8 @@ const uploadAvatar = (authUser, uploading, changeAvatar) => {
 
 class ContentHeader extends React.Component {
   render() {
-    const { auth, guest, navigation, uploading, changeAvatar } = this.props;
+    const { auth, guestUser, navigation, uploading, changeAvatar } = this.props;
     const { authUser } = auth;
-    const { guestUser } = guest;
 
     return (
       <Header style={styles.termsWrapper} androidStatusBarColor="#d80402">

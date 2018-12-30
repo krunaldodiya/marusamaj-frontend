@@ -21,7 +21,10 @@ const UserProfile = props => {
   return (
     <Content style={styles.termsBody}>
       <List style={{ backgroundColor: "#fff" }}>
-        <ListItem avatar onPress={() => navigation.push("AvatarScreen")}>
+        <ListItem
+          avatar
+          onPress={() => navigation.push("AvatarScreen", { guestUser })}
+        >
           <Left>
             <Thumbnail
               source={{ uri: guestUser.avatar }}

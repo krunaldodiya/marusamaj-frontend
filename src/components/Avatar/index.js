@@ -8,23 +8,31 @@ class Avatar extends React.Component {
   constructor(props) {
     super(props);
 
+    const { navigation } = props;
+    const { guestUser } = navigation.state.params;
+
     this.state = {
-      loading: false
+      loading: false,
+      guestUser
     };
   }
 
-  uploading = loading => {
-    this.setState(loading);
+  uploading = data => {
+    this.setState(data);
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading, guestUser } = this.state;
 
     return (
       <Container style={{ flex: 1 }}>
         <Loader loading={loading} />
-        <ContentHeader {...this.props} uploading={this.uploading} />
-        <ContentBody {...this.props} />
+        <ContentHeader
+          {...this.props}
+          guestUser={guestUser}
+          uploading={this.uploading}
+        />
+        <ContentBody {...this.props} guestUser={guestUser} />
       </Container>
     );
   }
