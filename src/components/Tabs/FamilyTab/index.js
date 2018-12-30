@@ -12,7 +12,7 @@ class FamilyTab extends React.Component {
         <ListItem
           avatar
           onPress={() => {
-            navigation.push("UserDetailScreen", { user_id: item.user.id });
+            navigation.push("AddRelationScreen", { guestUser: item.user });
           }}
         >
           <Left>

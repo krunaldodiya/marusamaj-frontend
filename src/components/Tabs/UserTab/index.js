@@ -34,7 +34,7 @@ class UserTab extends React.Component {
         <ListItem
           avatar
           onPress={() =>
-            navigation.push("UserDetailScreen", { user_id: item.id })
+            navigation.push("UserDetailScreen", { guestUser: item })
           }
         >
           <Left>

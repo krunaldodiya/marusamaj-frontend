@@ -12,7 +12,7 @@ class UserFamily extends React.Component {
         <ListItem
           avatar
           onPress={() =>
-            navigation.push("UserDetailScreen", { user_id: item.user.id })
+            navigation.push("UserDetailScreen", { guestUser: item.user })
           }
         >
           <Left>
@@ -61,8 +61,7 @@ class UserFamily extends React.Component {
   };
 
   render() {
-    const { navigation, guest } = this.props;
-    const { guestUser } = guest;
+    const { navigation, guestUser } = this.props;
     const { relatives } = guestUser;
 
     const activeRelatives = relatives.filter(

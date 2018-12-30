@@ -28,9 +28,8 @@ class SelectRelation extends React.Component {
   constructor(props) {
     super(props);
 
-    const { auth, guest } = props;
+    const { auth, guestUser } = props;
     const { authUser } = auth;
-    const { guestUser } = guest;
 
     this.state = {
       from: authUser,

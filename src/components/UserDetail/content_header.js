@@ -33,9 +33,8 @@ getRelationStatus = (authUser, guestUser) => {
 };
 
 const ContentHeader = props => {
-  const { auth, guest, navigation, segment, toggleSegment } = props;
+  const { auth, navigation, segment, toggleSegment, guestUser } = props;
   const { authUser } = auth;
-  const { guestUser } = guest;
 
   const status = getRelationStatus(authUser, guestUser);
 
@@ -106,7 +105,7 @@ const ContentHeader = props => {
             type="MaterialIcons"
             name={status}
             style={styles.termsIcon}
-            onPress={() => navigation.push("AddRelationScreen")}
+            onPress={() => navigation.push("AddRelationScreen", { guestUser })}
           />
         )}
       </Right>

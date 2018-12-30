@@ -1,4 +1,4 @@
-import { Container, Spinner } from "native-base";
+import { Container, Spinner, Text } from "native-base";
 import React from "react";
 import ContentHeader from "./content_header";
 import styles from "./styles";
@@ -10,19 +10,17 @@ class UserDetail extends React.Component {
     super(props);
 
     this.state = {
-      segment: "profile"
+      segment: "profile",
+      guestUser: null,
+      loading: true
     };
   }
 
   componentDidMount() {
-    const { getGuestUser, navigation } = this.props;
-    const { user_id } = navigation.state.params;
-    
-    getGuestUser({ user_id });
-  }
+    const { navigation } = this.props;
+    const { guestUser } = navigation.state.params;
 
-  componentWillUnmount() {
-    this.props.resetGuestUser();
+    this.setState({ guestUser, loading: false });
   }
 
   toggleSegment = segment => {
@@ -30,23 +28,26 @@ class UserDetail extends React.Component {
   };
 
   render() {
-    const { segment } = this.state;
-    const { guest } = this.props;
-    const { loading, guestUser } = guest;
+    const { segment, guestUser, loading } = this.state;
 
     return (
       <Container style={styles.container}>
         {loading && <Spinner size="small" />}
 
-        {!loading && guestUser && (
+        {!loading && (
           <React.Fragment>
             <ContentHeader
               {...this.props}
+              guestUser={guestUser}
               segment={segment}
               toggleSegment={this.toggleSegment}
             />
-            {segment === "profile" && <UserProfile {...this.props} />}
-            {segment === "family" && <UserFamily {...this.props} />}
+            {segment === "profile" && (
+              <UserProfile {...this.props} guestUser={guestUser} />
+            )}
+            {segment === "family" && (
+              <UserFamily {...this.props} guestUser={guestUser} />
+            )}
           </React.Fragment>
         )}
       </Container>

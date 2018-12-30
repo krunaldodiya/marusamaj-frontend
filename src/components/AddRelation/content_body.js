@@ -11,9 +11,8 @@ class ContentBody extends React.Component {
   constructor(props) {
     super(props);
 
-    const { auth, guest } = props;
+    const { auth, guestUser } = props;
     const { authUser } = auth;
-    const { guestUser } = guest;
 
     this.state = {
       from: authUser,
@@ -31,10 +30,9 @@ class ContentBody extends React.Component {
   }
 
   setRelation = props => {
-    const { auth, guest } = props;
+    const { auth, guestUser } = props;
     const { authUser } = auth;
     const { relatives } = authUser;
-    const { guestUser } = guest;
 
     if (!relatives.length) {
       this.setState({ relation: null });
@@ -57,7 +55,7 @@ class ContentBody extends React.Component {
 
         <Top {...this.props} to={to} relation={relation} />
 
-        {!relation && <SelectRelation {...this.props} />}
+        {!relation && <SelectRelation {...this.props} guestUser={to} />}
 
         {relation && (
           <View style={{ flex: 1 }}>

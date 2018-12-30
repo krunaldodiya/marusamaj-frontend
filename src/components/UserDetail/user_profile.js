@@ -15,8 +15,7 @@ import theme from "../../libs/theme";
 import styles from "./styles";
 
 const UserProfile = props => {
-  const { navigation, guest, auth } = props;
-  const { guestUser } = guest;
+  const { navigation, guestUser, auth } = props;
   const { authUser } = auth;
 
   return (
