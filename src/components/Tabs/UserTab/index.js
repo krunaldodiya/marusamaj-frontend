@@ -15,7 +15,9 @@ class UserTab extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      refreshing: false
+    };
   }
 
   componentDidMount() {
@@ -25,6 +27,17 @@ class UserTab extends React.Component {
   componentWillUnmount() {
     this.props.resetUsers();
   }
+
+  onPullToRefresh = loading => {
+    this.setState({ refreshing: true });
+
+    this.props.resetUsers();
+    this.props.getUsers({ page: 1 });
+
+    if (!loading) {
+      this.setState({ refreshing: false });
+    }
+  };
 
   renderItem = (data, navigation) => {
     const { item } = data;
@@ -90,6 +103,7 @@ class UserTab extends React.Component {
   };
 
   render() {
+    const { refreshing } = this.state;
     const { users, navigation, getUsers } = this.props;
     const { data, loading, page, last_page } = users;
 
@@ -126,6 +140,8 @@ class UserTab extends React.Component {
           onEndReachedThreshold={0.5}
           keyExtractor={(_, index) => index.toString()}
           renderItem={data => this.renderItem(data, navigation)}
+          refreshing={refreshing}
+          onRefresh={() => this.onPullToRefresh(loading)}
         />
       </View>
     );

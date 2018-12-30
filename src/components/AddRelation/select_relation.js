@@ -80,15 +80,15 @@ class SelectRelation extends React.Component {
         </View>
 
         <TouchableOpacity
-          onPress={() =>
+          onPress={() => {
             addRelation({
               type: "send",
               from: from.id,
               to: to.id,
               from_relation,
               to_relation
-            })
-          }
+            });
+          }}
           style={{
             alignSelf: "center",
             backgroundColor: "#d80402",
