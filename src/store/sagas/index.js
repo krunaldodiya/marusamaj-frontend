@@ -3,7 +3,6 @@ import { addRelationWatcher } from "./add_relation";
 import { deleteAccountWatcher } from "./delete_account";
 import { getAuthUserWatcher } from "./get_auth_user";
 import { getCastesWatcher } from "./get_castes";
-import { getGuestUserWatcher } from "./get_guest_user";
 import { getUsersWatcher } from "./get_users";
 import { handleNetworkWatcher } from "./handle_network";
 import { loginWatcher } from "./login";
@@ -27,10 +26,10 @@ function* rootSaga() {
     registerWatcher(),
     logoutWatcher(),
     addRelationWatcher(),
-    getGuestUserWatcher(),
     updateSettingsWatcher(),
     deleteAccountWatcher()
   ]);
 }
 
 export { rootSaga };
+

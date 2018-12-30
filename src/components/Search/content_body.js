@@ -103,7 +103,6 @@ class ContentBody extends React.Component {
           <Item style={styles.submitButtonWrapper}>
             <Button
               rounded
-              bordered
               small
               danger
               onPress={() => {
@@ -124,8 +123,7 @@ class ContentBody extends React.Component {
             >
               <Text
                 style={{
-                  fontFamily: theme.fonts.TitilliumWebSemiBold,
-                  fontSize: 12
+                  fontFamily: theme.fonts.TitilliumWebSemiBold
                 }}
               >
                 Reset

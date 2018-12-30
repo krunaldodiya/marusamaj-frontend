@@ -5,7 +5,6 @@ import { addRelation } from "../store/actions";
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  guest: state.guest,
   users: state.users,
 });
 

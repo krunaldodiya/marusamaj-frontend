@@ -4,8 +4,7 @@ import styles from "./styles";
 
 class ContentBody extends React.Component {
   render() {
-    const { guest } = this.props;
-    const { guestUser } = guest;
+    const { guestUser } = this.props;
     const { avatar } = guestUser;
 
     const baseUrl = "https://res.cloudinary.com/marusamaj/image/upload";

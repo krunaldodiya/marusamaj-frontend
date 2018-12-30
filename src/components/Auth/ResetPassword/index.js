@@ -7,7 +7,7 @@ import LoginInfo from "./reset_info";
 
 class ResetPassword extends React.Component {
   render() {
-    const { guest } = this.props;
+    const { loading } = this.props;
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -17,7 +17,7 @@ class ResetPassword extends React.Component {
           style={{ flex: 1 }}
           contentContainerStyle={{ flex: 1 }}
         >
-          <Loader loading={guest.loading} />
+          <Loader loading={loading} />
           <LoginInfo />
           <LoginForm {...this.props} />
         </KeyboardAvoidingView>
